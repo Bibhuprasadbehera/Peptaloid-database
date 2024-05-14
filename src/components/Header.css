@@ -1,0 +1,31 @@
+/* Header.css */
+
+.header {
+  min-height: 50vh;
+  display: flex;
+  justify-content: center;
+  background-image: url('../images/frontpage.png');
+  background-size: cover;
+  background-position: center;
+  color: rgb(14, 18, 83);
+}
+
+.header-content {
+  display: flex;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.header-text {
+  flex: 1;
+  padding: 20px;
+}
+
+.header h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.header p {
+  font-size: 18px;
+}

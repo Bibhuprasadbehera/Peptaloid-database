@@ -1,0 +1,38 @@
+/* styles.css */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px; /* Adjusted for better readability */
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center; /* Centering content */
+}
+
+.heading {
+  font-size: 32px; /* Increased font size for emphasis */
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px; /* Added margin for separation */
+}
+
+.search-bar {
+  width: 100%; /* Ensuring full width */
+  padding: 10px; /* Improved input box padding */
+  font-size: 18px; /* Increased font size for better visibility */
+  margin-bottom: 20px; /* Added margin for separation */
+  border-radius: 5px; /* Rounded corners for aesthetic appeal */
+  border: 2px solid #ddd; /* Added border for visual clarity */
+}
+
+.paragraph {
+  font-size: 16px;
+  color: #666;
+}
+
+/* Add more styles as needed */
