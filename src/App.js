@@ -1,3 +1,4 @@
+// App.js or wherever your Router component is
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -6,6 +7,14 @@ import HomePage from './pages/Homepage';
 import SearchPage from './pages/Searchpage';
 import LearnPage from './pages/Learnpage';
 import HelpPage from './pages/Helppage';
+
+// newly added pages
+import DownloadPage from './pages/Downloadpage';
+import LoginPage from './pages/Loginpage';
+import NotFoundPage from './pages/Notfoundpage';
+import ToolsPage from './pages/Toolspage';
+import FAQPage from './pages/FAQpage';
+
 
 function App() {
   return (
@@ -17,10 +26,16 @@ function App() {
           <Route path="/search" element={<SearchPage />} />
           <Route path="/learn" element={<LearnPage />} />
           <Route path="/help" element={<HelpPage />} />
+          <Route path="/download" element={<DownloadPage/>} />
+          <Route path="/faq" element={<FAQPage/>} />
+          <Route path="/login" element={<LoginPage/>} />
+          <Route path="/tools" element={<ToolsPage/>} />
+          <Route element={NotFoundPage} />
         </Routes>
       </div>
     </Router>
   );
 }
+
 
 export default App;

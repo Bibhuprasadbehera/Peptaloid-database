@@ -17,7 +17,7 @@ const HomePage = () => {
       <div className="container">
         <h2 className="heading">Welcome to the Peptaloid Database Home Page</h2>
         <p className="paragraph">
-          Peptaloid is a unique database containing over 160,000 natural molecules known as peptide alkaloids. These molecules combine the characteristics of peptides and alkaloids, offering exciting prospects for drug development, ecological research, and biotechnological applications.
+        The first peptide alkaloid discovered was pandamine, obtained from the crude alkaloid fraction of Panda oleosa Pierre root bark. It represents the first cyclopeptidic alkaloid ever elucidated and holds a specific importance in the phytochemical class of cyclopeptide alkaloids. Pandamine marked the beginning of considerable interest in these natural products, which now encompass more than 160,000 entries.
         </p>
         <Carousel images={[molecule1, molecule2, molecule3]} />
         <div className="section">
