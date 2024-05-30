@@ -17,7 +17,7 @@ const Carousel = () => {
       setTimeout(() => {
         setCurrentImageIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
         setIsTransitioning(false);
-      }, 500); // Adjust the delay (in milliseconds) for the transition duration
+      }, 2000); // Adjust the delay (in milliseconds) for the transition duration
     }, 3000);
 
     return () => clearInterval(interval);
