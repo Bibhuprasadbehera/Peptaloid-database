@@ -7,6 +7,7 @@ import HomePage from './pages/Homepage';
 import SearchPage from './pages/Searchpage';
 import LearnPage from './pages/Learnpage';
 import HelpPage from './pages/Helppage';
+import BrowsePage from './pages/Browsepage';
 
 // newly added pages
 import DownloadPage from './pages/Downloadpage';
@@ -30,6 +31,7 @@ function App() {
           <Route path="/faq" element={<FAQPage/>} />
           <Route path="/login" element={<LoginPage/>} />
           <Route path="/tools" element={<ToolsPage/>} />
+          <Route path="/browse" element={<BrowsePage />} />
           <Route element={NotFoundPage} />
         </Routes>
       </div>
