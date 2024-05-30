@@ -1,44 +1,100 @@
 /* Navbar.css */
 .navbar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
   background-color: #2c3e50;
-  padding: 10px 20px;
+  padding: 15px 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  z-index: 2;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: flex-start; /* Align the logo to the left */
+  margin-bottom: 15px; /* Increased space between logo and nav links */
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
 }
 
 .logo {
   width: 180px; /* Adjust the width as needed */
   height: auto; /* Automatically adjust the height based on the width */
-  margin-right: 20px; /* Add margin for spacing */
 }
 
-.navbar ul {
+.nav-links-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #34495e; /* Add a top border for separation */
+  padding-top: 10px; /* Add padding to separate the links from the border */
+}
+
+.nav-links {
+  display: flex;
   list-style-type: none;
   margin: 0;
   padding: 0;
-  display: flex;
 }
 
-.navbar li {
+.nav-links li {
   margin-right: 20px;
 }
 
-.navbar li:last-child {
+.nav-links li:last-child {
   margin-right: 0;
 }
 
-.navbar li a {
+.nav-links li a,
+.login-button {
   text-decoration: none;
   color: #ecf0f1;
   padding: 10px 20px;
   border-radius: 5px;
   transition: background-color 0.3s, color 0.3s;
+  font-weight: 500; /* Slightly bolder text */
 }
 
-.navbar li a:hover {
-  background-color: #e229ba;
+.nav-links li a:hover,
+.login-button:hover {
+  background-color: #5e4379;
   color: #fff;
 }
 
-.navbar li a.active {
-  background-color: #be0095;
-  color: #000000;
+.nav-links li a.active,
+.login-button.active {
+  background-color: #eb567b;
+  color: #fff; /* Ensure text is readable */
+}
+
+.login-button {
+  margin-left: auto; /* Push the login button to the right */
+  background-color: #399bcd; /* Distinguish the login button */
+  color: #000000; /* Ensure text is readable */
+}
+
+@media (max-width: 768px) {
+  .nav-links-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-links li {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .login-button {
+    margin-left: 0;
+    align-self: flex-end;
+  }
 }
