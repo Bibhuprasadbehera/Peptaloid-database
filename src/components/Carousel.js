@@ -41,17 +41,9 @@ const Carousel = () => {
 
   return (
     <div className="carousel">
-      <img
-        src={images[currentImageIndex]}
-        alt={`Molecule ${currentImageIndex + 1}`}
-        className={`carousel-image ${isTransitioning ? 'transitioning' : ''}`}
-      />
-      <button className="prev-button" onClick={goToPreviousImage}>
-        &#10094;
-      </button>
-      <button className="next-button" onClick={goToNextImage}>
-        &#10095;
-      </button>
+      <img src={images[currentImageIndex]} alt={`Molecule ${currentImageIndex + 1}`} className={`carousel-image ${isTransitioning ? 'transitioning' : ''}`} />
+      <button className="prev-button" onClick={goToPreviousImage}> &#10094; </button>
+      <button className="next-button" onClick={goToNextImage}> &#10095; </button>
     </div>
   );
 };
