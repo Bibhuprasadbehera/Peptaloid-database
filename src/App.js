@@ -1,5 +1,7 @@
-// App.js or wherever your Router component is
+// App.js
+
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Header from './components/Header';
@@ -9,13 +11,19 @@ import ContactPage from './pages/Contactpage';
 import HelpPage from './pages/Helppage';
 import BrowsePage from './pages/Browsepage';
 
-// newly added pages
+// newly added pages in update 1
 import DownloadPage from './pages/Downloadpage';
 import LoginPage from './pages/Loginpage';
 import NotFoundPage from './pages/Notfoundpage';
 import ToolsPage from './pages/Toolspage';
 import FAQPage from './pages/FAQpage';
 
+// newly added pages in update 2
+import MoleculeDetails from './components/Molecules/MoleculeDetails';
+import MoleculeCard from './components/Molecules/MoleculeCard';
+import Pagination from './components/Pagination/Pagination';
+import FilterBar from './components/Search/FilterBar';
+import SearchBar from './components/Search/SearchBar'; 
 
 function App() {
   return (
@@ -27,17 +35,17 @@ function App() {
           <Route path="/search" element={<SearchPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/help" element={<HelpPage />} />
-          <Route path="/download" element={<DownloadPage/>} />
-          <Route path="/faq" element={<FAQPage/>} />
-          <Route path="/login" element={<LoginPage/>} />
-          <Route path="/tools" element={<ToolsPage/>} />
+          <Route path="/download" element={<DownloadPage />} />
+          <Route path="/faq" element={<FAQPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/tools" element={<ToolsPage />} />
           <Route path="/browse" element={<BrowsePage />} />
-          <Route element={NotFoundPage} />
+          <Route path="/molecule-details" element={<MoleculeDetails />} />
+          <Route element={<NotFoundPage />} />
         </Routes>
       </div>
     </Router>
   );
 }
-
 
 export default App;

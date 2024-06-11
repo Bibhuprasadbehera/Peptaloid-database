@@ -1,0 +1,13 @@
+/* MoleculeDetails.css */
+.molecule-details {
+    padding: 16px;
+  }
+  
+  .molecule-details h2 {
+    margin-top: 0;
+  }
+  
+  .molecule-details p {
+    margin: 8px 0;
+  }
+  
