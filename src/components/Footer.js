@@ -17,7 +17,7 @@ const Footer = () => {
         <p><a href="mailto:info@example.com">bibhu.behera@niser.ac.in</a></p>
         <p>NISER, Bhubaneswar, India</p>
       </div>
-      <p>&copy; Alkaloid Database {new Date().getFullYear()}</p>
+      <p>&copy; Peptaloid Database {new Date().getFullYear()}</p>
     </footer>
   );
 };

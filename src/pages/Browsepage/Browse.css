@@ -1,0 +1,67 @@
+.browse-container {
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 800px;
+  text-align: left;
+  background-color: #ffffff; /* Added background color */
+}
+
+.browse-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-family: 'Times New Roman', Times, serif; /* Added font family */
+}
+
+.browse-table th, .browse-table td {
+  padding: 12px 15px; /* Changed padding */
+  border: 1px solid #ddd;
+  text-align: left; /* Changed text alignment for both th and td */
+}
+
+.browse-table th {
+  background-color: #399bcd; /* Changed background color */
+  color: white;
+}
+
+.browse-table tr:nth-child(even) {
+  background-color: #e6f6ff; /* Added background color for even rows */
+}
+
+.browse-table tr:hover {
+  background-color: #9c9c9c; /* Added background color for hover */
+}
+
+/* Added CSS for responsive table */
+@media screen and (max-width: 600px) {
+  .browse-table thead {
+    display: none;
+  }
+
+  .browse-table, .browse-table tbody, .browse-table tr, .browse-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .browse-table tr {
+    margin-bottom: 15px;
+  }
+
+  .browse-table td {
+    text-align: right;
+    padding-left: 50%;
+    text-align: right;
+    position: relative;
+  }
+
+  .browse-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 15px;
+    font-weight: bold;
+    text-align: left;
+  }
+}
+  
