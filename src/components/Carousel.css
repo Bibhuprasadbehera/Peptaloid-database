@@ -1,4 +1,5 @@
 /* carousel.css */
+
 .carousel {
   position: relative;
   overflow: hidden;
@@ -41,4 +42,16 @@
 
 .next-button {
   right: 10px;
+}
+
+@media (max-width: 768px) {
+  .carousel {
+    height: 30vh;
+  }
+}
+
+@media (min-width: 1024px) {
+  .carousel {
+    height: 50vh;
+  }
 }

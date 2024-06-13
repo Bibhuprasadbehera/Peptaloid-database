@@ -1,0 +1,86 @@
+/* pagination.css */
+
+.pagination-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.molecule-list {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.pagination-controls select {
+  margin-right: 1rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.pagination-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.pagination-buttons button {
+  margin: 0 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #399bcd;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination-buttons button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.page-numbers {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+}
+
+.page-numbers span {
+  margin: 0 0.25rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.page-numbers span.active {
+  background-color: #399bcd;
+  color: #fff;
+}
+
+.page-numbers span.ellipsis {
+  background-color: transparent;
+  cursor: default;
+}
+
+@media (min-width: 768px) {
+  .molecule-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .molecule-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

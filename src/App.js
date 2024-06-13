@@ -54,6 +54,8 @@ function App() {
           <Route path="/browse/qed" element={<QED />} />
           <Route path="/browse/lipinski" element={<Lipinski />} />
           <Route path="/molecule-details" element={<MoleculeDetails />} />
+          <Route path="/pagination/Pagination" element={<Pagination />} />
+          <Route path="/Pagination" element={<Pagination/>} />
           <Route element={<NotFoundPage />} />
         </Routes>
       </div>

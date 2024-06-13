@@ -40,3 +40,17 @@
 .made-by span {
   color: #ff00b8;
 }
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 10px 0;
+  }
+
+  .social-icons a {
+    font-size: 18px;
+  }
+
+  .made-by {
+    font-size: 12px;
+  }
+}

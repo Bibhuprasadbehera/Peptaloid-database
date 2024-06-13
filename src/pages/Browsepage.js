@@ -1,12 +1,11 @@
-// Downloadpage.js
+// BrowsePage.js
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './styles.css';
-import Navbar from '../components/Navbar';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-
 
 const BrowsePage = ({ title, headers, data }) => {
+  const navigate = useNavigate();
+
   return (
     <div className="browse-container">
       <h1>{title}</h1>
@@ -22,7 +21,11 @@ const BrowsePage = ({ title, headers, data }) => {
           {data.map((row, index) => (
             <tr key={index}>
               {row.map((cell, cellIndex) => (
-                <td key={cellIndex} data-label={headers[cellIndex]}>
+                <td
+                  key={cellIndex}
+                  data-label={headers[cellIndex]}
+                  onClick={() => cellIndex === 1 && navigate('/Pagination', { state: { count: cell } })}
+                >
                   {cell}
                 </td>
               ))}

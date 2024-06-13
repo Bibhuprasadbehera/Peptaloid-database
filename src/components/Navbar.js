@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import logo from '../images/logo2.png';
+import logo from '../images/navbar.png';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -46,6 +46,8 @@ const Navbar = () => {
             </a>
             {activeDropdown === 'browse' && (
               <ul className="dropdown-menu">
+                <li><NavLink to="/Pagination/Pagination" activeClassName="active">Browse All</NavLink></li>
+                <hr />
                 <li><NavLink to="/browse/carbon" activeClassName="active">Browse by No. of Carbon</NavLink></li>
                 <li><NavLink to="/browse/molecularweight" activeClassName="active">Browse by Molecular Weight</NavLink></li>
                 <li><NavLink to="/browse/source" activeClassName="active">Browse by Source</NavLink></li>

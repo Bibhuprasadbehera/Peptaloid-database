@@ -1,35 +1,40 @@
+/* Header.css */
+
 .header {
   min-height: 50vh;
   display: flex;
   justify-content: center;
-  background-image: url('../images/frontpage.png');
-  background-size: cover;
-  background-position: center;
+  align-items: center;
+  background-color: #ffffff;
   color: rgb(14, 18, 83);
+  padding: 40px;
 }
 
 .header-content {
   display: flex;
-  max-width: 100%;
+  max-width: 1200px;
   width: 100%;
   align-items: center;
 }
 
 .header-text {
   flex: 1;
-  padding: 60px;
-  max-width: 25%;
+  padding-right: 40px;
   text-align: justify;
   text-justify: inter-word;
 }
 
 .header-logo {
-  flex: 2; /* Occupy 2/3 of the remaining space */
-  background-image: url('../images/logo.png'); /* Replace with your logo image */
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 100%;
+  flex: 2;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.header-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 .header h1 {
@@ -40,4 +45,28 @@
 
 .header p {
   font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header-text {
+    padding-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .header-logo img {
+    max-width: 80%;
+  }
+
+  .header h1 {
+    font-size: 28px;
+  }
+
+  .header p {
+    font-size: 16px;
+  }
 }

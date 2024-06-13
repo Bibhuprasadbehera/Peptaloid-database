@@ -1,13 +1,27 @@
 /* MoleculeDetails.css */
+
 .molecule-details {
-    padding: 16px;
+  padding: 16px;
+}
+
+.molecule-details h2 {
+  margin-top: 0;
+}
+
+.molecule-details p {
+  margin: 8px 0;
+}
+
+@media (max-width: 768px) {
+  .molecule-details {
+    padding: 8px;
   }
-  
+
   .molecule-details h2 {
-    margin-top: 0;
+    font-size: 1.5em;
   }
-  
+
   .molecule-details p {
-    margin: 8px 0;
+    font-size: 1em;
   }
-  
+}

@@ -1,7 +1,8 @@
+// Carbon.js
 import React from 'react';
 import './Browse.css';
-import BrowsePage from '../BrowsePage'; // Ensure this path is correct
-import Footer from '../../components/Footer'; // Corrected path
+import BrowsePage from '../BrowsePage';
+import Footer from '../../components/Footer';
 
 const carbonHeaders = ["Range", "Count"];
 const carbonData = [
