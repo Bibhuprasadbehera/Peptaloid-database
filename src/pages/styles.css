@@ -1,6 +1,4 @@
-/* styles.css */
-
-.body {
+body {
   font-family: 'Times New Roman', Times, serif;
   background-color: #f9f9f9;
   margin: 0;
@@ -8,56 +6,56 @@
 }
 
 .container {
-  max-width: 800px; /* Adjusted for better readability */
+  max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  text-align: center; /* Centering content */
+  text-align: center;
 }
 
 .heading {
-  font-size: 32px; /* Increased font size for emphasis */
+  font-size: 32px;
   font-weight: bold;
   color: #333;
-  margin-bottom: 20px; /* Added margin for separation */
+  margin-bottom: 20px;
 }
 
 .search-bar {
-  width: 100%; /* Ensuring full width */
-  padding: 10px; /* Improved input box padding */
-  font-size: 18px; /* Increased font size for better visibility */
-  margin-bottom: 20px; /* Added margin for separation */
-  border-radius: 5px; /* Rounded corners for aesthetic appeal */
-  border: 2px solid #ddd; /* Added border for visual clarity */
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 2px solid #ddd;
 }
 
 .paragraph-center {
   text-align: center;
   font-size: 16px;
-  color: #000000;
+  color: #000;
 }
 
 .paragraph-left {
   text-align: left;
   font-size: 16px;
-  color: #000000;
+  color: #000;
 }
 
 .paragraph-justified {
   text-align: justify;
   font-size: 16px;
-  color: #000000;
+  color: #000;
 }
 
 .paragraph-right {
   text-align: right;
   font-size: 16px;
-  color: #000000;
+  color: #000;
 }
 
 .paragraph-bold {
   font-weight: bold;
   font-size: 24px;
-  color: #000000;
+  color: #000;
 }
 
 .help-table {
@@ -66,7 +64,8 @@
   margin-top: 20px;
 }
 
-.help-table th, .help-table td {
+.help-table th,
+.help-table td {
   padding: 12px 15px;
   border: 1px solid #ddd;
   text-align: left;
@@ -85,12 +84,16 @@
   background-color: #9c9c9c;
 }
 
+/* Responsive table for small screens */
 @media screen and (max-width: 600px) {
   .help-table thead {
     display: none;
   }
 
-  .help-table, .help-table tbody, .help-table tr, .help-table td {
+  .help-table,
+  .help-table tbody,
+  .help-table tr,
+  .help-table td {
     display: block;
     width: 100%;
   }
@@ -102,7 +105,6 @@
   .help-table td {
     text-align: right;
     padding-left: 50%;
-    text-align: right;
     position: relative;
   }
 
@@ -116,4 +118,3 @@
     text-align: left;
   }
 }
-/* Add more styles as needed */

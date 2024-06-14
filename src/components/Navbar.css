@@ -99,6 +99,7 @@
   border-top-color: #fff;
 }
 
+/* Responsive styling */
 @media (max-width: 768px) {
   .nav-links-container {
     flex-direction: column;
