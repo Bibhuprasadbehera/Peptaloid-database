@@ -1,10 +1,14 @@
+/* styles.css */
+
 body {
   font-family: 'Times New Roman', Times, serif;
   background-color: #f9f9f9;
   margin: 0;
   padding: 0;
+  color: #000000; /* Default text color */
 }
 
+/* Container styles */
 .container {
   max-width: 800px;
   margin: 0 auto;
@@ -12,52 +16,62 @@ body {
   text-align: center;
 }
 
+/* Heading styles */
 .heading {
-  font-size: 32px;
+  font-size: 36px;
   font-weight: bold;
-  color: #333;
+  color: #000000;
+  margin-bottom: 30px; /* Increased spacing */
+}
+
+/* Subheading styles */
+.subheading {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #399bcd; /* Accent color */
+}
+
+/* Paragraph styles */
+.paragraph {
+  font-size: 16px;
   margin-bottom: 20px;
 }
 
-.search-bar {
+/* Form styles */
+.login-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.input-field {
   width: 100%;
   padding: 10px;
-  font-size: 18px;
-  margin-bottom: 20px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
   border-radius: 5px;
-  border: 2px solid #ddd;
 }
 
-.paragraph-center {
-  text-align: center;
-  font-size: 16px;
-  color: #000;
+.submit-button {
+  width: 100%;
+  padding: 12px;
+  font-size: 18px;
+  background-color: #399bcd;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.paragraph-left {
-  text-align: left;
-  font-size: 16px;
-  color: #000;
+.submit-button:hover {
+  background-color: #2c7ba8;
 }
 
-.paragraph-justified {
-  text-align: justify;
-  font-size: 16px;
-  color: #000;
-}
-
-.paragraph-right {
-  text-align: right;
-  font-size: 16px;
-  color: #000;
-}
-
-.paragraph-bold {
-  font-weight: bold;
-  font-size: 24px;
-  color: #000;
-}
-
+/* Help table styles */
 .help-table {
   width: 100%;
   border-collapse: collapse;
@@ -77,11 +91,11 @@ body {
 }
 
 .help-table tr:nth-child(even) {
-  background-color: #e6f6ff;
+  background-color: #eaf7ff;
 }
 
 .help-table tr:hover {
-  background-color: #9c9c9c;
+  background-color: #acb9ca;
 }
 
 /* Responsive table for small screens */
@@ -117,4 +131,43 @@ body {
     font-weight: bold;
     text-align: left;
   }
+}
+
+
+/* Create account button styles */
+.create-account-button {
+  width: 100%;
+  padding: 12px;
+  font-size: 18px;
+  background-color: #fff;
+  color: #5e4379;
+  border: 2px solid #5e4379;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.create-account-button:hover {
+  background-color: #5e4379;
+  color: #fff;
+}
+
+/* Account form styles */
+.account-form {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.input-field {
+  width: 90%; /* Adjust this value as needed */
+  /* rest of your styles */
+}
+
+.submit-button:hover {
+  background-color: #5e4379; /* Change this line */
+  color: #fff;
 }

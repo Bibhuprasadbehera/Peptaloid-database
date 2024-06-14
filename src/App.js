@@ -32,6 +32,10 @@ import Source from "./pages/Browsepage/Source";
 import QED from "./pages/Browsepage/QED";
 import Lipinski from "./pages/Browsepage/Lipinski";
 
+// newly added pages in update 4
+import Account from "./pages/Account";
+import AdvancedSearch from "./pages/Browsepage/Advancedsearch";
+
 function App() {
   return (
     <Router>
@@ -40,6 +44,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/search" element={<SearchPage />} />
+          <Route path="/browse/advanced" element={<AdvancedSearch />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/help" element={<HelpPage />} />
           <Route path="/download" element={<DownloadPage />} />
@@ -56,6 +61,7 @@ function App() {
           <Route path="/molecule-details" element={<MoleculeDetails />} />
           <Route path="/pagination/Pagination" element={<Pagination />} />
           <Route path="/Pagination" element={<Pagination/>} />
+          <Route path="/Account" element={<Account />} />
           <Route element={<NotFoundPage />} />
         </Routes>
       </div>

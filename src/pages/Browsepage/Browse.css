@@ -1,46 +1,54 @@
 /* browse.css */
-
 .browse-container {
   padding: 20px;
   margin: 0 auto;
   max-width: 800px;
   text-align: left;
-  background-color: #ffffff; /* Added background color */
+  background-color: #ffffff;
 }
 
 .browse-table {
   width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
-  font-family: 'Times New Roman', Times, serif; /* Added font family */
+  font-family: 'Times New Roman', Times, serif;
 }
 
-.browse-table th, .browse-table td {
-  padding: 12px 15px; /* Changed padding */
+.browse-table th,
+.browse-table td {
+  padding: 12px 15px;
   border: 1px solid #ddd;
-  text-align: left; /* Changed text alignment for both th and td */
+  text-align: left;
 }
 
 .browse-table th {
-  background-color: #399bcd; /* Changed background color */
+  background-color: #399bcd;
   color: white;
 }
 
 .browse-table tr:nth-child(even) {
-  background-color: #e6f6ff; /* Added background color for even rows */
+  background-color: #eaf7ff;
 }
 
 .browse-table tr:hover {
-  background-color: #9c9c9c; /* Added background color for hover */
+  background-color: #acb9ca;
 }
 
-/* Added CSS for responsive table */
+.browse-table td[data-label='Count'] {
+  color: #399bcd;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 600px) {
   .browse-table thead {
     display: none;
   }
 
-  .browse-table, .browse-table tbody, .browse-table tr, .browse-table td {
+  .browse-table,
+  .browse-table tbody,
+  .browse-table tr,
+  .browse-table td {
     display: block;
     width: 100%;
   }
@@ -52,7 +60,6 @@
   .browse-table td {
     text-align: right;
     padding-left: 50%;
-    text-align: right;
     position: relative;
   }
 
@@ -66,4 +73,3 @@
     text-align: left;
   }
 }
-  

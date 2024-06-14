@@ -20,30 +20,22 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="logo-container">
-        <Link to="/" className="logo-link">
-          <img src={logo} alt="Peptaloid" className="logo" />
-        </Link>
+        <Link to="/" className="logo-link"><img src={logo} alt="Peptaloid" className="logo" /></Link>
       </div>
       <div className="nav-links-container">
         <ul className="nav-links">
-          <li>
-            <NavLink to="/" isActive={() => isActive('/')} activeClassName="active">Home</NavLink>
-          </li>
+          <li><NavLink to="/" isActive={() => isActive('/')} activeClassName="active">Home</NavLink></li>
           <li className={`dropdown search-dropdown ${activeDropdown === 'search' ? 'active' : ''}`}>
-            <a href="#" onClick={() => toggleDropdown('search')} className={isActive('/search') || isActive('/search/advanced') ? "active" : ""}>
-              Search
-            </a>
+            <a href="#" onClick={() => toggleDropdown('search')} className={isActive('/search') || isActive('/search/advanced') ? "active" : ""}> Search</a>
             {activeDropdown === 'search' && (
               <ul className="dropdown-menu">
                 <li><NavLink to="/search" activeClassName="active">Simple Search</NavLink></li>
-                <li><NavLink to="/search/advanced" activeClassName="active">Advanced Search</NavLink></li>
+                <li><NavLink to="/browse/advanced" activeClassName="active">Advanced Search</NavLink></li>
               </ul>
             )}
           </li>
           <li className={`dropdown browse-dropdown ${activeDropdown === 'browse' ? 'active' : ''}`}>
-            <a href="#" onClick={() => toggleDropdown('browse')} className={isActive('/browse/carbon') || isActive('/browse/molecularweight') || isActive('/browse/source') || isActive('/browse/qed') || isActive('/browse/lipinski') ? "active" : ""}>
-              Browse
-            </a>
+            <a href="#" onClick={() => toggleDropdown('browse')} className={isActive('/browse/carbon') || isActive('/browse/molecularweight') || isActive('/browse/source') || isActive('/browse/qed') || isActive('/browse/lipinski') ? "active" : ""}> Browse</a>
             {activeDropdown === 'browse' && (
               <ul className="dropdown-menu">
                 <li><NavLink to="/Pagination/Pagination" activeClassName="active">Browse All</NavLink></li>
