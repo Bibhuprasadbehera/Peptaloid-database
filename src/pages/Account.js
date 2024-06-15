@@ -13,7 +13,7 @@ const Account = () => {
     navigate('/');
   };
 
-  return (
+  return ( 
     <div>
       <div className="container">
         <h2 className="heading">Create an Account</h2>
