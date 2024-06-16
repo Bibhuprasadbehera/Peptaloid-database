@@ -1,4 +1,3 @@
-// AdvancedSearch.js
 import React, { useState } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
@@ -10,13 +9,15 @@ const AdvancedSearch = () => {
     ]);
 
     const addCriterion = () => {
-        setCriteria([...criteria, { field: '', condition: '=', query: '', operator: 'AND' }]);
+        setCriteria([...criteria, { field: 'Peptide Name', condition: '=', query: '', operator: 'AND' }]);
     };
 
     const removeCriterion = (index) => {
-        const newCriteria = [...criteria];
-        newCriteria.splice(index, 1);
-        setCriteria(newCriteria);
+        if (criteria.length > 1) {
+            const newCriteria = [...criteria];
+            newCriteria.splice(index, 1);
+            setCriteria(newCriteria);
+        }
     };
 
     const handleCriteriaChange = (index, field, value) => {
@@ -28,12 +29,15 @@ const AdvancedSearch = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         // Handle form submission logic
+        console.log(criteria);
     };
 
     return (
         <div>
             <div className="container-search">
                 <h2 className="heading">Advanced Search</h2>
+                <p>Use the advanced search feature to refine your search results. You can add multiple search criteria and specify the logical operator between them.</p>
+               
                 <form onSubmit={handleSubmit}>
                     <table className="criteria-table">
                         <thead>
@@ -50,8 +54,8 @@ const AdvancedSearch = () => {
                         <tbody>
                             {criteria.map((criterion, index) => (
                                 <tr key={index}>
-                                    <td>{index + 1}</td>
-                                    <td>
+                                    <td data-label="No.">{index + 1}</td>
+                                    <td data-label="Field">
                                         <select
                                             value={criterion.field}
                                             onChange={(e) => handleCriteriaChange(index, 'field', e.target.value)}
@@ -62,7 +66,7 @@ const AdvancedSearch = () => {
                                             <option value="Linear/Cyclic">Linear/Cyclic</option>
                                         </select>
                                     </td>
-                                    <td>
+                                    <td data-label="Condition">
                                         <select
                                             value={criterion.condition}
                                             onChange={(e) => handleCriteriaChange(index, 'condition', e.target.value)}
@@ -73,28 +77,34 @@ const AdvancedSearch = () => {
                                             <option value="!=">!=</option>
                                         </select>
                                     </td>
-                                    <td>
+                                    <td data-label="Query">
                                         <input
                                             type="text"
                                             value={criterion.query}
                                             onChange={(e) => handleCriteriaChange(index, 'query', e.target.value)}
+                                            placeholder="Enter query"
                                         />
                                     </td>
-                                    <td>
+                                    <td data-label="Operator">
                                         <select
                                             value={criterion.operator}
                                             onChange={(e) => handleCriteriaChange(index, 'operator', e.target.value)}
+                                            disabled={index === criteria.length - 1} // Disable operator for last row
                                         >
                                             <option value="AND">AND</option>
                                             <option value="OR">OR</option>
                                             <option value="NOT">NOT</option>
                                         </select>
                                     </td>
-                                    <td>
-                                        <button type="button" onClick={addCriterion} className="add-remove-button">+</button>
+                                    <td data-label="Add">
+                                        {index === criteria.length - 1 && (
+                                            <button type="button" onClick={addCriterion} className="add-remove-button">+</button>
+                                        )}
                                     </td>
-                                    <td>
-                                        <button type="button" onClick={() => removeCriterion(index)} className="add-remove-button">-</button>
+                                    <td data-label="Remove">
+                                        {criteria.length > 1 && (
+                                            <button type="button" onClick={() => removeCriterion(index)} className="add-remove-button">-</button>
+                                        )}
                                     </td>
                                 </tr>
                             ))}

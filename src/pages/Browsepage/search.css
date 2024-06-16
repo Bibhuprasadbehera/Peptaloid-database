@@ -1,63 +1,109 @@
 /* search.css */
 
+.container-search {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-  
+.criteria-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.criteria-table th, .criteria-table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.criteria-table th {
+  background-color: #399bcd;
+  color: white;
+}
+
+.criteria-table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+.criteria-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.criteria-table select, .criteria-table input {
+  width: 90%;
+  padding: 8px;
+  margin: 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.criteria-table button {
+  background-color: #399bcd;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.criteria-table button:hover {
+  background-color: #2c7ba8;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
   .container-search {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 10px;
   }
-  
-  
-  .criteria-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
+
   .criteria-table th, .criteria-table td {
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    text-align: center;
+      padding: 8px;
   }
-  
-  .criteria-table th {
-    background-color: #399bcd;
-    color: white;
-  }
-  
-  .criteria-table tr:nth-child(even) {
-    background-color: #ffffff;
-  }
-  
-  .criteria-table tr:hover {
-    background-color: #f1f1f1;
-  }
-  
+
   .criteria-table select, .criteria-table input {
-    width: 90%;
-    padding: 8px;
-    margin: 0;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+      width: 100%;
   }
-  
+
   .criteria-table button {
-    background-color: #399bcd;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    cursor: pointer;
-    border-radius: 4px;
+      padding: 6px 10px;
   }
-  
-  .criteria-table button:hover {
-    background-color: #2c7ba8;
+}
+
+@media screen and (max-width: 600px) {
+  .criteria-table th, .criteria-table td {
+      font-size: 14px;
   }
-  
-  
-  
+
+  .criteria-table {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+  }
+
+  .criteria-table thead {
+      display: none;
+  }
+
+  .criteria-table tr {
+      display: block;
+      margin-bottom: 10px;
+  }
+
+  .criteria-table td {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+  }
+
+  .criteria-table td:before {
+      content: attr(data-label);
+      font-weight: bold;
+  }
+}
