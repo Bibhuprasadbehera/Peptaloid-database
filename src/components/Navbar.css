@@ -89,6 +89,29 @@
   display: none;
 }
 
+
+.dropdown-menu li {
+  padding: 0px;
+}
+
+.dropdown-menu li a {
+  display: block;
+  color: #ecf0f1;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #5e4379;
+  color: #fff;
+}
+
+.dropdown-menu hr {
+  margin: 5px 0;
+  border: none;
+  border-top: 1px solid #ecf0f1;
+}
+
 .search-dropdown:hover .dropdown-menu,
 .browse-dropdown:hover .dropdown-menu {
   display: block;
