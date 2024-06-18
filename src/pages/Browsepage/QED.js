@@ -1,7 +1,8 @@
+// QED.js
 import React from 'react';
 import './Browse.css';
 import BrowsePage from '../BrowsePage';
-import Footer from '../../components/Footer'; // Corrected path
+import Footer from '../../components/Footer';
 
 const qedHeaders = ["Range", "Count"];
 const qedData = [
@@ -19,10 +20,14 @@ const qedData = [
 
 const QED = () => (
   <div>
-    <BrowsePage title="Browse by QED" headers={qedHeaders} data={qedData} />
+    <BrowsePage 
+      title="Browse by QED" 
+      headers={qedHeaders} 
+      data={qedData} 
+      browsingText="You are browsing entries from QED range" 
+    />
     <Footer />
   </div>
 );
-
 
 export default QED;

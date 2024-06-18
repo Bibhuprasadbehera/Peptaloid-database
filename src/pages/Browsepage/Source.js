@@ -1,7 +1,8 @@
+// Source.js
 import React from 'react';
 import './Browse.css';
 import BrowsePage from '../BrowsePage';
-import Footer from '../../components/Footer'; // Corrected path
+import Footer from '../../components/Footer';
 
 const sourceHeaders = ["Source", "Count"];
 const sourceData = [
@@ -13,7 +14,12 @@ const sourceData = [
 
 const Source = () => (
   <div>
-    <BrowsePage title="Browse by Source" headers={sourceHeaders} data={sourceData} />
+    <BrowsePage 
+      title="Browse by Source" 
+      headers={sourceHeaders} 
+      data={sourceData} 
+      browsingText="You are browsing entries that has been collected" 
+    />
     <Footer />
   </div>
 );

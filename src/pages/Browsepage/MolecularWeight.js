@@ -1,8 +1,8 @@
+// MolecularWeight.js
 import React from 'react';
 import './Browse.css';
 import BrowsePage from '../BrowsePage';
-import Footer from '../../components/Footer'; // Corrected path
-
+import Footer from '../../components/Footer';
 
 const mwHeaders = ["Range", "Count"];
 const mwData = [
@@ -26,7 +26,12 @@ const mwData = [
 
 const MolecularWeight = () => (
   <div>
-    <BrowsePage title="Browse by Molecular Weight" headers={mwHeaders} data={mwData} />
+    <BrowsePage 
+      title="Browse by Molecular Weight" 
+      headers={mwHeaders} 
+      data={mwData} 
+      browsingText="You are browsing entries from molecular weight range" 
+    />
     <Footer />
   </div>
 );

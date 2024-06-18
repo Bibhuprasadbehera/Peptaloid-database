@@ -3,7 +3,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './styles.css';
 
-const BrowsePage = ({ title, headers, data }) => {
+const BrowsePage = ({ title, headers, data, browsingText }) => {
   const navigate = useNavigate();
 
   return (
@@ -24,7 +24,13 @@ const BrowsePage = ({ title, headers, data }) => {
                 <td
                   key={cellIndex}
                   data-label={headers[cellIndex]}
-                  onClick={() => cellIndex === 1 && navigate('/Pagination', { state: { count: cell } })}
+                  onClick={() => {
+                    if (cellIndex === 1) {
+                      navigate('/Pagination', {
+                        state: { count: cell, category: row[0], browsingText }
+                      });
+                    }
+                  }}
                 >
                   {cell}
                 </td>
