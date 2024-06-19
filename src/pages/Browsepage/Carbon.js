@@ -25,7 +25,7 @@ const Carbon = () => (
       title="Browse by No. of Carbon" 
       headers={carbonHeaders} 
       data={carbonData} 
-      browsingText="You are browsing entries from carbon number" 
+      browsingText="You are browsing entries with Carbon Number:" 
     />
     <Footer />
   </div>

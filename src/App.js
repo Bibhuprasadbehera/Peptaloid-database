@@ -35,6 +35,7 @@ import Lipinski from "./pages/Browsepage/Lipinski";
 // newly added pages in update 4
 import Account from "./pages/Account";
 import AdvancedSearch from "./pages/Browsepage/Advancedsearch";
+import AmideCount from "./pages/Browsepage/Amidecount";
 
 function App() {
   return (
@@ -58,6 +59,7 @@ function App() {
           <Route path="/browse/source" element={<Source />} />
           <Route path="/browse/qed" element={<QED />} />
           <Route path="/browse/lipinski" element={<Lipinski />} />
+          <Route path="/browse/amidecount" element={<AmideCount/>} />
           <Route path="/molecule-details" element={<MoleculeDetails />} />
           <Route path="/pagination/Pagination" element={<Pagination />} />
           <Route path="/Pagination" element={<Pagination/>} />

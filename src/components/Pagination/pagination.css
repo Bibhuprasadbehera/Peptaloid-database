@@ -73,6 +73,26 @@
   cursor: default;
 }
 
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.tab {
+  margin: 0 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.tab.active {
+  border-bottom: 2px solid #399bcd;
+  font-weight: bold;
+}
+
+
 @media (min-width: 768px) {
   .molecule-list {
     grid-template-columns: repeat(2, 1fr);
@@ -84,3 +104,4 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
+

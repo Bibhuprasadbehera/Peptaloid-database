@@ -30,7 +30,7 @@ const MolecularWeight = () => (
       title="Browse by Molecular Weight" 
       headers={mwHeaders} 
       data={mwData} 
-      browsingText="You are browsing entries from molecular weight range" 
+      browsingText="You are browsing entries from Molecular Weight range:" 
     />
     <Footer />
   </div>

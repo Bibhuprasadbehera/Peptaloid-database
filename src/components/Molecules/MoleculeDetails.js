@@ -10,12 +10,162 @@ const MoleculeDetails = () => {
   const [showADMET, setShowADMET] = useState(false);
   const [showPercentiles, setShowPercentiles] = useState(false);
 
+  const generateFile = (fileType) => {
+    const headers = [
+      "Category", "Property", "Value"
+    ];
+
+    const rows = [
+      ["Basic Information", "Peptaloid ID", molecule.peptaloid_id],
+      ["Basic Information", "Compound Name", molecule.CompoundName],
+      ["Basic Information", "IUPAC Name", molecule.IUPACName],
+      ["Basic Information", "Formula", molecule.MolecularFormula],
+      ["Basic Information", "SMILES", molecule.smiles],
+      ["Basic Information", "InChIKey", molecule.InChIKey],
+      ["Basic Information", "Compound InChI", molecule.Compound_InChI],
+      ["Origin", "Origin", molecule.origin_type],
+      ["Origin", "Genus", molecule.genus],
+      ["Origin", "Species", molecule.origin_species],
+      ["IDs", "Coconut ID", molecule.coconut_id],
+      ["IDs", "NPatlas ID", molecule.npatlas_id],
+      ["IDs", "Supernatural ID", molecule.supernatural_id],
+      ["IDs", "Zinc ID", molecule.zinc_id],
+      ["Molecular Properties", "Num Atoms", molecule.Num_Atoms],
+      ["Molecular Properties", "Heavy Atoms", molecule.Heavy_Atoms],
+      ["Molecular Properties", "Total Charge", molecule.total_charge],
+      ["Molecular Properties", "QED Score", molecule.qed_score],
+      ["Molecular Properties", "TPSA", molecule.TPSA],
+      ["Molecular Properties", "Exact MW", molecule.Exact_MW],
+      ["Lipinski's Rule of Five", "Lipinski", molecule.Lipinsk],
+      ["Lipinski's Rule of Five", "SlogP", molecule.slogp],
+      ["Lipinski's Rule of Five", "Num HBA", molecule.Num_HBA],
+      ["Lipinski's Rule of Five", "Num HBD", molecule.Num_HBD],
+      ["Additional Properties", "Num Rotatable Bonds", molecule.Num_Rotatable_Bonds],
+      ["Additional Properties", "Num Amide Bonds", molecule.Num_Amide_Bonds],
+      ["Additional Properties", "Num Hetero Atoms", molecule.Num_Hetero_Atoms],
+      ["Additional Properties", "Num Heavy Atoms", molecule.Num_Heavy_Atoms],
+      ["Additional Properties", "Num StereoCenters", molecule.Num_StereoCenters],
+      ["Additional Properties", "Num Saturated Rings", molecule.Num_Saturated_Rings],
+      ["Additional Properties", "Num Aliphatic Rings", molecule.Num_Aliphatic_Rings],
+      ["Additional Properties", "CX LogP", molecule.CX_LogP],
+      ["Additional Properties", "CX LogD", molecule.CX_LogD],
+      ["Functional Groups", "Alcohol", molecule.Alcohol],
+      ["Functional Groups", "Aldehyde", molecule.Aldehyde],
+      ["Functional Groups", "Ketone", molecule.Ketone],
+      ["Functional Groups", "Carboxylic Acid", molecule.Carboxylic_Acid],
+      ["Functional Groups", "Amine", molecule.Amine],
+      ["Functional Groups", "Thiol", molecule.Thiol],
+      ["ADMET Properties", "AMES", molecule.AMES],
+      ["ADMET Properties", "BBB Martins", molecule.BBB_Martins],
+      ["ADMET Properties", "Bioavailability Ma", molecule.Bioavailability_Ma],
+      ["ADMET Properties", "CYP1A2 Veith", molecule.CYP1A2_Veith],
+      ["ADMET Properties", "CYP2C19 Veith", molecule.CYP2C19_Veith],
+      ["ADMET Properties", "CYP2C9 Substrate Carbon Mangels", molecule.CYP2C9_Substrate_CarbonMangels],
+      ["ADMET Properties", "CYP2C9 Veith", molecule.CYP2C9_Veith],
+      ["ADMET Properties", "CYP2D6 Substrate Carbon Mangels", molecule.CYP2D6_Substrate_CarbonMangels],
+      ["ADMET Properties", "CYP2D6 Veith", molecule.CYP2D6_Veith],
+      ["ADMET Properties", "CYP3A4 Substrate Carbon Mangels", molecule.CYP3A4_Substrate_CarbonMangels],
+      ["ADMET Properties", "CYP3A4 Veith", molecule.CYP3A4_Veith],
+      ["ADMET Properties", "Carcinogens Lagunin", molecule.Carcinogens_Lagunin],
+      ["ADMET Properties", "ClinTox", molecule.ClinTox],
+      ["ADMET Properties", "DILI", molecule.DILI],
+      ["ADMET Properties", "HIA Hou", molecule.HIA_Hou],
+      ["ADMET Properties", "NR AR LBD", molecule.NR_AR_LBD],
+      ["ADMET Properties", "NR AR", molecule.NR_AR],
+      ["ADMET Properties", "NR AhR", molecule.NR_AhR],
+      ["ADMET Properties", "NR Aromatase", molecule.NR_Aromatase],
+      ["ADMET Properties", "NR ER LBD", molecule.NR_ER_LBD],
+      ["ADMET Properties", "NR ER", molecule.NR_ER],
+      ["ADMET Properties", "NR PPAR Gamma", molecule.NR_PPAR_gamma],
+      ["ADMET Properties", "PAMPA NCATS", molecule.PAMPA_NCATS],
+      ["ADMET Properties", "Pgp Broccatelli", molecule.Pgp_Broccatelli],
+      ["ADMET Properties", "SR ARE", molecule.SR_ARE],
+      ["ADMET Properties", "SR ATAD5", molecule.SR_ATAD5],
+      ["ADMET Properties", "SR HSE", molecule.SR_HSE],
+      ["ADMET Properties", "SR MMP", molecule.SR_MMP],
+      ["ADMET Properties", "SR p53", molecule.SR_p53],
+      ["ADMET Properties", "Skin Reaction", molecule.Skin_Reaction],
+      ["ADMET Properties", "hERG", molecule.hERG],
+      ["ADMET Properties", "Caco2 Wang", molecule.Caco2_Wang],
+      ["ADMET Properties", "Clearance Hepatocyte AZ", molecule.Clearance_Hepatocyte_AZ],
+      ["ADMET Properties", "Clearance Microsome AZ", molecule.Clearance_Microsome_AZ],
+      ["ADMET Properties", "Half Life Obach", molecule.Half_Life_Obach],
+      ["ADMET Properties", "Hydration Free Energy FreeSolv", molecule.HydrationFreeEnergy_FreeSolv],
+      ["ADMET Properties", "LD50 Zhu", molecule.LD50_Zhu],
+      ["ADMET Properties", "Lipophilicity AstraZeneca", molecule.Lipophilicity_AstraZeneca],
+      ["ADMET Properties", "PPBR AZ", molecule.PPBR_AZ],
+      ["ADMET Properties", "Solubility AqSolDB", molecule.Solubility_AqSolDB],
+      ["ADMET Properties", "VDss Lombardo", molecule.VDss_Lombardo],
+      ["Percentile Data", "Lipinski DrugBank Approved Percentile", molecule.Lipinski_drugbank_approved_percentile],
+      ["Percentile Data", "AMES DrugBank Approved Percentile", molecule.AMES_drugbank_approved_percentile],
+      ["Percentile Data", "BBB Martins DrugBank Approved Percentile", molecule.BBB_Martins_drugbank_approved_percentile],
+      ["Percentile Data", "Bioavailability Ma DrugBank Approved Percentile", molecule.Bioavailability_Ma_drugbank_approved_percentile],
+      ["Percentile Data", "CYP1A2 Veith DrugBank Approved Percentile", molecule.CYP1A2_Veith_drugbank_approved_percentile],
+      ["Percentile Data", "CYP2C19 Veith DrugBank Approved Percentile", molecule.CYP2C19_Veith_drugbank_approved_percentile],
+      ["Percentile Data", "CYP2C9 Substrate Carbon Mangels DrugBank Approved Percentile", molecule.CYP2C9_Substrate_CarbonMangels_drugbank_approved_percentile],
+      ["Percentile Data", "CYP2C9 Veith DrugBank Approved Percentile", molecule.CYP2C9_Veith_drugbank_approved_percentile],
+      ["Percentile Data", "CYP2D6 Substrate Carbon Mangels DrugBank Approved Percentile", molecule.CYP2D6_Substrate_CarbonMangels_drugbank_approved_percentile],
+      ["Percentile Data", "CYP2D6 Veith DrugBank Approved Percentile", molecule.CYP2D6_Veith_drugbank_approved_percentile],
+      ["Percentile Data", "CYP3A4 Substrate Carbon Mangels DrugBank Approved Percentile", molecule.CYP3A4_Substrate_CarbonMangels_drugbank_approved_percentile],
+      ["Percentile Data", "CYP3A4 Veith DrugBank Approved Percentile", molecule.CYP3A4_Veith_drugbank_approved_percentile],
+      ["Percentile Data", "Carcinogens Lagunin DrugBank Approved Percentile", molecule.Carcinogens_Lagunin_drugbank_approved_percentile],
+      ["Percentile Data", "ClinTox DrugBank Approved Percentile", molecule.ClinTox_drugbank_approved_percentile],
+      ["Percentile Data", "DILI DrugBank Approved Percentile", molecule.DILI_drugbank_approved_percentile],
+      ["Percentile Data", "HIA Hou DrugBank Approved Percentile", molecule.HIA_Hou_drugbank_approved_percentile],
+      ["Percentile Data", "NR AR LBD DrugBank Approved Percentile", molecule.NR_AR_LBD_drugbank_approved_percentile],
+      ["Percentile Data", "NR AR DrugBank Approved Percentile", molecule.NR_AR_drugbank_approved_percentile],
+      ["Percentile Data", "NR AhR DrugBank Approved Percentile", molecule.NR_AhR_drugbank_approved_percentile],
+      ["Percentile Data", "NR Aromatase DrugBank Approved Percentile", molecule.NR_Aromatase_drugbank_approved_percentile],
+      ["Percentile Data", "NR ER LBD DrugBank Approved Percentile", molecule.NR_ER_LBD_drugbank_approved_percentile],
+      ["Percentile Data", "NR ER DrugBank Approved Percentile", molecule.NR_ER_drugbank_approved_percentile],
+      ["Percentile Data", "NR PPAR Gamma DrugBank Approved Percentile", molecule.NR_PPAR_gamma_drugbank_approved_percentile],
+      ["Percentile Data", "PAMPA NCATS DrugBank Approved Percentile", molecule.PAMPA_NCATS_drugbank_approved_percentile],
+      ["Percentile Data", "Pgp Broccatelli DrugBank Approved Percentile", molecule.Pgp_Broccatelli_drugbank_approved_percentile],
+      ["Percentile Data", "SR ARE DrugBank Approved Percentile", molecule.SR_ARE_drugbank_approved_percentile],
+      ["Percentile Data", "SR ATAD5 DrugBank Approved Percentile", molecule.SR_ATAD5_drugbank_approved_percentile],
+      ["Percentile Data", "SR HSE DrugBank Approved Percentile", molecule.SR_HSE_drugbank_approved_percentile],
+      ["Percentile Data", "SR MMP DrugBank Approved Percentile", molecule.SR_MMP_drugbank_approved_percentile],
+      ["Percentile Data", "SR p53 DrugBank Approved Percentile", molecule.SR_p53_drugbank_approved_percentile],
+      ["Percentile Data", "Skin Reaction DrugBank Approved Percentile", molecule.Skin_Reaction_drugbank_approved_percentile],
+      ["Percentile Data", "hERG DrugBank Approved Percentile", molecule.hERG_drugbank_approved_percentile],
+      ["Percentile Data", "Caco2 Wang DrugBank Approved Percentile", molecule.Caco2_Wang_drugbank_approved_percentile],
+      ["Percentile Data", "Clearance Hepatocyte AZ DrugBank Approved Percentile", molecule.Clearance_Hepatocyte_AZ_drugbank_approved_percentile],
+      ["Percentile Data", "Clearance Microsome AZ DrugBank Approved Percentile", molecule.Clearance_Microsome_AZ_drugbank_approved_percentile],
+      ["Percentile Data", "Half Life Obach DrugBank Approved Percentile", molecule.Half_Life_Obach_drugbank_approved_percentile],
+      ["Percentile Data", "Hydration Free Energy FreeSolv DrugBank Approved Percentile", molecule.HydrationFreeEnergy_FreeSolv_drugbank_approved_percentile],
+      ["Percentile Data", "LD50 Zhu DrugBank Approved Percentile", molecule.LD50_Zhu_drugbank_approved_percentile],
+      ["Percentile Data", "Lipophilicity AstraZeneca DrugBank Approved Percentile", molecule.Lipophilicity_AstraZeneca_drugbank_approved_percentile],
+      ["Percentile Data", "PPBR AZ DrugBank Approved Percentile", molecule.PPBR_AZ_drugbank_approved_percentile],
+      ["Percentile Data", "Solubility AqSolDB DrugBank Approved Percentile", molecule.Solubility_AqSolDB_drugbank_approved_percentile],
+      ["Percentile Data", "VDss Lombardo DrugBank Approved Percentile", molecule.VDss_Lombardo_drugbank_approved_percentile],
+    ];
+
+    const content = [
+      headers.join(fileType === 'csv' ? ',' : '\t'), 
+      ...rows.map(row => row.map(cell => cell === undefined ? '' : `"${cell}"`).join(fileType === 'csv' ? ',' : '\t'))
+    ].join('\n');
+
+    const blob = new Blob([content], { type: fileType === 'csv' ? 'text/csv;charset=utf-8;' : 'text/tab-separated-values;charset=utf-8;' });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.setAttribute("download", `molecule_details.${fileType}`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="molecule-container">
       <img src={molecule4} alt="Molecule" className="molecule-image" />
       <div className="molecule-details">
-        <h2>{molecule.CompoundName}</h2>
-
+      <div className="download-dropdown">
+          <button className="download-button">Download</button>
+          <div className="download-content">
+            <a href="#" onClick={() => generateFile('csv')}>CSV</a>
+            <a href="#" onClick={() => generateFile('tsv')}>TSV</a>
+          </div>
+        </div>
+      
         <h3>Basic Information</h3>
         <table>
           <tbody>

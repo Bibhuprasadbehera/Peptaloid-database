@@ -45,6 +45,7 @@ const Navbar = () => {
                 <li><NavLink to="/browse/source" activeClassName="active">Browse by Source</NavLink></li>
                 <li><NavLink to="/browse/qed" activeClassName="active">Browse by QED</NavLink></li>
                 <li><NavLink to="/browse/lipinski" activeClassName="active">Browse by Lipinski Rule</NavLink></li>
+                <li><NavLink to="/browse/amidecount" activeClassName="active">Browse by Amide count</NavLink></li>
               </ul>
             )}
           </li>

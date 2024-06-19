@@ -24,7 +24,7 @@ const QED = () => (
       title="Browse by QED" 
       headers={qedHeaders} 
       data={qedData} 
-      browsingText="You are browsing entries from QED range" 
+      browsingText="You are browsing entries from QED range:" 
     />
     <Footer />
   </div>

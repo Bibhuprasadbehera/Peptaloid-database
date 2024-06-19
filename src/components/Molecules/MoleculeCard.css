@@ -2,7 +2,8 @@
 
 .molecule-card {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
   border: 3px solid #5e4379;
   padding: 16px;
   margin: 8px;
@@ -12,6 +13,21 @@
   background-color: #fff;
   width: 100%;
   max-width: 800px;
+}
+
+.molecule-card.selected {
+  border-color: #44aadd;
+  background-color: #eef9ff;
+}
+
+.molecule-card.selected img {
+  border-color: #44aadd;
+}
+
+.molecule-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .molecule-card:hover {

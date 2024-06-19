@@ -33,7 +33,7 @@ const HomePage = () => {
         <div className="section">
           <h2 className="section-heading">Molecule of the Month</h2>
           <div className="section-content">
-            <MoleculeCard molecule={moleculeOfTheMonth} />
+            <MoleculeCard molecule={moleculeOfTheMonth} isBrowsing={true} />
           </div>
         </div>
         <div className="section">
