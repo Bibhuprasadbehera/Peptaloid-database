@@ -7,6 +7,33 @@
   margin-top: 2rem;
 }
 
+.containerpagination {
+  width: 60%;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: #f5f5f5;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.content-split-container {
+  display: flex;
+  width: 100%;
+}
+
+.sidebar-container {
+  width: 30%;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-right: 1px solid #ddd;
+}
+
+.molecule-list-container {
+  width: 70%;
+  padding: 20px;
+}
+
 .molecule-list {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -77,21 +104,106 @@
   display: flex;
   justify-content: center;
   margin-bottom: 1rem;
+  border-bottom: 2px solid #ddd;
 }
 
 .tab {
-  margin: 0 1rem;
+  margin: 0 0.5rem;
   padding: 0.5rem 1rem;
   font-size: 1rem;
   cursor: pointer;
-  border: 2px solid transparent;
+  border: none;
+  border-radius: 4px 4px 0 0;
+  background-color: #f5f5f5;
+  transition: background-color 0.3s ease;
 }
 
 .tab.active {
-  border-bottom: 2px solid #399bcd;
-  font-weight: bold;
+  background-color: #eb567b;
+  color: white;
 }
 
+.tab:hover {
+  background-color: #ddd;
+}
+
+.select-all-checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.select-all-checkbox input {
+  margin-right: 0.5rem;
+  cursor: pointer;
+  transform: scale(1.2); /* Increase the size of the checkbox */
+  -webkit-appearance: none; /* Remove default styling */
+  appearance: none;
+  width: 1.2em; /* Set a specific size for the checkbox */
+  height: 1.2em;
+  border: 2px solid #eb567b; /* Use the same color as the download button for consistency */
+  border-radius: 4px; /* Optional: add a border-radius for a rounded checkbox */
+  transition: background-color 0.3s ease;
+}
+
+.select-all-checkbox input:checked {
+  background-color: #eb567b; /* Match the download button color */
+  border-color: #eb567b;
+}
+
+.select-all-checkbox input:checked:after {
+  content: '';
+  position: relative;
+  left: 4px;
+  top: -2px;
+  width: 5px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  display: block;
+}
+
+.select-all-checkbox label:hover {
+  text-decoration: underline; /* Add a simple hover effect to the label */
+}
+
+.download-button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #eb567b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: filter 0.3s ease;
+}
+
+.download-button.disabled {
+  filter: grayscale(100%);
+  cursor: not-allowed;
+}
+
+.items-per-page-select {
+  margin-right: 1rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 2px solid #399bcd;
+  border-radius: 4px;
+  background-color: #f5f5f5;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  cursor: pointer; 
+}
+
+.items-per-page-select:hover,
+.items-per-page-select:focus { 
+  border-color: #399bcd;
+  outline: none; 
+}
+
+.items-per-page-select:active { 
+  background-color: #e2e6ea; 
+}
 
 @media (min-width: 768px) {
   .molecule-list {

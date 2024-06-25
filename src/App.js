@@ -36,6 +36,7 @@ import Lipinski from "./pages/Browsepage/Lipinski";
 import Account from "./pages/Account";
 import AdvancedSearch from "./pages/Browsepage/Advancedsearch";
 import AmideCount from "./pages/Browsepage/Amidecount";
+import Sidebar from "./pages/Browsepage/sidebar";
 
 function App() {
   return (
@@ -60,6 +61,7 @@ function App() {
           <Route path="/browse/qed" element={<QED />} />
           <Route path="/browse/lipinski" element={<Lipinski />} />
           <Route path="/browse/amidecount" element={<AmideCount/>} />
+          <Route path="/browse/sidebar" element={<Sidebar/>} />
           <Route path="/molecule-details" element={<MoleculeDetails />} />
           <Route path="/pagination/Pagination" element={<Pagination />} />
           <Route path="/Pagination" element={<Pagination/>} />
