@@ -171,3 +171,31 @@ body {
   background-color: #5e4379; /* Change this line */
   color: #fff;
 }
+
+/* FAQ.css */
+
+.faq-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  color: #399bcd;
+}
+
+.faq-content {
+  margin-top: 20px;
+}
+
+.faq-item {
+  margin-bottom: 20px;
+}
+
+.faq-item h1,h3,h2 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  color: #399bcd;
+}
+
+.faq-item p {
+  font-size: 1em;
+  color: #000000;
+}
