@@ -1,6 +1,7 @@
 //smilesstructureviewer.js
 // still doesnt work
 // find a way to fix it
+// i will do it in the server side implementation and will upadate the views.py for thiss
 
 import React, { useState, useEffect, useRef } from 'react';
 import SmilesDrawer from 'smiles-drawer';

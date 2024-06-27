@@ -2,8 +2,9 @@
 .sidebar-container {
   width: 25%;
   padding: 20px;
-  background-color: #f5f5f5;
-  border-right: 1px solid #ddd;
+  background-color: #ffffff;
+  border-radius: 10px; 
+  border: 3px solid #5e4379;
   font-family: Arial, sans-serif;
 }
 
