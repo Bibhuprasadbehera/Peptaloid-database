@@ -1,9 +1,8 @@
-/* Sidebar.css */
 .sidebar-container {
   width: 25%;
   padding: 20px;
   background-color: #ffffff;
-  border-radius: 10px; 
+  border-radius: 10px;
   border: 3px solid #5e4379;
   font-family: Arial, sans-serif;
 }
@@ -19,7 +18,8 @@
 }
 
 .filter-group label {
-  display: block;
+  display: flex;
+  align-items: center;
   margin-bottom: 10px;
   font-size: 14px;
   color: #555;
@@ -75,98 +75,50 @@
   top: 0;
   height: 5px;
   background: #399bcd;
-  pointer-events: none;
+  border-radius: 5px;
 }
 
 .range-values {
   display: flex;
   justify-content: space-between;
-  margin-top: 15px;
+  margin-top: 5px;
 }
 
 .range-value {
-  font-size: 12px;
-  color: black;
-  font-weight: bold;
-}
-
-.filter-group input[type="checkbox"] {
-  margin-right: 10px;
-  cursor: pointer;
+  font-size: 14px;
+  color: #000000;
 }
 
 .filter-button {
+  width: 100%;
   padding: 10px 20px;
-  background-color: #399bcd;
-  color: white;
+  background-color: #eb567b;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
   cursor: pointer;
-  transition: filter 0.3s ease;
+  transition: background-color 0.3s;
 }
 
-/* Add these new styles for better appearance */
-.slider-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 5px;
-  background: #ddd;
-  border-radius: 2.5px;
+.filter-button:hover {
+  background-color: #5e4379;
 }
-
-.slider:focus {
-  outline: none;
-}
-
-.slider:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 3px rgba(57, 155, 205, 0.3);
-}
-
-.slider:focus::-moz-range-thumb {
-  box-shadow: 0 0 0 3px rgba(57, 155, 205, 0.3);
-}
-
 
 .select-all-checkbox {
   display: flex;
   align-items: center;
   cursor: pointer;
+  margin-bottom: 5px;
+  padding: 3px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.select-all-checkbox:hover {
+  background-color: #f2f2f2;
 }
 
 .select-all-checkbox input {
-  margin-right: 0.5rem;
-  cursor: pointer;
-  transform: scale(1.2); /* Increase the size of the checkbox */
-  -webkit-appearance: none; /* Remove default styling */
-  appearance: none;
-  width: 1.2em; /* Set a specific size for the checkbox */
-  height: 1.2em;
-  border: 2px solid #eb567b; /* Use the same color as the download button for consistency */
-  border-radius: 4px; /* Optional: add a border-radius for a rounded checkbox */
-  transition: background-color 0.3s ease;
-}
-
-.select-all-checkbox input:checked {
-  background-color: #eb567b; /* Match the download button color */
-  border-color: #eb567b;
-}
-
-.select-all-checkbox input:checked:after {
-  content: '';
-  position: relative;
-  left: 4px;
-  top: -2px;
-  width: 5px;
-  height: 10px;
-  border: solid #fff;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-  display: block;
-}
-
-.select-all-checkbox label:hover {
-  text-decoration: underline; /* Add a simple hover effect to the label */
+  margin-right: 10px;
 }

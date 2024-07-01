@@ -1,4 +1,3 @@
-//pagination.js
 import React, { useState, useEffect } from 'react';
 import MoleculeCard from '../Molecules/MoleculeCard';
 import { useLocation } from 'react-router-dom';
@@ -97,15 +96,12 @@ const Pagination = () => {
   }
 
   const handleFilterChange = (updatedFilters) => {
-    // Handle updates from the sidebar here
     console.log('Filters updated:', updatedFilters);
-    // You can potentially update state or perform actions based on the new filters
   };
 
-  const handleSelectAllMolecules = (event) => {
-    const isChecked = event.target.checked;
-    setSelectAll(isChecked);
-    if (isChecked) {
+  const handleSelectAllMolecules = () => {
+    setSelectAll(!selectAll);
+    if (!selectAll) {
       setSelectedMolecules(currentItems);
     } else {
       setSelectedMolecules([]);
@@ -137,12 +133,12 @@ const Pagination = () => {
         {indexOfLastItem > molecules.length ? molecules.length : indexOfLastItem} of {molecules.length} entries
       </p>
       <div className="pagination-controls">
-      <select className="items-per-page-select" value={itemsPerPage} onChange={handleItemsPerPageChange}>
-        <option value="10">10</option>
-        <option value="20">20</option>
-        <option value="50">50</option>
-        <option value="100">100</option>
-      </select>
+        <select className="items-per-page-select" value={itemsPerPage} onChange={handleItemsPerPageChange}>
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+        </select>
         <div className="pagination-buttons">
           <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
             Previous
@@ -168,41 +164,36 @@ const Pagination = () => {
         </div>
       </div>
       <div className="content-split-container">
-      <AdvancedSearchSidebar onFilterChange={handleFilterChange} /> {/* Pass handleFilterChange prop */}
-      <div className="molecule-list-container">
-      <div className="containerpagination">
-        <div className="tabs">
-          <div
-            className={`tab ${activeTab === 'browse' ? 'active' : ''}`}
-            onClick={() => handleTabChange('browse')}
-          >
-            Browse
+        <AdvancedSearchSidebar onFilterChange={handleFilterChange} />
+        <div className="molecule-list-container">
+          <div className="containerpagination">
+            <div className="tabs">
+              <div
+                className={`tab ${activeTab === 'browse' ? 'active' : ''}`}
+                onClick={() => handleTabChange('browse')}
+              >
+                Browse
+              </div>
+              <div
+                className={`tab ${activeTab === 'select' ? 'active' : ''}`}
+                onClick={() => handleTabChange('select')}
+              >
+                Select
+              </div>
+              <div
+                className={`tab select-all-tab ${selectAll ? 'active' : ''} ${activeTab !== 'select' ? 'disabled' : ''}`}
+                onClick={() => activeTab === 'select' && handleSelectAllMolecules()}
+              >
+                Select All
+              </div>
+              <div
+                className={`tab download-tab ${isDownloadDisabled ? 'disabled' : ''}`}
+                onClick={() => !isDownloadDisabled && generateFile('csv')}
+              >
+                Download
+              </div>
+            </div>
           </div>
-          <div
-            className={`tab ${activeTab === 'select' ? 'active' : ''}`}
-            onClick={() => handleTabChange('select')}
-          >
-            Select
-          </div>
-        </div>
-        {activeTab === 'select' && (
-          <div className="select-all-checkbox">
-            <input
-              type="checkbox"
-              onChange={handleSelectAllMolecules}
-              checked={selectAll}
-            />
-            <label>Select All</label>
-          </div>
-        )}
-        <button
-          className={`download-button ${isDownloadDisabled ? 'disabled' : ''}`}
-          onClick={() => !isDownloadDisabled && generateFile('csv')}
-          disabled={isDownloadDisabled}
-        >
-          Download
-        </button>
-      </div>
           <div className="molecule-list">
             {currentItems.map((molecule, index) => (
               <MoleculeCard
@@ -215,12 +206,12 @@ const Pagination = () => {
             ))}
           </div>
           <div className="pagination-controls">
-          <select className="items-per-page-select" value={itemsPerPage} onChange={handleItemsPerPageChange}>
-            <option value="10">10</option>
-            <option value="20">20</option>
-            <option value="50">50</option>
-            <option value="100">100</option>
-          </select>
+            <select className="items-per-page-select" value={itemsPerPage} onChange={handleItemsPerPageChange}>
+              <option value="10">10</option>
+              <option value="20">20</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+            </select>
             <div className="pagination-buttons">
               <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
                 Previous

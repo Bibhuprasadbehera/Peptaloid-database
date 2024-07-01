@@ -1,5 +1,4 @@
 /* pagination.css */
-
 .pagination-container {
   display: flex;
   flex-direction: column;
@@ -8,7 +7,7 @@
 }
 
 .containerpagination {
-  width: 60%;
+  width: 100%;
   margin-bottom: 1rem;
   display: flex;
   justify-content: space-between;
@@ -48,31 +47,9 @@
   margin-bottom: 1rem;
 }
 
-.pagination-controls select {
-  margin-right: 1rem;
-  padding: 0.5rem;
-  font-size: 1rem;
-}
-
 .pagination-buttons {
   display: flex;
   align-items: center;
-}
-
-.pagination-buttons button {
-  margin: 0 0.5rem;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  background-color: #399bcd;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.pagination-buttons button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
 }
 
 .page-numbers {
@@ -102,86 +79,72 @@
 
 .tabs {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   margin-bottom: 1rem;
   border-bottom: 2px solid #ddd;
+  width: 100%;
 }
 
 .tab {
-  margin: 0 0.5rem;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.5rem;
   font-size: 1rem;
   cursor: pointer;
   border: none;
-  border-radius: 4px 4px 0 0;
   background-color: #f5f5f5;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-right: 0.5rem;
+  border-radius: 4px 4px 0 0;
 }
 
 .tab.active {
-  background-color: #eb567b;
+  background-color: #399bcd;
   color: white;
 }
 
-.tab:hover {
-  background-color: #ddd;
+.tab:hover:not(.active):not(.disabled) {
+  background-color: #e0e0e0;
 }
 
-.select-all-checkbox {
+.tab.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  background-color: #f5f5f5;
+  color: #999;
+}
+
+/* Updated styles for Select All and Download tabs */
+.select-all-tab,
+.download-tab {
   display: flex;
   align-items: center;
-  cursor: pointer;
-}
-
-.select-all-checkbox input {
-  margin-right: 0.5rem;
-  cursor: pointer;
-  transform: scale(1.2); /* Increase the size of the checkbox */
-  -webkit-appearance: none; /* Remove default styling */
-  appearance: none;
-  width: 1.2em; /* Set a specific size for the checkbox */
-  height: 1.2em;
-  border: 2px solid #eb567b; /* Use the same color as the download button for consistency */
-  border-radius: 4px; /* Optional: add a border-radius for a rounded checkbox */
-  transition: background-color 0.3s ease;
-}
-
-.select-all-checkbox input:checked {
-  background-color: #eb567b; /* Match the download button color */
-  border-color: #eb567b;
-}
-
-.select-all-checkbox input:checked:after {
-  content: '';
-  position: relative;
-  left: 4px;
-  top: -2px;
-  width: 5px;
-  height: 10px;
-  border: solid #fff;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-  display: block;
-}
-
-.select-all-checkbox label:hover {
-  text-decoration: underline; /* Add a simple hover effect to the label */
-}
-
-.download-button {
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.5rem;
   font-size: 1rem;
-  background-color: #eb567b;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
   cursor: pointer;
-  transition: filter 0.3s ease;
+  border: none;
+  background-color: #eb567b; /* Pink color */
+  color: white;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-right: 0.5rem;
+  border-radius: 4px 4px 0 0;
 }
 
-.download-button.disabled {
-  filter: grayscale(100%);
+/* More specific hover styles for Select All and Download tabs */
+.select-all-tab:hover:not(.disabled),
+.download-tab:hover:not(.disabled) {
+  background-color: #5e4379 !important; /* Purple color on hover */
+}
+
+.select-all-tab.disabled,
+.download-tab.disabled {
+  background-color: #fdcdd5; /* Lighter pink when disabled */
+  color: #666;
   cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.select-all-tab.active,
+.download-tab.active {
+  background-color: #5e4379; /* Purple color when active */
 }
 
 .items-per-page-select {
@@ -192,17 +155,17 @@
   border-radius: 4px;
   background-color: #f5f5f5;
   transition: background-color 0.3s ease, border-color 0.3s ease;
-  cursor: pointer; 
+  cursor: pointer;
 }
 
 .items-per-page-select:hover,
-.items-per-page-select:focus { 
+.items-per-page-select:focus {
   border-color: #399bcd;
-  outline: none; 
+  outline: none;
 }
 
-.items-per-page-select:active { 
-  background-color: #e2e6ea; 
+.items-per-page-select:active {
+  background-color: #e2e6ea;
 }
 
 @media (min-width: 768px) {
@@ -216,4 +179,3 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
-
