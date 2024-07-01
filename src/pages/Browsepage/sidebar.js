@@ -3,14 +3,14 @@ import './Sidebar.css';
 
 const AdvancedSearchSidebar = ({ onFilterChange }) => {
   const [filters, setFilters] = useState({
-    molwt: { min: 0, max: 1000 },
-    logp: { min: -5, max: 10 },
-    hba: { min: 0, max: 20 },
-    hbd: { min: 0, max: 10 },
-    carbon_count: { min: 0, max: 100 },
-    amide_count: { min: 0, max: 20 },
+    molwt: { min: 0, max: 5000 },
+    slogp: { min: -5, max: 10 },
+    hba: { min: 0, max: 90 },
+    hbd: { min: 0, max: 80 },
+    carbon_count: { min: 0, max: 219 },
+    amide_count: { min: 0, max: 60 },
     qed_score: { min: 0, max: 1 },
-    TPSA: { min: 0, max: 500 },
+    TPSA: { min: 0, max: 2200 },
     source: {
       Coconut: false,
       NPAtlas: false,
@@ -28,14 +28,14 @@ const AdvancedSearchSidebar = ({ onFilterChange }) => {
   });
 
   const rangeConfigs = {
-    molwt: { min: 0, max: 1000 },
-    logp: { min: -5, max: 10 },
-    hba: { min: 0, max: 20 },
-    hbd: { min: 0, max: 10 },
-    carbon_count: { min: 0, max: 100 },
-    amide_count: { min: 0, max: 20 },
+    molwt: { min: 0, max: 5000 },
+    slogp: { min: -5, max: 10 },
+    hba: { min: 0, max: 90 },
+    hbd: { min: 0, max: 80 },
+    carbon_count: { min: 0, max: 219 },
+    amide_count: { min: 0, max: 60 },
     qed_score: { min: 0, max: 1 },
-    TPSA: { min: 0, max: 500 },
+    TPSA: { min: 0, max: 2200 },
   };
 
   useEffect(() => {
@@ -158,13 +158,13 @@ const AdvancedSearchSidebar = ({ onFilterChange }) => {
       <div className="filter-group">
         <h4>Lipinski Rule of Five</h4>
         {renderRangeSlider('molwt', 'Molecular Weight')}
-        {renderRangeSlider('logp', 'LogP', 0.1)}
+        {renderRangeSlider('slogp', 'SLogP', 0.1)}
         {renderRangeSlider('hba', 'HBA')}
         {renderRangeSlider('hbd', 'HBD')}
       </div>
       
       <div className="filter-group">
-        <h3>Functional Groups</h3>
+        <h3>Presence of Functional Groups </h3>
         {Object.keys(filters.functional_groups).map((group) => (
           <label key={group} className="select-all-checkbox">
             <input

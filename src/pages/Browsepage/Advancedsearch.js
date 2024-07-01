@@ -37,6 +37,28 @@ const AdvancedSearch = () => {
             <div className="container-search">
                 <h2 className="heading">Advanced Search</h2>
                 <p>Use the advanced search feature to refine your search results. You can add multiple search criteria and specify the logical operator between them.</p>
+                    <ul style={{ textAlign: 'left' }}>
+                        <p>If you want to search the following data, please do it via simple search:</p>
+                        <li>
+                            <strong>Identifier:</strong>
+                            <ul>
+                                <li>InChIKey</li>
+                                <li>Compound InChI</li>
+                                <li>SMILES</li>
+                                <li>IUPAC Name</li>
+                                <li>Compound Name</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Origin:</strong>
+                            <ul>
+                                <li>Origin Type</li>
+                                <li>Genus</li>
+                                <li>Origin Species</li>
+                            </ul>
+                        </li>
+                    </ul>
+
 
                 <form onSubmit={handleSubmit}>
                     <table className="criteria-table">
@@ -60,19 +82,7 @@ const AdvancedSearch = () => {
                                             value={criterion.field}
                                             onChange={(e) => handleCriteriaChange(index, 'field', e.target.value)}
                                         >
-                                            <optgroup label="Identifier">
-                                                <option value="InChIKey">InChIKey</option>
-                                                <option value="Compound_InChI">Compound InChI</option>
-                                                <option value="smiles">SMILES</option>
-                                                <option value="IUPAC_Name">IUPAC Name</option>
-                                                <option value="Compound_Name">Compound Name</option>
-                                            </optgroup>
-                                            <optgroup label="Origin">
-                                                <option value="origin_type">Origin Type</option>
-                                                <option value="genus">Genus</option>
-                                                <option value="origin_species">Origin Species</option>
-                                            </optgroup>
-                                            <optgroup label="Physical Properties">
+                                               <optgroup label="Physical Properties">
                                                 <option value="carbon_count">Carbon Count</option>
                                                 <option value="Exact_MW">Exact MW</option>
                                                 <option value="Num_Atoms">Number of Atoms</option>
