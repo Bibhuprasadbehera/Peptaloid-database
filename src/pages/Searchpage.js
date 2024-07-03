@@ -1,40 +1,85 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './styles.css';
-import Navbar from '../components/Navbar';
-import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const SearchPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [searchFields, setSearchFields] = useState({
-    "InChIKey": false,
-    "Compound InChI": false,
-    "Smiles": false,
-    "Molecular Formula": false,
-    "IUPAC Name": false,
-    "Compound Name": false,
-    "Origin type": false,
-    "Genus": false,
-    "Origin species": false,
-    "Peptaloid id": false,
-  });
+  const [selectedField, setSelectedField] = useState("Compound Name"); // Default selected field
+  const navigate = useNavigate();
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
-  const handleFieldChange = (event) => {
-    setSearchFields({
-      ...searchFields,
-      [event.target.name]: event.target.checked,
-    });
+  const handleFieldChange = (field) => {
+    setSelectedField(field);
   };
 
   const handleSearch = () => {
-    // Perform search using searchTerm and searchFields
+    if (!selectedField) {
+      // Handle case when no field is selected
+      alert("Please select a search field.");
+      return;
+    }
+
+    let apiField;
+    switch (selectedField) {
+      case "Smiles":
+        apiField = "smiles";
+        break;
+      case "Molecular Formula":
+        apiField = "MolecularFormula";
+        break;
+      case "Origin type":
+        apiField = "origin_type";
+        break;
+      case "Origin species":
+        apiField = "origin_species";
+        break;
+      case "Peptaloid id":
+        apiField = "peptaloid_id";
+        break;
+      case "Genus":
+        apiField = "genus";
+        break;
+      
+      default:
+        apiField = selectedField.replace(/ /g, "_");
+    }
+
+    const payload = {
+      skip: 0,
+      limit: 30,
+      conditions: [
+        {
+          field: apiField,
+          value: searchTerm,
+          operation: "equal",
+          operator: "and"
+        }
+      ],
+      source: [],
+      functional_group: []
+    };
+
+    console.log("Search Payload:", payload); // Debug log
+    navigate('/results', { state: { payload } });
   };
 
-  const fields = Object.keys(searchFields);
+  const fields = [
+    "InChIKey",
+    "Compound InChI",
+    "Smiles",
+    "Molecular Formula",
+    "IUPAC Name",
+    "Compound Name",
+    "Origin type",
+    "Genus",
+    "Origin species",
+    "Peptaloid id",
+  ];
+
   const midIndex = Math.ceil(fields.length / 2);
   const firstColumnFields = fields.slice(0, midIndex);
   const secondColumnFields = fields.slice(midIndex);
@@ -50,23 +95,23 @@ const SearchPage = () => {
           onChange={handleSearchChange}
           className="search-bar"
         />
-          <p className="paragraph">
-            To speed up the search, please select a field to get the desired result. You can search by any of the following fields:
-          </p>
+        <p className="paragraph">
+          To speed up the search, please select a field to get the desired result. You can search by any of the following fields:
+        </p>
         <div className="search-fields">
           <div className="search-fields-column">
             {firstColumnFields.map((field) => (
               <div key={field} className="checkbox-wrapper-26">
                 <label htmlFor={`_checkbox-${field}`}>
                   <input
-                    type="checkbox"
+                    type="radio"
                     id={`_checkbox-${field}`}
-                    name={field}
-                    checked={searchFields[field]}
-                    onChange={handleFieldChange}
+                    name="searchField"
+                    checked={selectedField === field}
+                    onChange={() => handleFieldChange(field)}
                   />
                   <div className="tick_mark"></div>
-                  <span className={`search-field-label ${searchFields[field] ? 'selected' : ''}`}>
+                  <span className={`search-field-label ${selectedField === field ? 'selected' : ''}`}>
                     {field}
                   </span>
                 </label>
@@ -78,14 +123,14 @@ const SearchPage = () => {
               <div key={field} className="checkbox-wrapper-26">
                 <label htmlFor={`_checkbox-${field}`}>
                   <input
-                    type="checkbox"
+                    type="radio"
                     id={`_checkbox-${field}`}
-                    name={field}
-                    checked={searchFields[field]}
-                    onChange={handleFieldChange}
+                    name="searchField"
+                    checked={selectedField === field}
+                    onChange={() => handleFieldChange(field)}
                   />
                   <div className="tick_mark"></div>
-                  <span className={`search-field-label ${searchFields[field] ? 'selected' : ''}`}>
+                  <span className={`search-field-label ${selectedField === field ? 'selected' : ''}`}>
                     {field}
                   </span>
                 </label>

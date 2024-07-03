@@ -110,7 +110,7 @@
 
 .search-bar {
   width: 100%;
-  padding: 10px;
+  padding: 15px;
   font-size: 16px;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -121,10 +121,10 @@
   background-color: #399bcd;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 10px 200px;
   cursor: pointer;
   border-radius: 4px;
-  font-size: 16px;
+  font-size: 20px;
   margin-top: 20px;
 }
 

@@ -37,6 +37,7 @@ import Account from "./pages/Account";
 import AdvancedSearch from "./pages/Browsepage/Advancedsearch";
 import AmideCount from "./pages/Browsepage/Amidecount";
 import Sidebar from "./pages/Browsepage/sidebar";
+import ResultsPage from "./pages/ResultsPage";
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/search" element={<SearchPage />} />
+          <Route path="/results" element={<ResultsPage />} />
           <Route path="/browse/advanced" element={<AdvancedSearch />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/help" element={<HelpPage />} />

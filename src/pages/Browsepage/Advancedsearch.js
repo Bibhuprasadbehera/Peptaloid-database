@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
-import './search.css'; // Import the new CSS file
+import './advsearch.css'; // Import the new CSS file
 
 const AdvancedSearch = () => {
     const [criteria, setCriteria] = useState([
@@ -42,8 +42,10 @@ const AdvancedSearch = () => {
                         <li>
                             <strong>Identifier:</strong>
                             <ul>
+                                <li>Peptaloid ID</li>
                                 <li>InChIKey</li>
                                 <li>Compound InChI</li>
+                                <li>Molecular Formula</li>
                                 <li>SMILES</li>
                                 <li>IUPAC Name</li>
                                 <li>Compound Name</li>
