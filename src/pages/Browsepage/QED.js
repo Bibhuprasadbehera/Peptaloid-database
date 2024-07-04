@@ -20,14 +20,16 @@ const qedData = [
 
 const QED = () => (
   <div>
-    <BrowsePage 
-      title="Browse by QED" 
-      headers={qedHeaders} 
-      data={qedData} 
-      browsingText="You are browsing entries from QED range:" 
+    <BrowsePage
+      title="Browse by QED"
+      headers={qedHeaders}
+      data={qedData}
+      browsingText="You are browsing entries from QED range:"
+      browseField="qed_score"
     />
     <Footer />
   </div>
 );
 
 export default QED;
+

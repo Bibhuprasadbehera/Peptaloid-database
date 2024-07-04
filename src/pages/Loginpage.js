@@ -1,4 +1,3 @@
-// Loginpage.js
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './styles.css';
@@ -20,12 +19,12 @@ const Loginpage = () => {
 
         <form className="login-form">
           <img src={peptaloid} alt="Peptaloid Logo" className="logo" />
-          <div className="input-container"> {/* Add this div */}
-            <input type="text" placeholder="Email" className="input-field" />
-            <input type="password" placeholder="Password" className="input-field" />
+          <div className="input-container">
+            <input type="text" placeholder="Email" style={{ width: '470px' }} className="input-field" />
+            <input type="password" placeholder="Password" style={{ width: '470px' }} className="input-field" />
           </div>
-          <button type="submit" className="submit-button">Login</button>
-          <button type="button" className="create-account-button" onClick={handleCreateAccount}>
+          <button type="submit" className="submit-button" >Login</button>
+          <button type="button" className="create-account-button" onClick={handleCreateAccount} >
             Create an Account
           </button>
         </form>

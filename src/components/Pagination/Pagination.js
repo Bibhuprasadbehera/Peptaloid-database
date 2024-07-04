@@ -1,42 +1,44 @@
 import React, { useState, useEffect } from 'react';
-import MoleculeCard from '../Molecules/MoleculeCard';
+import axios from 'axios';
 import { useLocation } from 'react-router-dom';
+import MoleculeCard from '../Molecules/MoleculeCard';
 import './pagination.css';
 import AdvancedSearchSidebar from '../../pages/Browsepage/sidebar';
 
 const Pagination = () => {
   const location = useLocation();
-  const { count, category, browsingText } = location.state || {};
   const [molecules, setMolecules] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [selectedMolecules, setSelectedMolecules] = useState([]);
   const [activeTab, setActiveTab] = useState('browse');
   const [selectAll, setSelectAll] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      const data = await response.json();
-      console.log(data);
+      setLoading(true);
+      setError(null);
+      const payload = location.state?.payload;
+      if (!payload) {
+        setError("No search payload found");
+        setLoading(false);
+        return;
+      }
+      try {
+        console.log("Fetching with payload:", payload);  // Debug log
+        const response = await axios.post('http://127.0.0.1:8000/api/molecules/search', payload);
+        setMolecules(response.data);
+      } catch (error) {
+        console.error("There was an error fetching the data!", error);
+        setError("Failed to fetch results. Please try again.");
+      } finally {
+        setLoading(false);
+      }
     };
     fetchData();
-    const fetchedMolecules = Array.from({ length: count }, (_, i) => ({
-      id: i + 1,
-      CompoundName: `Molecule ${i + 1}`,
-      peptaloid_id: `ID${i + 1}`,
-      smiles: `C${i + 1}H${i + 1}`,
-      MolecularFormula: `C${i + 1}H${i + 1}O${i + 1}`,
-      Exact_MW: `${i + 100}`,
-      IUPACName: `IUPAC${i + 1}`
-    }));
-    setMolecules(fetchedMolecules);
-  }, [count]);
+  }, [location.state]);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -123,11 +125,13 @@ const Pagination = () => {
     }
   };
 
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+
   return (
     <div className="pagination-container">
-      <h1>Pagination</h1>
-      {category && <p>{browsingText} {category}</p>}
-      <p>Retrieved entries: {count}</p>
+      <h1>Search Results</h1>
+      <p>Retrieved entries: {molecules.length}</p>
       <p>
         Showing {indexOfFirstItem + 1} to{' '}
         {indexOfLastItem > molecules.length ? molecules.length : indexOfLastItem} of {molecules.length} entries

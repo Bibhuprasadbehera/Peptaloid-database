@@ -1,11 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import './MoleculeDetails.css';
 import molecule4 from '../../images/molecule4.jpg';
 
 const MoleculeDetails = () => {
   const location = useLocation();
-  const { molecule } = location.state || { molecule: {} };
+  const { molecule } = location.state || {};
+
+  const [imageUrl, setImageUrl] = useState(molecule4);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    if (molecule && molecule.smiles) {
+      const fetchMoleculeImage = async () => {
+        try {
+          const response = await fetch(`http://127.0.0.1:8000/api/generate-molecule/?smiles=${encodeURIComponent(molecule.smiles)}`);
+          if (!response.ok) {
+            throw new Error('Error generating image');
+          }
+          const blob = await response.blob();
+          const url = URL.createObjectURL(blob);
+          setImageUrl(url);
+        } catch (error) {
+          setError('Error generating image: ' + error.message);
+          setImageUrl(molecule4);  // Fallback to molecule4 image
+        }
+      };
+
+      fetchMoleculeImage();
+    }
+  }, [molecule]);
 
   const [showADMET, setShowADMET] = useState(false);
   const [showPercentiles, setShowPercentiles] = useState(false);
@@ -17,8 +41,8 @@ const MoleculeDetails = () => {
 
     const rows = [
       ["Basic Information", "Peptaloid ID", molecule.peptaloid_id],
-      ["Basic Information", "Compound Name", molecule.CompoundName],
-      ["Basic Information", "IUPAC Name", molecule.IUPACName],
+      ["Basic Information", "Compound Name", molecule.Compound_Name],
+      ["Basic Information", "IUPAC Name", molecule.IUPAC_Name],
       ["Basic Information", "Formula", molecule.MolecularFormula],
       ["Basic Information", "SMILES", molecule.smiles],
       ["Basic Information", "InChIKey", molecule.InChIKey],
@@ -36,8 +60,8 @@ const MoleculeDetails = () => {
       ["Molecular Properties", "QED Score", molecule.qed_score],
       ["Molecular Properties", "TPSA", molecule.TPSA],
       ["Molecular Properties", "Exact MW", molecule.Exact_MW],
-      ["Lipinski's Rule of Five", "Lipinski", molecule.Lipinsk],
-      ["Lipinski's Rule of Five", "SlogP", molecule.slogp],
+      ["Lipinski's Rule of Five", "Lipinski", molecule.Lipinski],
+      ["Lipinski's Rule of Five", "SlogP", molecule.SlogP],
       ["Lipinski's Rule of Five", "Num HBA", molecule.Num_HBA],
       ["Lipinski's Rule of Five", "Num HBD", molecule.Num_HBD],
       ["Additional Properties", "Num Rotatable Bonds", molecule.Num_Rotatable_Bonds],
@@ -175,11 +199,11 @@ const MoleculeDetails = () => {
             </tr>
             <tr>
               <td><strong>Compound Name:</strong></td>
-              <td>{molecule.CompoundName}</td>
+              <td>{molecule.Compound_Name}</td>
             </tr>
             <tr>
               <td><strong>IUPAC Name:</strong></td>
-              <td>{molecule.IUPACName}</td>
+              <td>{molecule.IUPAC_Name}</td>
             </tr>
             <tr>
               <td><strong>Formula:</strong></td>
@@ -275,11 +299,11 @@ const MoleculeDetails = () => {
           <tbody>
           <tr>
               <td><strong>Lipinski:</strong></td>
-              <td>{molecule.Lipinsk}</td>
+              <td>{molecule.Lipinski}</td>
             </tr>
             <tr>
               <td><strong>SlogP:</strong></td>
-              <td>{molecule.slogp}</td>
+              <td>{molecule.SlogP}</td>
             </tr>
             <tr>
               <td><strong>Exact MW:</strong></td>
@@ -723,6 +747,7 @@ const MoleculeDetails = () => {
             </tbody>
           </table>
         )}
+        {error && <p className="error-message">{error}</p>}
       </div>
     </div>
   );

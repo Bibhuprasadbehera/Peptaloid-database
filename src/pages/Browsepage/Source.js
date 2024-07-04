@@ -14,11 +14,12 @@ const sourceData = [
 
 const Source = () => (
   <div>
-    <BrowsePage 
-      title="Browse by Source" 
-      headers={sourceHeaders} 
-      data={sourceData} 
-      browsingText="You are browsing entries that has been collected" 
+    <BrowsePage
+      title="Browse by Source"
+      headers={sourceHeaders}
+      data={sourceData}
+      browsingText="You are browsing entries that have been collected from:"
+      browseField="source"
     />
     <Footer />
   </div>

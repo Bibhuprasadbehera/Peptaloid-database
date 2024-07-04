@@ -21,11 +21,12 @@ const carbonData = [
 
 const Carbon = () => (
   <div>
-    <BrowsePage 
-      title="Browse by No. of Carbon" 
-      headers={carbonHeaders} 
-      data={carbonData} 
-      browsingText="You are browsing entries with Carbon Number:" 
+    <BrowsePage
+      title="Browse by No. of Carbon"
+      headers={carbonHeaders}
+      data={carbonData}
+      browsingText="You are browsing entries with Carbon Number:"
+      browseField="carbon_count"
     />
     <Footer />
   </div>

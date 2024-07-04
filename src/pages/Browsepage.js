@@ -1,9 +1,8 @@
-// BrowsePage.js
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './styles.css';
 
-const BrowsePage = ({ title, headers, data, browsingText }) => {
+const BrowsePage = ({ title, headers, data, browsingText, browseField }) => {
   const navigate = useNavigate();
 
   return (
@@ -26,8 +25,22 @@ const BrowsePage = ({ title, headers, data, browsingText }) => {
                   data-label={headers[cellIndex]}
                   onClick={() => {
                     if (cellIndex === 1) {
-                      navigate('/Pagination', {
-                        state: { count: cell, category: row[0], browsingText }
+                      const payload = {
+                        skip: 0,
+                        limit: 30,
+                        conditions: [
+                          {
+                            field: browseField,
+                            value: row[0].split(' ')[0], // Assuming the range format is like "0 to 10"
+                            operation: cellIndex === 1 ? "equal" : "greater", // Adjust based on your needs
+                            operator: "and"
+                          }
+                        ],
+                        source: [],
+                        functional_group: []
+                      };
+                      navigate('/pagination', {
+                        state: { payload }
                       });
                     }
                   }}

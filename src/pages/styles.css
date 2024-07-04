@@ -33,13 +33,13 @@ body {
 
 /* Paragraph styles */
 .paragraph {
-  font-size: 16px;
+  font-size: 20px;
   margin-bottom: 20px;
 }
 
 /* Form styles */
 .login-form {
-  max-width: 400px;
+  max-width: 500px;
   margin: 0 auto;
   padding: 20px;
   background-color: #fff;
@@ -200,17 +200,6 @@ body {
   color: #000000;
 }
 
-
-/* Input field styles */
-.search-bar {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  margin-bottom: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-sizing: border-box;
-}
 
 /* Search fields container */
 .search-fields {

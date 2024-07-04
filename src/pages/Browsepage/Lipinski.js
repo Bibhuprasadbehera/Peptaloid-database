@@ -15,14 +15,16 @@ const lipinskiData = [
 
 const Lipinski = () => (
   <div>
-    <BrowsePage 
-      title="Browse by Lipinski Rule" 
-      headers={lipinskiHeaders} 
-      data={lipinskiData} 
-      browsingText="You are browsing entries with Lipinski rule violation:" 
+    <BrowsePage
+      title="Browse by Lipinski Rule"
+      headers={lipinskiHeaders}
+      data={lipinskiData}
+      browsingText="You are browsing entries with Lipinski rule violation:"
+      browseField="Lipinski"
     />
     <Footer />
   </div>
 );
 
 export default Lipinski;
+

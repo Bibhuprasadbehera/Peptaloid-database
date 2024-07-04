@@ -168,6 +168,34 @@
   background-color: #e2e6ea;
 }
 
+.pagination-buttons button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #f5f5f5;
+  border: 2px solid #399bcd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.pagination-buttons button:hover,
+.pagination-buttons button:focus {
+  background-color: #399bcd;
+  color: #ffffff;
+  outline: none;
+}
+
+.pagination-buttons button:active {
+  background-color: #399bcd;
+}
+
+.pagination-buttons button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  background-color: #f5f5f5;
+  border-color: #ddd;
+}
+
 @media (min-width: 768px) {
   .molecule-list {
     grid-template-columns: repeat(2, 1fr);

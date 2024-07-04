@@ -26,14 +26,16 @@ const mwData = [
 
 const MolecularWeight = () => (
   <div>
-    <BrowsePage 
-      title="Browse by Molecular Weight" 
-      headers={mwHeaders} 
-      data={mwData} 
-      browsingText="You are browsing entries from Molecular Weight range:" 
+    <BrowsePage
+      title="Browse by Molecular Weight"
+      headers={mwHeaders}
+      data={mwData}
+      browsingText="You are browsing entries from Molecular Weight range:"
+      browseField="Exact_MW"
     />
     <Footer />
   </div>
 );
 
 export default MolecularWeight;
+

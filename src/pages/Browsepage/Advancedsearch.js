@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import Navbar from '../../components/Navbar';
+import { useNavigate } from 'react-router-dom';
 import Footer from '../../components/Footer';
-import './advsearch.css'; // Import the new CSS file
+import './advsearch.css';
 
 const AdvancedSearch = () => {
     const [criteria, setCriteria] = useState([
-        { field: 'Peptide Name', condition: '=', query: '', operator: 'AND' },
+        { field: 'carbon_count', condition: '>', query: '', operator: 'and' },
     ]);
+    const navigate = useNavigate();
 
     const addCriterion = () => {
-        setCriteria([...criteria, { field: 'Peptide Name', condition: '=', query: '', operator: 'AND' }]);
+        setCriteria([...criteria, { field: 'carbon_count', condition: '>', query: '', operator: 'and' }]);
     };
 
     const removeCriterion = (index) => {
@@ -28,8 +29,30 @@ const AdvancedSearch = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // Handle form submission logic
-        console.log(criteria);
+        const payload = {
+            skip: 0,
+            limit: 30,
+            conditions: criteria.map(criterion => ({
+                field: criterion.field,
+                value: isNaN(criterion.query) ? criterion.query : Number(criterion.query),
+                operation: mapConditionToOperation(criterion.condition),
+                operator: criterion.operator
+            })),
+            source: [],
+            functional_group: []
+        };
+        console.log(payload);
+        navigate('/pagination', { state: { payload } });
+    };
+
+    const mapConditionToOperation = (condition) => {
+        switch (condition) {
+            case '>': return 'greater';
+            case '<': return 'less';
+            case '=': return 'equal';
+            case '!=': return 'notEqual';
+            default: return 'equal';
+        }
     };
 
     return (
@@ -37,31 +60,6 @@ const AdvancedSearch = () => {
             <div className="container-search">
                 <h2 className="heading">Advanced Search</h2>
                 <p>Use the advanced search feature to refine your search results. You can add multiple search criteria and specify the logical operator between them.</p>
-                    <ul style={{ textAlign: 'left' }}>
-                        <p>If you want to search the following data, please do it via simple search:</p>
-                        <li>
-                            <strong>Identifier:</strong>
-                            <ul>
-                                <li>Peptaloid ID</li>
-                                <li>InChIKey</li>
-                                <li>Compound InChI</li>
-                                <li>Molecular Formula</li>
-                                <li>SMILES</li>
-                                <li>IUPAC Name</li>
-                                <li>Compound Name</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <strong>Origin:</strong>
-                            <ul>
-                                <li>Origin Type</li>
-                                <li>Genus</li>
-                                <li>Origin Species</li>
-                            </ul>
-                        </li>
-                    </ul>
-
-
                 <form onSubmit={handleSubmit}>
                     <table className="criteria-table">
                         <thead>
@@ -84,7 +82,7 @@ const AdvancedSearch = () => {
                                             value={criterion.field}
                                             onChange={(e) => handleCriteriaChange(index, 'field', e.target.value)}
                                         >
-                                               <optgroup label="Physical Properties">
+                                            <optgroup label="Physical Properties">
                                                 <option value="carbon_count">Carbon Count</option>
                                                 <option value="Exact_MW">Exact MW</option>
                                                 <option value="Num_Atoms">Number of Atoms</option>
@@ -122,8 +120,6 @@ const AdvancedSearch = () => {
                                                 <option value="Num_Aliphatic_Rings">Number of Aliphatic Rings</option>
                                             </optgroup>
                                         </select>
-
-
                                     </td>
                                     <td data-label="Condition">
                                         <select
@@ -148,11 +144,11 @@ const AdvancedSearch = () => {
                                         <select
                                             value={criterion.operator}
                                             onChange={(e) => handleCriteriaChange(index, 'operator', e.target.value)}
-                                            disabled={index === criteria.length - 1} // Disable operator for last row
+                                            disabled={index === criteria.length - 1}
                                         >
-                                            <option value="AND">AND</option>
-                                            <option value="OR">OR</option>
-                                            <option value="NOT">NOT</option>
+                                            <option value="and">AND</option>
+                                            <option value="or">OR</option>
+                                            <option value="not">NOT</option>
                                         </select>
                                     </td>
                                     <td data-label="Add">

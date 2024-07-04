@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 
 const SearchPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedField, setSelectedField] = useState("Compound Name"); // Default selected field
+  const [selectedField, setSelectedField] = useState("Compound Name");
   const navigate = useNavigate();
 
   const handleSearchChange = (event) => {
@@ -18,20 +18,19 @@ const SearchPage = () => {
 
   const handleSearch = () => {
     if (!selectedField) {
-      // Handle case when no field is selected
       alert("Please select a search field.");
       return;
     }
 
     let apiField;
     switch (selectedField) {
-      case "Smiles":
+      case "SMILES":
         apiField = "smiles";
         break;
       case "Molecular Formula":
         apiField = "MolecularFormula";
         break;
-      case "Origin type":
+      case "Origin (Bacterium or Fungus...)":
         apiField = "origin_type";
         break;
       case "Origin species":
@@ -43,7 +42,6 @@ const SearchPage = () => {
       case "Genus":
         apiField = "genus";
         break;
-      
       default:
         apiField = selectedField.replace(/ /g, "_");
     }
@@ -64,20 +62,20 @@ const SearchPage = () => {
     };
 
     console.log("Search Payload:", payload); // Debug log
-    navigate('/results', { state: { payload } });
+    navigate('/pagination', { state: { payload } });
   };
 
   const fields = [
-    "InChIKey",
-    "Compound InChI",
-    "Smiles",
-    "Molecular Formula",
-    "IUPAC Name",
     "Compound Name",
-    "Origin type",
+    "Peptaloid id",
+    "InChIKey",
+    "IUPAC Name",
+    "Compound InChI",
+    "Molecular Formula",
+    "SMILES",
     "Genus",
     "Origin species",
-    "Peptaloid id",
+    "Origin (Bacterium or Fungus...)",
   ];
 
   const midIndex = Math.ceil(fields.length / 2);
@@ -87,7 +85,7 @@ const SearchPage = () => {
   return (
     <div>
       <div className="container">
-        <h2 className="heading">Welcome to the Alkaloid Database Search Page</h2>
+        <h2 className="heading">Pepataloid Database Search Page</h2>
         <input
           type="text"
           placeholder="Search..."

@@ -1,21 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Sidebar.css';
 
-const AdvancedSearchSidebar = ({ onFilterChange }) => {
+const AdvancedSearchSidebar = () => {
+  const navigate = useNavigate();
   const [filters, setFilters] = useState({
-    molwt: { min: 0, max: 5000 },
-    slogp: { min: -5, max: 10 },
-    hba: { min: 0, max: 90 },
-    hbd: { min: 0, max: 80 },
+    Exact_MW: { min: 0, max: 5000 },
+    SlogP: { min: -5, max: 10 },
+    Num_HBA: { min: 0, max: 90 },
+    Num_HBD: { min: 0, max: 80 },
     carbon_count: { min: 0, max: 219 },
-    amide_count: { min: 0, max: 60 },
+    Num_Amide_Bonds: { min: 0, max: 60 },
     qed_score: { min: 0, max: 1 },
     TPSA: { min: 0, max: 2200 },
     source: {
-      Coconut: false,
-      NPAtlas: false,
-      ZINC: false,
-      SuperNatural: false,
+      coconut: false,
+      npatlas: false,
+      zinc: false,
+      supernatural: false,
     },
     functional_groups: {
       Alcohol: false,
@@ -28,34 +30,28 @@ const AdvancedSearchSidebar = ({ onFilterChange }) => {
   });
 
   const rangeConfigs = {
-    molwt: { min: 0, max: 5000 },
-    slogp: { min: -5, max: 10 },
-    hba: { min: 0, max: 90 },
-    hbd: { min: 0, max: 80 },
-    carbon_count: { min: 0, max: 219 },
-    amide_count: { min: 0, max: 60 },
-    qed_score: { min: 0, max: 1 },
-    TPSA: { min: 0, max: 2200 },
+    Exact_MW: { min: 0, max: 5000, label: 'Molecular Weight' },
+    SlogP: { min: -5, max: 10, label: 'SLogP' },
+    Num_HBA: { min: 0, max: 90, label: 'HBA' },
+    Num_HBD: { min: 0, max: 80, label: 'HBD' },
+    carbon_count: { min: 0, max: 219, label: 'Number of Carbon' },
+    Num_Amide_Bonds: { min: 0, max: 60, label: 'Number of Amide Bonds' },
+    qed_score: { min: 0, max: 1, label: 'QED Score' },
+    TPSA: { min: 0, max: 2200, label: 'TPSA' },
   };
-
-  useEffect(() => {
-    onFilterChange(filters);
-  }, [filters, onFilterChange]);
 
   const handleRangeChange = (name, minOrMax, value) => {
     const { min: rangeMin, max: rangeMax } = rangeConfigs[name];
     const totalRange = rangeMax - rangeMin;
-    const minDistance = totalRange * 0.05; // 5% of the total range
+    const minDistance = totalRange * 0.05;
 
     setFilters(prevFilters => {
       let newMin = minOrMax === 'min' ? parseFloat(value) : prevFilters[name].min;
       let newMax = minOrMax === 'max' ? parseFloat(value) : prevFilters[name].max;
 
-      // Ensure the new value is within the allowed range
       newMin = Math.max(rangeMin, Math.min(newMin, rangeMax));
       newMax = Math.max(rangeMin, Math.min(newMax, rangeMax));
 
-      // Enforce minimum distance
       if (newMax - newMin < minDistance) {
         if (minOrMax === 'min') {
           newMin = newMax - minDistance;
@@ -71,6 +67,12 @@ const AdvancedSearchSidebar = ({ onFilterChange }) => {
     });
   };
 
+  const handleTextChange = (name, minOrMax, value) => {
+    if (!isNaN(value)) {
+      handleRangeChange(name, minOrMax, value);
+    }
+  };
+
   const handleCheckboxChange = (event) => {
     const { name, checked } = event.target;
     const category = event.target.getAttribute('data-category');
@@ -83,8 +85,8 @@ const AdvancedSearchSidebar = ({ onFilterChange }) => {
     }));
   };
 
-  const renderRangeSlider = (name, label, step = 1) => {
-    const { min: rangeMin, max: rangeMax } = rangeConfigs[name];
+  const renderRangeSlider = (name, step = 1) => {
+    const { min: rangeMin, max: rangeMax, label } = rangeConfigs[name];
     const totalRange = rangeMax - rangeMin;
     const minPercentage = ((filters[name].min - rangeMin) / totalRange) * 100;
     const maxPercentage = ((filters[name].max - rangeMin) / totalRange) * 100;
@@ -123,8 +125,18 @@ const AdvancedSearchSidebar = ({ onFilterChange }) => {
             ></div>
           </div>
           <div className="range-values">
-            <span className="range-value">{filters[name].min.toFixed(2)}</span>
-            <span className="range-value">{filters[name].max.toFixed(2)}</span>
+            <input 
+              type="text" 
+              className="range-input" 
+              value={filters[name].min} 
+              onChange={(e) => handleTextChange(name, 'min', e.target.value)} 
+            />
+            <input 
+              type="text" 
+              className="range-input" 
+              value={filters[name].max} 
+              onChange={(e) => handleTextChange(name, 'max', e.target.value)} 
+            />
           </div>
         </div>
       </div>
@@ -132,8 +144,46 @@ const AdvancedSearchSidebar = ({ onFilterChange }) => {
   };
 
   const applyFilters = () => {
-    console.log('Filters applied:', filters);
-    // Additional logic to apply filters
+    const conditions = [];
+
+    Object.entries(rangeConfigs).forEach(([key, config]) => {
+      const { min, max } = filters[key];
+      if (min > config.min) {
+        conditions.push({
+          field: key,
+          value: min,
+          operation: 'greater',
+          operator: 'and'
+        });
+      }
+      if (max < config.max) {
+        conditions.push({
+          field: key,
+          value: max,
+          operation: 'lesser',
+          operator: 'and'
+        });
+      }
+    });
+
+    const selectedSources = Object.entries(filters.source)
+      .filter(([_, isSelected]) => isSelected)
+      .map(([source]) => source);
+
+    const selectedFunctionalGroups = Object.entries(filters.functional_groups)
+      .filter(([_, isSelected]) => isSelected)
+      .map(([group]) => group);
+
+    const payload = {
+      skip: 0,
+      limit: 30,
+      conditions,
+      source: selectedSources,
+      functional_group: selectedFunctionalGroups
+    };
+
+    console.log('Payload:', payload);
+    navigate('/pagination', { state: { payload } });
   };
 
   return (
@@ -150,21 +200,21 @@ const AdvancedSearchSidebar = ({ onFilterChange }) => {
               checked={filters.source[source]}
               onChange={handleCheckboxChange}
             />
-            {source}
+            {source.charAt(0).toUpperCase() + source.slice(1)}
           </label>
         ))}
       </div>
       
       <div className="filter-group">
-        <h4>Lipinski Rule of Five</h4>
-        {renderRangeSlider('molwt', 'Molecular Weight')}
-        {renderRangeSlider('slogp', 'SLogP', 0.1)}
-        {renderRangeSlider('hba', 'HBA')}
-        {renderRangeSlider('hbd', 'HBD')}
+        <h3>Lipinski Rule of Five</h3>
+        {renderRangeSlider('Exact_MW')}
+        {renderRangeSlider('SlogP', 0.1)}
+        {renderRangeSlider('Num_HBA')}
+        {renderRangeSlider('Num_HBD')}
       </div>
       
       <div className="filter-group">
-        <h3>Presence of Functional Groups </h3>
+        <h3>Presence of Functional Groups</h3>
         {Object.keys(filters.functional_groups).map((group) => (
           <label key={group} className="select-all-checkbox">
             <input
@@ -181,10 +231,10 @@ const AdvancedSearchSidebar = ({ onFilterChange }) => {
        
       <div className="filter-group">
         <h3>Other filters</h3>
-        {renderRangeSlider('carbon_count', 'Number of Carbon')}
-        {renderRangeSlider('amide_count', 'Number of Amide Bonds')}
-        {renderRangeSlider('qed_score', 'QED Score', 0.01)}
-        {renderRangeSlider('TPSA', 'TPSA')}
+        {renderRangeSlider('carbon_count')}
+        {renderRangeSlider('Num_Amide_Bonds')}
+        {renderRangeSlider('qed_score', 0.01)}
+        {renderRangeSlider('TPSA')}
       </div>
       <button onClick={applyFilters} className="filter-button">Apply Filters</button>
     </div>
