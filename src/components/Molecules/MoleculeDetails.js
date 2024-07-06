@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import './MoleculeDetails.css';
 import molecule4 from '../../images/molecule4.jpg';
@@ -9,6 +9,10 @@ const MoleculeDetails = () => {
 
   const [imageUrl, setImageUrl] = useState(molecule4);
   const [error, setError] = useState('');
+  const [showADMET, setShowADMET] = useState(false);
+  const [showPercentiles, setShowPercentiles] = useState(false);
+
+  const contentRef = useRef(null);
 
   useEffect(() => {
     if (molecule && molecule.smiles) {
@@ -31,13 +35,9 @@ const MoleculeDetails = () => {
     }
   }, [molecule]);
 
-  const [showADMET, setShowADMET] = useState(false);
-  const [showPercentiles, setShowPercentiles] = useState(false);
-
   const generateFile = (fileType) => {
-    const headers = [
-      "Category", "Property", "Value"
-    ];
+    if (!molecule) return;
+    const headers = ["Category", "Property", "Value"];
 
     const rows = [
       ["Basic Information", "Peptaloid ID", molecule.peptaloid_id],
@@ -165,7 +165,7 @@ const MoleculeDetails = () => {
     ];
 
     const content = [
-      headers.join(fileType === 'csv' ? ',' : '\t'), 
+      headers.join(fileType === 'csv' ? ',' : '\t'),
       ...rows.map(row => row.map(cell => cell === undefined ? '' : `"${cell}"`).join(fileType === 'csv' ? ',' : '\t'))
     ].join('\n');
 
@@ -178,19 +178,50 @@ const MoleculeDetails = () => {
     document.body.removeChild(link);
   };
 
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleLinkClick = (e, sectionId) => {
+    e.preventDefault();
+    scrollToSection(sectionId);
+  };
+
+  if (!molecule) {
+    return <div>Loading...</div>;
+  }
+
+    
   return (
-    <div className="molecule-container">
-      <img src={molecule4} alt="Molecule" className="molecule-image" />
-      <div className="molecule-details">
-      <div className="download-dropdown">
-          <button className="download-button">Download</button>
-          <div className="download-content">
-            <a href="#" onClick={() => generateFile('csv')}>CSV</a>
-            <a href="#" onClick={() => generateFile('tsv')}>TSV</a>
-          </div>
+    <div className="md-container">
+      <div className="md-sidebar">
+        <img src={imageUrl} alt="Molecule" className="md-molecule-image" />
+        <div className="md-sidebar-links">
+          <a href="#basic-information" onClick={(e) => { e.preventDefault(); scrollToSection('basic-information'); }}>Basic Information</a>
+          <a href="#origin" onClick={(e) => { e.preventDefault(); scrollToSection('origin'); }}>Origin</a>
+          <a href="#ids" onClick={(e) => { e.preventDefault(); scrollToSection('ids'); }}>IDs</a>
+          <a href="#molecular-properties" onClick={(e) => { e.preventDefault(); scrollToSection('molecular-properties'); }}>Molecular Properties</a>
+          <a href="#lipinskis-rule" onClick={(e) => { e.preventDefault(); scrollToSection('lipinskis-rule'); }}>Lipinski's Rule of Five</a>
+          <a href="#additional-properties" onClick={(e) => { e.preventDefault(); scrollToSection('additional-properties'); }}>Additional Properties</a>
+          <a href="#functional-groups" onClick={(e) => { e.preventDefault(); scrollToSection('functional-groups'); }}>Functional Groups</a>
+          <a href="#admet-properties" onClick={(e) => { e.preventDefault(); scrollToSection('admet-properties'); }}>ADMET Properties</a>
+          <a href="#percentile-data" onClick={(e) => { e.preventDefault(); scrollToSection('percentile-data'); }}>Percentile Data</a>
         </div>
+      </div>
+      <div className="md-content-container">
+        <div className="md-content">
+          <div className="md-download-dropdown">
+            <button className="md-download-button">Download</button>
+            <div className="md-download-content">
+              <a href="#" onClick={() => generateFile('csv')}>CSV</a>
+              <a href="#" onClick={() => generateFile('tsv')}>TSV</a>
+            </div>
+          </div>
       
-        <h3>Basic Information</h3>
+        <h3 id="basic-information">Basic Information</h3>
         <table>
           <tbody>
             <tr>
@@ -224,7 +255,7 @@ const MoleculeDetails = () => {
           </tbody>
         </table>
 
-        <h3>Origin</h3>
+        <h3 id="origin">Origin</h3>
         <table>
           <tbody>
             <tr>
@@ -242,7 +273,7 @@ const MoleculeDetails = () => {
           </tbody>
         </table>
 
-        <h3>IDs</h3>
+        <h3 id="ids">IDs</h3>
         <table>
           <tbody>
             <tr>
@@ -264,7 +295,7 @@ const MoleculeDetails = () => {
           </tbody>
         </table>
 
-        <h3>Molecular Properties</h3>
+        <h3 id="molecular-properties">Molecular Properties</h3>
         <table>
           <tbody>
             <tr>
@@ -294,7 +325,7 @@ const MoleculeDetails = () => {
           </tbody>
         </table>
 
-        <h3>Lipinski's Rule of Five</h3>
+        <h3 id="lipinskis-rule">Lipinski's Rule of Five</h3>
         <table>
           <tbody>
           <tr>
@@ -320,7 +351,7 @@ const MoleculeDetails = () => {
           </tbody>
         </table>
 
-        <h3>Additional Properties</h3>
+        <h3 id="additional-properties">Additional Properties</h3>
         <table>
           <tbody>
             <tr>
@@ -366,7 +397,7 @@ const MoleculeDetails = () => {
           </tbody>
         </table>
 
-        <h3>Functional Groups</h3>
+        <h3 id="functional-groups">Functional Groups</h3>
         <table>
           <tbody>
             <tr>
@@ -396,11 +427,9 @@ const MoleculeDetails = () => {
           </tbody>
         </table>
 
-        <h3 className="dropdown-header" onClick={() => setShowADMET(!showADMET)}>
-          ADMET Properties {showADMET ? '▲' : '▼'}
-        </h3>
-        {showADMET && (
-          <table>
+        <h3 id="admet-properties">ADMET Properties</h3>
+          <table className="md-table">
+          
             <tbody>
               <tr>
                 <td><strong>AMES:</strong></td>
@@ -568,13 +597,10 @@ const MoleculeDetails = () => {
               </tr>
             </tbody>
           </table>
-        )}
+        
 
-        <h3 className="dropdown-header" onClick={() => setShowPercentiles(!showPercentiles)}>
-          Percentile Data {showPercentiles ? '▲' : '▼'}
-        </h3>
-        {showPercentiles && (
-          <table>
+        <h3 id="percentile-data">Percentile Data</h3>
+          <table className="md-table">
             <tbody>
               <tr>
                 <td><strong>Lipinski DrugBank Approved Percentile:</strong></td>
@@ -745,9 +771,11 @@ const MoleculeDetails = () => {
                 <td>{molecule.VDss_Lombardo_drugbank_approved_percentile}</td>
               </tr>
             </tbody>
-          </table>
-        )}
-        {error && <p className="error-message">{error}</p>}
+            </table>
+          
+
+          {error && <p className="md-error-message">{error}</p>}
+        </div>
       </div>
     </div>
   );
