@@ -1,45 +1,103 @@
-.smiles-structure-viewer {
-    padding: 20px;
+/* Tools.css */
+
+.smiles-structure-viewer,
+.smiles-property-predictor {
+  padding: 20px;
 }
 
 .title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 16px;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
 }
 
 .form {
-    margin-bottom: 16px;
+  margin-bottom: 16px;
 }
 
 .input-field {
-    padding: 15px;
-    font-size: 16px;
-    width: 800px;
-    margin-right: 16px;
-    border: #399bcd 2px solid;
+  padding: 15px;
+  font-size: 16px;
+  width: 800px;
+  margin-right: 16px;
+  border: #399bcd 2px solid;
+  border-radius: 7px;
 }
 
 .generate-button {
-    padding: 8px 30px;
-    font-size: 20px;
-    background-color: #399bcd;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 7px;
+  padding: 8px 30px;
+  font-size: 20px;
+  background-color: #399bcd;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 7px;
 }
 
 .generate-button:hover {
-    background-color: #5e4379;
+  background-color: #5e4379;
 }
 
 .error-message {
-    color: #5e4379;
-    margin-top: 8px;
+  color: #5e4379;
+  margin-top: 8px;
+}
+
+.molecule-image-container,
+.properties-table {
+  display: flex;
+  justify-content: center;
 }
 
 .molecule-image {
-    border: 2px solid #399bcd;
-    margin-top: 16px;
+  border: 2px solid #399bcd;
+  margin-top: 16px;
+  border-radius: 7px;
+}
+
+.properties-table {
+  margin-top: 20px;
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+.properties-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.properties-table th,
+.properties-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.empty-image-box {
+  width: 300px;
+  height: 300px;
+  border: 2px solid #399bcd;
+  margin-top: 16px;
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.properties-table th {
+  background-color: #399bcd;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+}
+
+.properties-table td {
+  text-align: left;
+}
+
+.properties-table tr:nth-child(even) {
+  background-color: #eaf7ff;
+}
+
+.properties-table tr:hover {
+  background-color: #d3e5f9;
 }

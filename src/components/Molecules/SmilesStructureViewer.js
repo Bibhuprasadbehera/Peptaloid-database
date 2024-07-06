@@ -34,6 +34,9 @@ const SmilesStructureViewer = () => {
   return (
     <div className="smiles-structure-viewer">
       <h2 className="title">SMILES Structure Viewer</h2>
+      <p className="description">
+        Enter a SMILES string below to generate and view its molecular structure.
+      </p>
       <form onSubmit={handleSubmit} className="form">
         <input
           type="text"
@@ -47,7 +50,13 @@ const SmilesStructureViewer = () => {
         </button>
       </form>
       {error && <p className="error-message">{error}</p>}
-      {imageUrl && <img src={imageUrl} alt="Molecule structure" className="molecule-image" />}
+      <div className="molecule-image-container">
+        {imageUrl ? (
+          <img src={imageUrl} alt="Molecule structure" className="molecule-image" />
+        ) : (
+          <div className="empty-image-box" />
+        )}
+      </div>
     </div>
   );
 };

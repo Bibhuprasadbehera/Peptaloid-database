@@ -2,7 +2,6 @@
 
 .molecule-card {
   display: flex;
-  flex-direction: row;
   align-items: center;
   border: 3px solid #5e4379;
   padding: 16px;

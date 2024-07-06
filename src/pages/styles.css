@@ -38,7 +38,8 @@ body {
 }
 
 /* Form styles */
-.login-form {
+.login-form,
+.account-form {
   max-width: 500px;
   margin: 0 auto;
   padding: 20px;
@@ -76,6 +77,8 @@ body {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .help-table th,
@@ -133,7 +136,6 @@ body {
   }
 }
 
-
 /* Create account button styles */
 .create-account-button {
   width: 100%;
@@ -179,6 +181,8 @@ body {
   max-width: 800px;
   margin: 0 auto;
   color: #399bcd;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .faq-content {
@@ -199,7 +203,6 @@ body {
   font-size: 1em;
   color: #000000;
 }
-
 
 /* Search fields container */
 .search-fields {
@@ -277,3 +280,37 @@ input[type="radio"]:checked + .tick_mark::after {
 .search-button:hover {
   background-color: #2c7ba8;
 }
+
+/* styles.css */
+
+.tab-container {
+  display: grid;
+}
+
+.tabs {
+  width: 200px;
+  margin-right: 20px;
+}
+
+.tab {
+  padding: 10px 20px;
+  cursor: pointer;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.tab.active {
+  background-color: #399bcd;
+  color: #fff;
+}
+
+.tab-content {
+  flex: 1;
+  border: 2px solid #399bcd;
+  border-radius: 5px;
+  padding: 20px;
+}
+
