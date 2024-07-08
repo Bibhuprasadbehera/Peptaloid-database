@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import SmilesStructureViewer from '../components/Molecules/SmilesStructureViewer';
 import SmilesPropertyPredictor from '../components/Molecules/SmilesPropertyPredictor';
+import SmilesSimilarityIndex from '../components/Molecules/SmilesSimilarityIndex';
 
 const Toolspage = () => {
   const [activeTab, setActiveTab] = useState('structure');
@@ -31,10 +32,17 @@ const Toolspage = () => {
             >
               Property Predictor
             </div>
+            <div
+              className={`tab ${activeTab === 'similarity' ? 'active' : ''}`}
+              onClick={() => handleTabChange('similarity')}
+            >
+              Similarity Index
+            </div>
           </div>
           <div className="tab-content">
             {activeTab === 'structure' && <SmilesStructureViewer />}
             {activeTab === 'property' && <SmilesPropertyPredictor />}
+            {activeTab === 'similarity' && <SmilesSimilarityIndex />}
           </div>
         </div>
       </div>

@@ -1,5 +1,3 @@
-// SmilesPropertyPredictor.jsx
-
 import React, { useState } from 'react';
 import './Tools.css';
 
@@ -32,6 +30,21 @@ const SmilesPropertyPredictor = () => {
       });
   };
 
+  const downloadCSV = () => {
+    const headers = 'Property,Value\n';
+    const rows = Object.keys(properties).map(key => `${key},${properties[key]}`).join('\n');
+    const csvContent = headers + rows;
+
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'properties.csv';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const renderPropertiesTable = () => {
     return (
       <div className="properties-table">
@@ -41,110 +54,12 @@ const SmilesPropertyPredictor = () => {
               <th>Property</th>
               <th>Value</th>
             </tr>
-            <tr>
-              <td>SlogP</td>
-              <td>{properties.SlogP || '-' || '-'}</td>
-            </tr>
-            <tr>
-              <td>TPSA</td>
-              <td>{properties.TPSA || '-' || '-'}</td>
-            </tr>
-            <tr>
-              <td>Exact MW</td>
-              <td>{properties.Exact_MW || '-' || '-'}</td>
-            </tr>
-            <tr>
-              <td>Num Rotatable Bonds</td>
-              <td>{properties.Num_Rotatable_Bonds || '-' || '-'}</td>
-            </tr>
-            <tr>
-              <td>Num HBD</td>
-              <td>{properties.Num_HBD || '-' || '-'}</td>
-            </tr>
-            <tr>
-              <td>Num HBA</td>
-              <td>{properties.Num_HBA || '-' || '-'}</td>
-            </tr>
-            <tr>
-              <td>Num Amide Bonds</td>
-              <td>{properties.Num_Amide_Bonds || '-'}</td>
-            </tr>
-            <tr>
-              <td>Num Hetero Atoms</td>
-              <td>{properties.Num_Hetero_Atoms || '-'}</td>
-            </tr>
-            <tr>
-              <td>Num Heavy Atoms</td>
-              <td>{properties.Num_Heavy_Atoms || '-'}</td>
-            </tr>
-            <tr>
-              <td>Num Atoms</td>
-              <td>{properties.Num_Atoms || '-'}</td>
-            </tr>
-            <tr>
-              <td>Num StereoCenters</td>
-              <td>{properties.Num_StereoCenters || '-'}</td>
-            </tr>
-            <tr>
-              <td>Num Aromatic Rings</td>
-              <td>{properties.Num_Aromatic_Rings || '-'}</td>
-            </tr>
-            <tr>
-              <td>Num Saturated Rings</td>
-              <td>{properties.Num_Saturated_Rings || '-'}</td>
-            </tr>
-            <tr>
-              <td>Num Aliphatic Rings</td>
-              <td>{properties.Num_Aliphatic_Rings || '-'}</td>
-            </tr>
-            <tr>
-              <td>InChIKey</td>
-              <td>{properties.InChIKey || '-'}</td>
-            </tr>
-            <tr>
-              <td>Molecular Formula</td>
-              <td>{properties.MolecularFormula || '-'}</td>
-            </tr>
-            <tr>
-              <td>Carbon Count</td>
-              <td>{properties.carbon_count || '-'}</td>
-            </tr>
-            <tr>
-              <td>CX LogP</td>
-              <td>{properties.CX_LogP || '-'}</td>
-            </tr>
-            <tr>
-              <td>CX LogD</td>
-              <td>{properties.CX_LogD || '-'}</td>
-            </tr>
-            <tr>
-              <td>Heavy Atoms</td>
-              <td>{properties.Heavy_Atoms || '-'}</td>
-            </tr>
-            <tr>
-              <td>QED Score</td>
-              <td>{properties.qed_score || '-'}</td>
-            </tr>
-            <tr>
-              <td>Alcohol</td>
-              <td>{properties.Alcohol || '-'}</td>
-            </tr>
-            <tr>
-              <td>Aldehyde</td>
-              <td>{properties.Aldehyde || '-'}</td>
-            </tr>
-            <tr>
-              <td>Carboxylic Acid</td>
-              <td>{properties.Carboxylic_Acid || '-'}</td>
-            </tr>
-            <tr>
-              <td>Amine</td>
-              <td>{properties.Amine || '-'}</td>
-            </tr>
-            <tr>
-              <td>Thiol</td>
-              <td>{properties.Thiol || '-'}</td>
-            </tr>
+            {Object.keys(properties).map((key, index) => (
+              <tr key={index}>
+                <td>{key}</td>
+                <td>{properties[key] || '-'}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
@@ -167,7 +82,14 @@ const SmilesPropertyPredictor = () => {
         </button>
       </form>
       {error && <p className="error-message">{error}</p>}
-      {renderPropertiesTable()}
+      {Object.keys(properties).length > 0 && (
+        <>
+          {renderPropertiesTable()}
+          <button onClick={downloadCSV} className="generate-button" style={{ marginTop: '16px' }}>
+            Download Properties
+          </button>
+        </>
+      )}
     </div>
   );
 };

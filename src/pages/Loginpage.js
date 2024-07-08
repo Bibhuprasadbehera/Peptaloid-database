@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './styles.css';
-import peptaloid from '../images/peptaloid.png';
+import peptaloid from '../images/logo2.png';
 import Footer from '../components/Footer'; // Import Footer
 
 const Loginpage = () => {
@@ -18,7 +18,7 @@ const Loginpage = () => {
         <h3 className="subheading">Log in to access the Alkaloid Database</h3>
 
         <form className="login-form">
-          <img src={peptaloid} alt="Peptaloid Logo" className="logo" />
+          <img src={peptaloid} alt="Peptaloid Logo" className="logo" style={{ marginBottom: '10px' }} />
           <div className="input-container">
             <input type="text" placeholder="Email" style={{ width: '470px' }} className="input-field" />
             <input type="password" placeholder="Password" style={{ width: '470px' }} className="input-field" />

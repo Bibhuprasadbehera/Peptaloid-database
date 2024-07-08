@@ -5,16 +5,18 @@ const SmilesStructureViewer = () => {
   const [smiles, setSmiles] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setError('');
-
+    setImageUrl('');
+    setIsLoading(true);
     if (!smiles) {
       setError('Please enter a SMILES string');
+      setIsLoading(false);
       return;
     }
-
     fetch(`http://127.0.0.1:8000/api/generate-molecule/?smiles=${encodeURIComponent(smiles)}`)
       .then((response) => {
         if (!response.ok) {
@@ -28,7 +30,19 @@ const SmilesStructureViewer = () => {
       })
       .catch((error) => {
         setError('Error generating image: ' + error.message);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
+  };
+
+  const downloadImage = () => {
+    const link = document.createElement('a');
+    link.href = imageUrl;
+    link.download = 'molecule.png';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -45,8 +59,8 @@ const SmilesStructureViewer = () => {
           placeholder="Enter SMILES string"
           className="input-field"
         />
-        <button type="submit" className="generate-button">
-          Generate Structure
+        <button type="submit" className="generate-button" disabled={isLoading}>
+          {isLoading ? 'Generating...' : 'Generate Structure'}
         </button>
       </form>
       {error && <p className="error-message">{error}</p>}
@@ -57,6 +71,13 @@ const SmilesStructureViewer = () => {
           <div className="empty-image-box" />
         )}
       </div>
+      {imageUrl && (
+        <div className="download-button-container">
+          <button onClick={downloadImage} className="generate-button">
+            Download Image
+          </button>
+        </div>
+      )}
     </div>
   );
 };

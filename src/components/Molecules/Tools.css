@@ -101,3 +101,21 @@
 .properties-table tr:hover {
   background-color: #d3e5f9;
 }
+
+.molecule-image-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.download-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.molecule-image {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #399bcd;
+  border-radius: 7px;
+}
