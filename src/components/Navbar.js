@@ -49,7 +49,7 @@ const Navbar = () => {
               </ul>
             )}
           </li>
-          <li><NavLink to="/help" isActive={() => isActive('/help')} activeClassName="active">Help</NavLink></li>
+          <li><NavLink to="/help" isActive={() => isActive('/help')} activeClassName="active">About</NavLink></li>
           <li><NavLink to="/contact" isActive={() => isActive('/contact')} activeClassName="active">Contact</NavLink></li>
           <li><NavLink to="/download" isActive={() => isActive('/download')} activeClassName="active">Download</NavLink></li>
           <li><NavLink to="/tools" isActive={() => isActive('/tools')} activeClassName="active">Tools</NavLink></li>

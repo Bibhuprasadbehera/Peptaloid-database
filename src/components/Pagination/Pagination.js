@@ -131,7 +131,6 @@ const Pagination = () => {
   return (
     <div className="pagination-container">
       <h1>Search Results</h1>
-      <p>Retrieved entries: {molecules.length}</p>
       <p>
         Showing {indexOfFirstItem + 1} to{' '}
         {indexOfLastItem > molecules.length ? molecules.length : indexOfLastItem} of {molecules.length} entries

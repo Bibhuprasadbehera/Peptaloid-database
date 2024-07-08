@@ -20,7 +20,7 @@
   font-size: 16px;
   width: 800px;
   margin-right: 16px;
-  border: #399bcd 2px solid;
+  border: 2px solid #399bcd;
   border-radius: 7px;
 }
 
@@ -32,7 +32,9 @@
   border: none;
   cursor: pointer;
   border-radius: 7px;
+  transition: background-color 0.3s ease;
 }
+
 
 .generate-button:hover {
   background-color: #5e4379;
@@ -50,26 +52,71 @@
 }
 
 .molecule-image {
+  max-width: 100%;
+  height: auto;
   border: 2px solid #399bcd;
   margin-top: 16px;
   border-radius: 7px;
+  margin-bottom: 16px;
 }
 
 .properties-table {
   margin-top: 20px;
   border-radius: 7px;
   overflow: hidden;
+  overflow-x: auto;
+  max-width: 100%;
 }
 
 .properties-table table {
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
 }
 
 .properties-table th,
 .properties-table td {
-  border: 1px solid #ddd;
   padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.properties-table th {
+  background-color: #399bcd;
+  color: white;
+  font-weight: bold;
+}
+
+.properties-table tr:nth-child(even) {
+  background-color: #eaf7ff;
+}
+
+.properties-table tr:hover {
+  background-color: #d3e5f9;
+}
+
+.properties-table th:first-child,
+.properties-table td:first-child {
+  width: 60%;
+}
+
+.properties-table th:nth-child(2),
+.properties-table td:nth-child(2) {
+  width: 20%;
+}
+
+.properties-table th:last-child,
+.properties-table td:last-child {
+  width: 20%;
+}
+
+.smiles-cell {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 300px;
 }
 
 .empty-image-box {
@@ -83,39 +130,7 @@
   align-items: center;
 }
 
-.properties-table th {
-  background-color: #399bcd;
-  color: white;
-  font-weight: bold;
-  text-align: left;
-}
-
-.properties-table td {
-  text-align: left;
-}
-
-.properties-table tr:nth-child(even) {
-  background-color: #eaf7ff;
-}
-
-.properties-table tr:hover {
-  background-color: #d3e5f9;
-}
-
-.molecule-image-container {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 16px;
-}
-
 .download-button-container {
   display: flex;
   justify-content: center;
-}
-
-.molecule-image {
-  max-width: 100%;
-  height: auto;
-  border: 2px solid #399bcd;
-  border-radius: 7px;
 }

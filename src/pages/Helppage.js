@@ -10,7 +10,7 @@ const HelpPage = () => {
   return (
     <div>
       <div className="container">
-      <h2 className="heading">Welcome to the Alkaloid Database Help Page</h2>
+      <h2 className="heading">Welcome to the Alkaloid Database About Page</h2>
         <p className="paragraph-left">
           This page provides a detailed description of the columns available in our
           Alkaloid Database. The columns are categorized into six sections:

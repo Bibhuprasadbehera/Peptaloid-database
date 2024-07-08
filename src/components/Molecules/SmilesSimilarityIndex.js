@@ -99,7 +99,9 @@ const SmilesSimilarityIndex = () => {
               <tbody>
                 {similarityResults.map((result, index) => (
                   <tr key={index}>
-                    <td>{result.smiles}</td>
+                    <td className="smiles-cell" title={result.smiles}>
+                      {result.smiles}
+                    </td>
                     <td>{result.similarity.toFixed(4)}</td>
                     <td>
                       <button 

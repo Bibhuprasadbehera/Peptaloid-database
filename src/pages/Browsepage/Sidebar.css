@@ -40,8 +40,8 @@
 
 .slider {
   position: absolute;
-  top: -7.5px; /* Adjust to center the thumb vertically */
-  left: 0;
+  top: -10px; /* Adjust to center the thumb vertically */
+  left: -2px;
   width: 100%;
   background: transparent;
   pointer-events: none;
