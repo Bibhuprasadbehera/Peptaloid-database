@@ -6,7 +6,6 @@ import molecule4 from '../../images/molecule4.jpg';
 const MoleculeCard = ({ molecule, onSelect, isSelected, isBrowsing }) => {
   const navigate = useNavigate();
   const [imageUrl, setImageUrl] = useState('');
-  const [error, setError] = useState('');
 
   useEffect(() => {
     const fetchMoleculeImage = async () => {
@@ -31,7 +30,7 @@ const MoleculeCard = ({ molecule, onSelect, isSelected, isBrowsing }) => {
 
   const handleCardClick = () => {
     if (isBrowsing) {
-      navigate('/molecule-details', { state: { molecule } });
+      navigate(`/molecule-details/${molecule.peptaloid_id}`);
     } else {
       onSelect(molecule);
     }

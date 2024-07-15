@@ -64,7 +64,7 @@ function App() {
           <Route path="/browse/lipinski" element={<Lipinski />} />
           <Route path="/browse/amidecount" element={<AmideCount/>} />
           <Route path="/browse/sidebar" element={<Sidebar/>} />
-          <Route path="/molecule-details" element={<MoleculeDetails />} />
+          <Route path="/molecule-details/:peptaloid_id" element={<MoleculeDetails />} />
           <Route path="/pagination/Pagination" element={<Pagination />} />
           <Route path="/Pagination" element={<Pagination/>} />
           <Route path="/Account" element={<Account />} />

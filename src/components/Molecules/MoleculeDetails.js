@@ -1,18 +1,65 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import './MoleculeDetails.css';
 import molecule4 from '../../images/molecule4.jpg';
 
 const MoleculeDetails = () => {
+  const { peptaloid_id } = useParams();
   const location = useLocation();
-  const { molecule } = location.state || {};
-
+  const [molecule, setMolecule] = useState(location.state?.molecule || null);
   const [imageUrl, setImageUrl] = useState(molecule4);
   const [error, setError] = useState('');
   const [showADMET, setShowADMET] = useState(false);
   const [showPercentiles, setShowPercentiles] = useState(false);
 
   const contentRef = useRef(null);
+
+  useEffect(() => {
+    if (!molecule) {
+      const fetchMolecule = async () => {
+        try {
+          const payload = {
+            skip: 0,
+            limit: 1,
+            conditions: [
+              {
+                field: "peptaloid_id",
+                value: peptaloid_id,
+                operation: "equal",
+                operator: "and"
+              }
+            ],
+            source: [],
+            functional_group: []
+          };
+
+          const response = await fetch('http://127.0.0.1:8000/api/molecules/search', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload),
+          });
+
+          if (!response.ok) {
+            throw new Error('Failed to fetch molecule data');
+          }
+
+          const data = await response.json();
+          if (data.length > 0) {
+            setMolecule(data[0]);
+          } else {
+            throw new Error('Molecule not found');
+          }
+        } catch (error) {
+          console.error('Error fetching molecule:', error);
+          setError('Failed to load molecule data. Please try again later.');
+        }
+      };
+
+      fetchMolecule();
+    }
+  }, [peptaloid_id, molecule]);
 
   useEffect(() => {
     if (molecule && molecule.smiles) {

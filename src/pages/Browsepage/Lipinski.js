@@ -1,5 +1,5 @@
 // Lipinski.js
-import React from 'react';
+import React, { useState } from 'react';
 import './Browse.css';
 import BrowsePage from '../BrowsePage';
 import Footer from '../../components/Footer';
@@ -13,18 +13,39 @@ const lipinskiData = [
   ["4", 96346]
 ];
 
-const Lipinski = () => (
-  <div>
-    <BrowsePage
-      title="Browse by Lipinski Rule"
-      headers={lipinskiHeaders}
-      data={lipinskiData}
-      browsingText="You are browsing entries with Lipinski rule violation:"
-      browseField="Lipinski"
-    />
-    <Footer />
-  </div>
-);
+const generateLipinskiPayload = (row, cellIndex, currentPage, itemsPerPage) => ({
+  skip: (currentPage - 1) * itemsPerPage,
+  limit: itemsPerPage,
+  conditions: [
+    {
+      field: "Lipinski",
+      value: row[0],
+      operation: "equal",
+      operator: "and"
+    }
+  ],
+  source: [],
+  functional_group: []
+});
+
+const Lipinski = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
+
+  return (
+    <div>
+      <BrowsePage
+        title="Browse by Lipinski Rule"
+        headers={lipinskiHeaders}
+        data={lipinskiData}
+        browsingText="You are browsing entries with Lipinski rule violation:"
+        browseField="Lipinski"
+        generatePayload={(row, cellIndex) => generateLipinskiPayload(row, cellIndex, currentPage, itemsPerPage)}
+      />
+      <Footer />
+    </div>
+  );
+};
 
 export default Lipinski;
 

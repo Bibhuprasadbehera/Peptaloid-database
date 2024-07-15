@@ -1,5 +1,4 @@
-//amide count page
-import React from 'react';
+import React, { useState } from 'react';
 import './Browse.css';
 import BrowsePage from '../BrowsePage';
 import Footer from '../../components/Footer';
@@ -17,17 +16,38 @@ const amideData = [
   ["10 or more", 4194]
 ];
 
-const AmideCount = () => (
-  <div>
-    <BrowsePage
-      title="Browse by No. of Amide Bonds"
-      headers={amideHeaders}
-      data={amideData}
-      browsingText="You are browsing entries with Amide Bonds:"
-      browseField="Num_Amide_Bonds"
-    />
-    <Footer />
-  </div>
-);
+const generateAmidePayload = (row, cellIndex, currentPage, itemsPerPage) => ({
+  skip: (currentPage - 1) * itemsPerPage,
+  limit: itemsPerPage,
+  conditions: [
+    {
+      field: "Num_Amide_Bonds",
+      value: row[0],
+      operation: "equal",
+      operator: "and"
+    }
+  ],
+  source: [],
+  functional_group: []
+});
+
+const AmideCount = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
+
+  return (
+    <div>
+      <BrowsePage
+        title="Browse by No. of Amide Bonds"
+        headers={amideHeaders}
+        data={amideData}
+        browsingText="You are browsing entries with Amide Bonds:"
+        browseField="Num_Amide_Bonds"
+        generatePayload={(row, cellIndex) => generateAmidePayload(row, cellIndex, currentPage, itemsPerPage)}
+      />
+      <Footer />
+    </div>
+  );
+};
 
 export default AmideCount;

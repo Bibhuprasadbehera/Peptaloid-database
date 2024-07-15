@@ -34,7 +34,7 @@ const AdvancedSearch = () => {
             limit: 30,
             conditions: criteria.map(criterion => ({
                 field: criterion.field,
-                value: isNaN(criterion.query) ? criterion.query : Number(criterion.query),
+                value: isNaN(criterion.query) ? criterion.query.toLowerCase() : Number(criterion.query),
                 operation: mapConditionToOperation(criterion.condition),
                 operator: criterion.operator
             })),
@@ -48,7 +48,7 @@ const AdvancedSearch = () => {
     const mapConditionToOperation = (condition) => {
         switch (condition) {
             case '>': return 'greater';
-            case '<': return 'less';
+            case '<': return 'lesser';
             case '=': return 'equal';
             case '!=': return 'notEqual';
             default: return 'equal';
@@ -104,7 +104,7 @@ const AdvancedSearch = () => {
                                                 <option value="Alcohol">Alcohol</option>
                                                 <option value="Aldehyde">Aldehyde</option>
                                                 <option value="Ketone">Ketone</option>
-                                                <option value="Carboxylic Acid">Carboxylic Acid</option>
+                                                <option value="Carboxylic_Acid">Carboxylic Acid</option>
                                                 <option value="Amine">Amine</option>
                                                 <option value="Thiol">Thiol</option>
                                             </optgroup>

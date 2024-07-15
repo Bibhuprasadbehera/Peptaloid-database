@@ -1,12 +1,13 @@
-// Carbon.js
-import React from 'react';
+// File: Carbon.js
+
+import React, { useState } from 'react';
 import './Browse.css';
 import BrowsePage from '../BrowsePage';
 import Footer from '../../components/Footer';
 
 const carbonHeaders = ["Range", "Count"];
 const carbonData = [
-  ["0 to 10", 1315],
+  ["1 to 10", 1315],
   ["10 to 20", 29735],
   ["20 to 30", 84046],
   ["30 to 40", 27844],
@@ -19,17 +20,62 @@ const carbonData = [
   ["100 and above", 598]
 ];
 
-const Carbon = () => (
-  <div>
-    <BrowsePage
-      title="Browse by No. of Carbon"
-      headers={carbonHeaders}
-      data={carbonData}
-      browsingText="You are browsing entries with Carbon Number:"
-      browseField="carbon_count"
-    />
-    <Footer />
-  </div>
-);
+const generateCarbonPayload = (row, cellIndex, currentPage, itemsPerPage) => {
+  const range = row[0];
+  let conditions = [];
+
+  if (range.includes('and above')) {
+    const start = parseInt(range.split(' ')[0], 10);
+    conditions.push({
+      field: "carbon_count",
+      value: start,
+      operation: "greater",
+      operator: "and"
+    });
+  } else {
+    const [start, end] = range.split(' to ').map(Number);
+    conditions.push(
+      {
+        field: "carbon_count",
+        value: start,
+        operation: "greater",
+        operator: "and"
+      },
+      {
+        field: "carbon_count",
+        value: end,
+        operation: "lesser",
+        operator: "and"
+      }
+    );
+  }
+
+  return {
+    skip: (currentPage - 1) * itemsPerPage,
+    limit: itemsPerPage,
+    conditions: conditions,
+    source: [],
+    functional_group: []
+  };
+};
+
+const Carbon = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
+
+  return (
+    <div>
+      <BrowsePage
+        title="Browse by No. of Carbon"
+        headers={carbonHeaders}
+        data={carbonData}
+        browsingText="You are browsing entries with Carbon Number:"
+        browseField="carbon_count"
+        generatePayload={(row, cellIndex) => generateCarbonPayload(row, cellIndex, currentPage, itemsPerPage)}
+      />
+      <Footer />
+    </div>
+  );
+};
 
 export default Carbon;

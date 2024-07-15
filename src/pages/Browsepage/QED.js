@@ -1,5 +1,6 @@
-// QED.js
-import React from 'react';
+// File: QED.js
+
+import React, { useState } from 'react';
 import './Browse.css';
 import BrowsePage from '../BrowsePage';
 import Footer from '../../components/Footer';
@@ -18,18 +19,47 @@ const qedData = [
   ["0.9 to 1", 1220]
 ];
 
-const QED = () => (
-  <div>
-    <BrowsePage
-      title="Browse by QED"
-      headers={qedHeaders}
-      data={qedData}
-      browsingText="You are browsing entries from QED range:"
-      browseField="qed_score"
-    />
-    <Footer />
-  </div>
-);
+const generateQEDPayload = (row, cellIndex, currentPage, itemsPerPage) => {
+  const [start, end] = row[0].split(' to ').map(Number);
+  return {
+    skip: (currentPage - 1) * itemsPerPage,
+    limit: itemsPerPage,
+    conditions: [
+      {
+        field: "qed_score",
+        value: start,
+        operation: "greater",
+        operator: "and"
+      },
+      {
+        field: "qed_score",
+        value: end,
+        operation: "lesser",
+        operator: "and"
+      }
+    ],
+    source: [],
+    functional_group: []
+  };
+};
+
+const QED = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
+
+  return (
+    <div>
+      <BrowsePage
+        title="Browse by QED"
+        headers={qedHeaders}
+        data={qedData}
+        browsingText="You are browsing entries from QED range:"
+        browseField="qed_score"
+        generatePayload={(row, cellIndex) => generateQEDPayload(row, cellIndex, currentPage, itemsPerPage)}
+      />
+      <Footer />
+    </div>
+  );
+};
 
 export default QED;
-
