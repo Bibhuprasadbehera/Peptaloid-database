@@ -17,7 +17,6 @@ const HomePage = () => {
     MolecularFormula: "C31H44N4O5",
     IUPACName: " (2S,3S)-N-[(3S,4S,7S)-7-benzyl-11-hydroxy-5,8-dioxo-3-propan-2-yl-2-oxa-6,9-diazabicyclo[10.2.2]hexadeca-1(14),12,15-trien-4-yl]-2-(dimethylamino)-3-methylpentanamide",
     Compound_Name: "Pandamine",
-    Exact_MW: "552.331",
     // Add more properties as needed
   };
 

@@ -29,15 +29,22 @@ const AdvancedSearchSidebar = () => {
     },
   });
 
+  const sourceDisplayNames = {
+    coconut: 'COCONUT',
+    npatlas: 'Natural Products Atlas',
+    supernatural: 'SuperNatural 3.0',
+    zinc: 'ZINC',
+  };
+
   const rangeConfigs = {
-    Exact_MW: { min: 0, max: 5000, label: 'Molecular Weight' },
-    SlogP: { min: -5, max: 10, label: 'SLogP' },
-    Num_HBA: { min: 0, max: 90, label: 'HBA' },
-    Num_HBD: { min: 0, max: 80, label: 'HBD' },
-    carbon_count: { min: 0, max: 219, label: 'Number of Carbon' },
+    Exact_MW: { min: 0, max: 5000, label: 'Molecular Weight (MW)' },
+    SlogP: { min: -5, max: 10, label: 'Octanol-Water Partition Coefficient (SLogP)' },
+    Num_HBA: { min: 0, max: 90, label: 'Hydrogen Bond Acceptors (HBA)' },
+    Num_HBD: { min: 0, max: 80, label: 'Hydrogen Bond Donors (HBD)' },
+    carbon_count: { min: 0, max: 219, label: 'Number of Carbon Atoms' },
     Num_Amide_Bonds: { min: 0, max: 60, label: 'Number of Amide Bonds' },
-    qed_score: { min: 0, max: 1, label: 'QED Score' },
-    TPSA: { min: 0, max: 2200, label: 'TPSA' },
+    qed_score: { min: 0, max: 1, label: 'Quantitative Estimate of Druglikeness (QED)' },
+    TPSA: { min: 0, max: 2200, label: 'Topological Polar Surface Area (TPSA)' },
   };
 
   const handleRangeChange = (name, minOrMax, value) => {
@@ -188,9 +195,10 @@ const AdvancedSearchSidebar = () => {
 
   return (
     <div className="sidebar-container">
-      <h2>Advanced Filters</h2>
+      <h2 style={{ fontSize: '24px', color: '#eb567b' }}>Advanced Filters</h2>
+      <hr style={{ border: '1px solid #5e4379' }} />
       <div className="filter-group">
-        <h3>Source</h3>
+        <h3>Data Collection</h3>
         {Object.keys(filters.source).map((source) => (
           <label key={source} className="select-all-checkbox">
             <input
@@ -200,7 +208,7 @@ const AdvancedSearchSidebar = () => {
               checked={filters.source[source]}
               onChange={handleCheckboxChange}
             />
-            {source.charAt(0).toUpperCase() + source.slice(1)}
+            {sourceDisplayNames[source]}
           </label>
         ))}
       </div>

@@ -44,11 +44,11 @@ const MoleculeCard = ({ molecule, onSelect, isSelected, isBrowsing }) => {
       <div className="molecule-info">
         <div className="molecule-card-content">
           <h2><strong>Peptaloid ID:</strong> {molecule.peptaloid_id || 'N/A'}</h2>
-          <p><strong>Common name:</strong> {molecule.Compound_Name || 'Unknown'}</p>
-          <p><strong>IUPAC Name:</strong> {molecule.IUPAC_Name || 'N/A'}</p>
-          <p><strong>SMILES:</strong> {molecule.smiles || 'N/A'}</p>
+          <p><strong>Common name:</strong> {molecule.Compound_Name ? (molecule.Compound_Name.length > 100 ? molecule.Compound_Name.slice(0, 50) + '...' : molecule.Compound_Name) : 'Unknown'}</p>
+          <p><strong>IUPAC Name:</strong> {molecule.IUPAC_Name ? (molecule.IUPAC_Name.length > 100 ? molecule.IUPAC_Name.slice(0, 70) + '...' : molecule.IUPAC_Name) : 'N/A'}</p>
+          <p><strong>SMILES:</strong> {molecule.smiles ? (molecule.smiles.length > 100 ? molecule.smiles.slice(0, 60) + '...' : molecule.smiles) : 'N/A'}</p>
           <p><strong>Formula:</strong> {molecule.MolecularFormula || 'N/A'}</p>
-          <p><strong>Exact MW:</strong> {molecule.Exact_MW || 'N/A'}</p>
+          <p><strong>Exact MW:</strong> {molecule.Exact_MW ? molecule.Exact_MW.toFixed(2) : 'N/A'}</p>
         </div>
       </div>
     </div>

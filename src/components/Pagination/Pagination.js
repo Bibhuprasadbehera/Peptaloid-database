@@ -15,7 +15,29 @@ const Pagination = () => {
   const [selectAll, setSelectAll] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showGoToTop, setShowGoToTop] = useState(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const viewportHeight = document.documentElement.clientHeight;
+      if (window.scrollY > viewportHeight) {
+        setShowGoToTop(true);
+      } else {
+        setShowGoToTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+  
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -240,6 +262,11 @@ const Pagination = () => {
             </div>
           </div>
         </div>
+        {showGoToTop && (
+        <button className="go-to-top" onClick={scrollToTop}>
+          ↑
+        </button>
+      )}
       </div>
     </div>
   );

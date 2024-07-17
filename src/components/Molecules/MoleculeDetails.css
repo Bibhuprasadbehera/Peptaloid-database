@@ -246,3 +246,28 @@
     font-weight: bold;
   }
 }
+
+/* Add this to your existing MoleculeDetails.css file */
+
+.go-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #399bcd;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s;
+  z-index: 1000;
+}
+
+.go-to-top:hover {
+  background-color: #5e4379;
+}
