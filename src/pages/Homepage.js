@@ -15,7 +15,7 @@ const HomePage = () => {
     peptaloid_id: "PT133527",
     smiles: "CC[C@H](C)[C@H](N(C)C)C(=O)N[C@H]1[C@@H](Oc2ccc(cc2)C(O)CNC(=O)[C@H](Cc3ccccc3)NC1=O)C(C)C",
     MolecularFormula: "C31H44N4O5",
-    IUPACName: " (2S,3S)-N-[(3S,4S,7S)-7-benzyl-11-hydroxy-5,8-dioxo-3-propan-2-yl-2-oxa-6,9-diazabicyclo[10.2.2]hexadeca-1(14),12,15-trien-4-yl]-2-(dimethylamino)-3-methylpentanamide",
+    IUPAC_Name: " (2S,3S)-N-[(3S,4S,7S)-7-benzyl-11-hydroxy-5,8-dioxo-3-propan-2-yl-2-oxa-6,9-diazabicyclo[10.2.2]hexadeca-1(14),12,15-trien-4-yl]-2-(dimethylamino)-3-methylpentanamide",
     Compound_Name: "Pandamine",
     // Add more properties as needed
   };
