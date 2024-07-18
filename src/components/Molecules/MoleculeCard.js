@@ -48,7 +48,7 @@ const MoleculeCard = ({ molecule, onSelect, isSelected, isBrowsing }) => {
           <p><strong>IUPAC Name:</strong> {molecule.IUPAC_Name ? (molecule.IUPAC_Name.length > 100 ? molecule.IUPAC_Name.slice(0, 70) + '...' : molecule.IUPAC_Name) : 'N/A'}</p>
           <p><strong>SMILES:</strong> {molecule.smiles ? (molecule.smiles.length > 100 ? molecule.smiles.slice(0, 60) + '...' : molecule.smiles) : 'N/A'}</p>
           <p><strong>Formula:</strong> {molecule.MolecularFormula || 'N/A'}</p>
-          <p><strong>Exact MW:</strong> {molecule.Exact_MW ? molecule.Exact_MW.toFixed(2) : 'N/A'}</p>
+          <p><strong>Molecular Weight:</strong> {molecule.Exact_MW ? molecule.Exact_MW.toFixed(2) : '552.33'}</p>
         </div>
       </div>
     </div>

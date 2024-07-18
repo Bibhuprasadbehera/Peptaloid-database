@@ -42,10 +42,10 @@ const Navbar = () => {
                 <hr />
                 <li><NavLink to="/browse/carbon" activeClassName="active">Browse by No. of Carbon</NavLink></li>
                 <li><NavLink to="/browse/molecularweight" activeClassName="active">Browse by Molecular Weight</NavLink></li>
-                <li><NavLink to="/browse/source" activeClassName="active">Browse by Source</NavLink></li>
                 <li><NavLink to="/browse/qed" activeClassName="active">Browse by QED</NavLink></li>
                 <li><NavLink to="/browse/lipinski" activeClassName="active">Browse by Lipinski Rule</NavLink></li>
                 <li><NavLink to="/browse/amidecount" activeClassName="active">Browse by Amide count</NavLink></li>
+                <li><NavLink to="/browse/source" activeClassName="active">Browse by Source of data collection</NavLink></li>
               </ul>
             )}
           </li>
