@@ -314,3 +314,57 @@ input[type="radio"]:checked + .tick_mark::after {
   padding: 20px;
 }
 
+.accountcontainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  background-color: #ffffff; /* Light background */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.account-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.accountinput-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.accountinput-field {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 2px solid #399bcd;
+  border-radius: 5px; /* Rounded input fields */
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.accountsubmit-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff; /* Button color */
+  border: none;
+  border-radius: 5px; /* Rounded button */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+@media (max-width: 600px) {
+  .accountcontainer {
+    padding: 10px;
+  }
+
+  .accountinput-field {
+    font-size: 14px;
+  }
+
+}

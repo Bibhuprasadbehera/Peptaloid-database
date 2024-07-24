@@ -20,8 +20,8 @@ const Loginpage = () => {
         <form className="login-form">
           <img src={peptaloid} alt="Peptaloid Logo" className="logo" style={{ marginBottom: '10px' }} />
           <div className="input-container">
-            <input type="text" placeholder="Email" style={{ width: '470px' }} className="input-field" />
-            <input type="password" placeholder="Password" style={{ width: '470px' }} className="input-field" />
+            <input type="text" placeholder="Email"className="accountinput-field" />
+            <input type="password" placeholder="Password"className="accountinput-field" />
           </div>
           <button type="submit" className="submit-button" >Login</button>
           <button type="button" className="create-account-button" onClick={handleCreateAccount} >

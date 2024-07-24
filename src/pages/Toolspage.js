@@ -1,3 +1,4 @@
+// Toolspage.js
 import React, { useState } from 'react';
 import './styles.css';
 import Navbar from '../components/Navbar';
@@ -6,6 +7,7 @@ import Footer from '../components/Footer';
 import SmilesStructureViewer from '../components/Molecules/SmilesStructureViewer';
 import SmilesPropertyPredictor from '../components/Molecules/SmilesPropertyPredictor';
 import SmilesSimilarityIndex from '../components/Molecules/SmilesSimilarityIndex';
+import Screening from '../components/Molecules/Screening';
 
 const Toolspage = () => {
   const [activeTab, setActiveTab] = useState('structure');
@@ -38,11 +40,18 @@ const Toolspage = () => {
             >
               Similarity Index
             </div>
+            <div
+              className={`tab ${activeTab === 'screening' ? 'active' : ''}`}
+              onClick={() => handleTabChange('screening')}
+            >
+              Molecule Screening 
+            </div>
           </div>
           <div className="tab-content">
             {activeTab === 'structure' && <SmilesStructureViewer />}
             {activeTab === 'property' && <SmilesPropertyPredictor />}
             {activeTab === 'similarity' && <SmilesSimilarityIndex />}
+            {activeTab === 'screening' && <Screening />}
           </div>
         </div>
       </div>

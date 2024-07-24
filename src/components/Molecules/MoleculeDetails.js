@@ -12,8 +12,35 @@ const MoleculeDetails = () => {
   const [showADMET, setShowADMET] = useState(false);
   const [showPercentiles, setShowPercentiles] = useState(false);
   const [showGoToTop, setShowGoToTop] = useState(true);
+  const [pubchemId, setPubchemId] = useState(null);
 
   const contentRef = useRef(null);
+
+  const getPubchemIdFromInchiKey = async (inchiKey) => {
+    const base_url = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/inchikey";
+    const url = `${base_url}/${inchiKey}/cids/TXT`;
+    
+    try {
+      const response = await fetch(url);
+      if (response.ok) {
+        const id = await response.text();
+        return id.trim();
+      } else {
+        console.error('Failed to fetch PubChem ID');
+        return null;
+      }
+    } catch (error) {
+      console.error('Error fetching PubChem ID:', error);
+      return null;
+    }
+  };
+
+  useEffect(() => {
+    if (molecule && molecule.InChIKey) {
+      getPubchemIdFromInchiKey(molecule.InChIKey)
+        .then(id => setPubchemId(id));
+    }
+  }, [molecule]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -115,7 +142,7 @@ const MoleculeDetails = () => {
 
   const generateFile = (fileType) => {
     if (!molecule) return;
-    const headers = ["Category", "Property", "Value"];
+    const headers = ["Category", "Property", "Value"];  
 
     const rows = [
       ["Basic Information", "Peptaloid ID", molecule.peptaloid_id],
@@ -244,9 +271,9 @@ const MoleculeDetails = () => {
 
     const content = [
       headers.join(fileType === 'csv' ? ',' : '\t'),
-      ...rows.map(row => row.map(cell => cell === undefined ? '' : `"${cell}"`).join(fileType === 'csv' ? ',' : '\t'))
+      ...rows.map(row => row.map(cell => (cell === undefined ? '' : `"${cell}"`)).join(fileType === 'csv' ? ',' : '\t'))
     ].join('\n');
-
+  
     const blob = new Blob([content], { type: fileType === 'csv' ? 'text/csv;charset=utf-8;' : 'text/tab-separated-values;charset=utf-8;' });
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
@@ -370,6 +397,10 @@ const MoleculeDetails = () => {
               <td><strong>Zinc ID:</strong></td>
               <td>{molecule.zinc_id ? (<a href={`https://zinc.docking.org/substances/${molecule.zinc_id}/`} target="_blank" rel="noopener noreferrer"> {molecule.zinc_id}</a>) : ('-')}</td>
             </tr>
+            <tr>
+              <td><strong>PubChem ID:</strong></td>
+              <td>{pubchemId ? (<a href={`https://pubchem.ncbi.nlm.nih.gov/compound/${pubchemId}`} target="_blank" rel="noopener noreferrer">{pubchemId}</a>) : ('-')}</td>
+            </tr>
           </tbody>
         </table>
 
@@ -406,7 +437,7 @@ const MoleculeDetails = () => {
         <h3 id="lipinskis-rule">Lipinski's Rule of Five</h3>
         <table>
           <tbody>
-          <tr>
+            <tr>
               <td><strong>Number of Lipinski rule violation:</strong></td>
               <td>{molecule.Lipinski}</td>
             </tr>
@@ -508,6 +539,10 @@ const MoleculeDetails = () => {
         <h3 id="admet-properties">ADMET Properties</h3>
           <table className="md-table">
             <tbody>
+              <tr>
+                <td><strong>Number of Lipinski rule violation:</strong></td>
+                <td>{molecule.Lipinski}</td>
+              </tr>
               <tr>
                 <td><strong>Mutagenicity:</strong></td>
                 <td>{molecule.AMES != null ? molecule.AMES.toFixed(3) : '-'}</td>

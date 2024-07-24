@@ -165,7 +165,7 @@ const AdvancedSearch = () => {
                             ))}
                         </tbody>
                     </table>
-                    <button type="submit" className="submit-button">Submit</button>
+                    <button type="submit" className="search-button">Submit</button>
                 </form>
             </div>
             <Footer />
