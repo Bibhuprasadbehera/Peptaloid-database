@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './Sidebar.css';
 
-const AdvancedSearchSidebar = () => {
+const AdvancedSearchSidebar = ({ onFilterChange }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [filters, setFilters] = useState({
     Exact_MW: { min: 0, max: 5000 },
     SlogP: { min: -5, max: 10 },
@@ -28,6 +29,13 @@ const AdvancedSearchSidebar = () => {
       Thiol: false,
     },
   });
+
+  useEffect(() => {
+    // Retrieve filters from location state if available
+    if (location.state && location.state.filters) {
+      setFilters(location.state.filters);
+    }
+  }, [location.state]);
 
   const sourceDisplayNames = {
     coconut: 'COCONUT',
@@ -190,7 +198,8 @@ const AdvancedSearchSidebar = () => {
     };
 
     console.log('Payload:', payload);
-    navigate('/pagination', { state: { payload } });
+    onFilterChange(filters);
+    navigate('/pagination', { state: { payload, filters } });
   };
 
   return (

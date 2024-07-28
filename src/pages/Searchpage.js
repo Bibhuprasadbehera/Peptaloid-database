@@ -14,6 +14,34 @@ const SearchPage = () => {
 
   const handleFieldChange = (field) => {
     setSelectedField(field);
+    setSearchTerm(''); // Clear the search term when changing fields
+  };
+
+  const getPlaceholder = (field) => {
+    switch (field) {
+      case "Compound Name":
+        return "e.g., Pandamine; Ampullosporin B; Streptozoticin";
+      case "Peptaloid id":
+        return "e.g., PT000001; PT006643; PT161725";
+      case "InChIKey":
+        return "e.g., OZQWWKNRYQISEO-ZGOJTZKKSA-N;   DFYSEPMXUCYDJQ-UHFFFAOYSA-N";
+      case "IUPAC Name":
+        return "e.g., N-(4-acetamidophenyl)-3-phenylprop-2-enamide;    2,4-bis(2,2-dimethylpropanoylamino)-4-oxobutanoate";
+      case "Compound InChI":
+        return "e.g., InChI=1S/C9H12F6N2O/c1-3-5-16-6(18)17-7(4-2,8(10,11)12)9(13,14)15/h3H,1,4-5H2,2H3,(H2,16,17,18)";
+      case "Molecular Formula":
+        return "e.g., C10H16N2O2; C46H53N3O6S2; C23H28N2O4";
+      case "SMILES":
+        return "e.g., O=C(NCC=C)NC(CC)(C(F)(F)F)C(F)(F)F";
+      case "Genus":
+        return "e.g., Beauveria; Streptomyces; Aureobasidium";
+      case "Origin species":
+        return "e.g., majuscula; pullulans";
+      case "Origin (Bacterium or Fungus...)":
+        return "e.g., Fungus";
+      default:
+        return "Search...";
+    }
   };
 
   const handleSearch = () => {
@@ -88,7 +116,7 @@ const SearchPage = () => {
         <h2 className="heading">Pepataloid Database Search Page</h2>
         <input
           type="text"
-          placeholder="Search..."
+          placeholder={getPlaceholder(selectedField)}
           value={searchTerm}
           onChange={handleSearchChange}
           className="search-bar"

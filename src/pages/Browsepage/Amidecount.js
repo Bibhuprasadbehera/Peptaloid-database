@@ -16,20 +16,32 @@ const amideData = [
   ["10 or more", 4194]
 ];
 
-const generateAmidePayload = (row, cellIndex, currentPage, itemsPerPage) => ({
-  skip: (currentPage - 1) * itemsPerPage,
-  limit: itemsPerPage,
-  conditions: [
-    {
+const generateAmidePayload = (row, cellIndex, currentPage, itemsPerPage) => {
+  let conditions = [];
+  if (row[0].includes('or more')) {
+    const start = parseInt(row[0], 10);
+    conditions.push({
+      field: "Num_Amide_Bonds",
+      value: start,
+      operation: "greater",
+      operator: "and"
+    });
+  } else {
+    conditions.push({
       field: "Num_Amide_Bonds",
       value: row[0],
       operation: "equal",
       operator: "and"
-    }
-  ],
-  source: [],
-  functional_group: []
-});
+    });
+  }
+  return {
+    skip: (currentPage - 1) * itemsPerPage,
+    limit: itemsPerPage,
+    conditions: conditions,
+    source: [],
+    functional_group: []
+  };
+};
 
 const AmideCount = () => {
   const [currentPage, setCurrentPage] = useState(1);

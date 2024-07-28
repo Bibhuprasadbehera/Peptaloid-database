@@ -1,21 +1,42 @@
 import React, { useState } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../images/navbar.png';
 import './Navbar.css';
 
 const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const toggleDropdown = (dropdownName) => {
     if (activeDropdown === dropdownName) {
-      setActiveDropdown(null); // Close the dropdown if it's already open
+      setActiveDropdown(null);
     } else {
-      setActiveDropdown(dropdownName); // Open the clicked dropdown and close others
+      setActiveDropdown(dropdownName);
     }
   };
 
   const isActive = (path) => location.pathname === path;
+
+  const handleBrowseAllClick = (e) => {
+    e.preventDefault(); // Prevent default link behavior
+    const payload = {
+      skip: 0,
+      limit: 30,
+      conditions: [
+        {
+          field: "Num_Amide_Bonds",
+          value: 1,
+          operation: "greater",
+          operator: "and"
+        }
+      ],
+      source: [],
+      functional_group: []
+    };
+    console.log("Navigating with payload:", payload); // Add this line for debugging
+    navigate('/pagination', { state: { payload } });
+  };
 
   return (
     <nav className="navbar">
@@ -38,7 +59,7 @@ const Navbar = () => {
             <a href="#" onClick={() => toggleDropdown('browse')} className={isActive('/browse/carbon') || isActive('/browse/molecularweight') || isActive('/browse/source') || isActive('/browse/qed') || isActive('/browse/lipinski') ? "active" : ""}> Browse</a>
             {activeDropdown === 'browse' && (
               <ul className="dropdown-menu">
-                <li><NavLink to="/Pagination/Pagination" activeClassName="active">Browse All</NavLink></li>
+                <li><a href="#" onClick={handleBrowseAllClick}>Browse All</a></li>
                 <hr />
                 <li><NavLink to="/browse/carbon" activeClassName="active">Browse by No. of Carbon</NavLink></li>
                 <li><NavLink to="/browse/molecularweight" activeClassName="active">Browse by Molecular Weight</NavLink></li>
