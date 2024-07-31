@@ -166,7 +166,11 @@ body {
 
 .input-field {
   width: 90%; /* Adjust this value as needed */
-  /* rest of your styles */
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
 }
 
 .submit-button:hover {
@@ -193,7 +197,9 @@ body {
   margin-bottom: 20px;
 }
 
-.faq-item h1,h3,h2 {
+.faq-item h1,
+.faq-item h2,
+.faq-item h3 {
   font-size: 1.2em;
   margin-bottom: 10px;
   color: #399bcd;
@@ -358,13 +364,130 @@ input[type="radio"]:checked + .tick_mark::after {
   transition: background-color 0.3s ease; /* Smooth transition */
 }
 
-@media (max-width: 600px) {
-  .accountcontainer {
+@media (max-width: 768px) {
+  .container {
     padding: 10px;
   }
 
-  .accountinput-field {
+  .heading {
+    font-size: 28px;
+  }
+
+  .subheading {
+    font-size: 20px;
+  }
+
+  .paragraph {
+    font-size: 18px;
+  }
+
+  .login-form,
+  .account-form {
+    padding: 15px;
+  }
+
+  .input-field {
     font-size: 14px;
   }
 
+  .submit-button,
+  .create-account-button {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .faq-container {
+    padding: 10px;
+  }
+
+  .faq-item h1,
+  .faq-item h2,
+  .faq-item h3 {
+    font-size: 1em;
+  }
+
+  .faq-item p {
+    font-size: 0.9em;
+  }
+
+  .search-fields {
+    flex-direction: column;
+  }
+
+  .search-fields-column {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .tab-content {
+    padding: 15px;
+  }
+
+  .accountcontainer {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 5px;
+  }
+
+  .heading {
+    font-size: 24px;
+  }
+
+  .subheading {
+    font-size: 18px;
+  }
+
+  .paragraph {
+    font-size: 16px;
+  }
+
+  .login-form,
+  .account-form {
+    padding: 10px;
+  }
+
+  .input-field {
+    font-size: 12px;
+  }
+
+  .submit-button,
+  .create-account-button {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .faq-container {
+    padding: 5px;
+  }
+
+  .faq-item h1,
+  .faq-item h2,
+  .faq-item h3 {
+    font-size: 0.9em;
+  }
+
+  .faq-item p {
+    font-size: 0.8em;
+  }
+
+  .search-fields {
+    flex-direction: column;
+  }
+
+  .search-fields-column {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .tab-content {
+    padding: 10px;
+  }
+
+  .accountcontainer {
+    padding: 10px;
+  }
 }

@@ -1,6 +1,4 @@
 /* Navbar.css */
-
-
 .navbar {
   position: sticky;
   top: 0;
@@ -9,7 +7,7 @@
   background-color: #2c3e50;
   padding: 15px 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 3;
+  z-index: 1000;
 }
 
 .logo-container {
@@ -26,6 +24,7 @@
 .logo {
   width: 180px;
   height: auto;
+  max-width: 100%;
 }
 
 .nav-links-container {
@@ -59,6 +58,7 @@
   border-radius: 5px;
   transition: background-color 0.3s, color 0.3s;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .nav-links li a:hover,
@@ -87,11 +87,12 @@
   border-radius: 5px;
   margin-top: 10px;
   display: none;
+  z-index: 1001;
 }
-
 
 .dropdown-menu li {
   padding: 0px;
+  margin: 5px 0;
 }
 
 .dropdown-menu li a {
@@ -122,39 +123,6 @@
   border-top-color: #fff;
 }
 
-/* Responsive styling */
-@media (max-width: 768px) {
-  .nav-links-container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .nav-links {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .nav-links li {
-    margin-right: 0;
-    margin-bottom: 10px;
-  }
-
-  .login-button {
-    margin-left: 0;
-    align-self: flex-end;
-  }
-
-  .dropdown-menu {
-    position: static;
-    margin-top: 0;
-  }
-
-  .search-dropdown:hover .dropdown-menu,
-  .browse-dropdown:hover .dropdown-menu {
-    display: block;
-  }
-}
-
 /* Arrow styling for dropdown */
 .search-dropdown > a::after,
 .browse-dropdown > a::after {
@@ -172,4 +140,76 @@
 .search-dropdown:hover > a::after,
 .browse-dropdown:hover > a::after {
   border-top-color: #fff;
+}
+
+/* Responsive styling */
+@media (max-width: 1024px) {
+  .nav-links li a,
+  .login-button {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    position: relative;
+  }
+
+  .nav-links-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-links li {
+    margin-right: 0;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .nav-links li a {
+    display: block;
+    padding: 10px;
+  }
+
+  .login-button {
+    margin-left: 0;
+    align-self: flex-start;
+    margin-top: 10px;
+  }
+
+  .dropdown-menu {
+    position: static;
+    margin-top: 5px;
+    width: 100%;
+    display: none;
+  }
+
+  .search-dropdown.active .dropdown-menu,
+  .browse-dropdown.active .dropdown-menu {
+    display: block;
+  }
+
+  .search-dropdown > a::after,
+  .browse-dropdown > a::after {
+    float: right;
+    margin-top: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    width: 140px;
+  }
+
+  .nav-links li a,
+  .login-button {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
 }

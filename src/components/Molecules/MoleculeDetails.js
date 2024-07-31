@@ -537,23 +537,68 @@ const MoleculeDetails = () => {
         </table>
 
         <h3 id="admet-properties">ADMET Properties</h3>
-          <table className="md-table">
+        <table className="md-table">
             <tbody>
               <tr>
                 <td><strong>Number of Lipinski rule violation:</strong></td>
                 <td>{molecule.Lipinski}</td>
               </tr>
               <tr>
+                <th colspan="3"><strong>Absorption:</strong></th>
+              </tr>
+              <tr>
                 <td><strong>Mutagenicity:</strong></td>
                 <td>{molecule.AMES != null ? molecule.AMES.toFixed(3) : '-'}</td>
+              </tr>
+              <tr>
+                <td><strong>Human Intestinal Absorption:</strong></td>
+                <td>{molecule.HIA_Hou != null ? molecule.HIA_Hou.toFixed(3) : '-'}</td>
+              </tr>
+              <tr>
+                <td><strong>Oral Bioavailability:</strong></td>
+                <td>{molecule.Bioavailability_Ma != null ? molecule.Bioavailability_Ma.toFixed(3) : '-'}</td>
+              </tr>
+              <tr>
+                <td><strong>Aqueous Solubility:</strong></td>
+                <td>{molecule.Solubility_AqSolDB != null ? molecule.Solubility_AqSolDB.toFixed(3) + ' log(mol/L)' : '-'}</td>
+              </tr>
+              <tr>
+                <td><strong>Lipophilicity:</strong></td>
+                <td>{molecule.Lipophilicity_AstraZeneca != null ? molecule.Lipophilicity_AstraZeneca.toFixed(3) + ' log-ratio' : '-'}</td>
+              </tr>
+              <tr>
+                <td><strong>Hydration Free Energy:</strong></td>
+                <td>{molecule.HydrationFreeEnergy_FreeSolv != null ? molecule.HydrationFreeEnergy_FreeSolv.toFixed(3) + ' kcal/mol' : '-'}</td>
+              </tr>
+              <tr>
+                <td><strong>Cell Effective Permeability:</strong></td>
+                <td>{molecule.Caco2_Wang != null ? molecule.Caco2_Wang.toFixed(3) + ' log(10⁻⁶ cm/s)' : '-'}</td>
+              </tr>
+              <tr>
+                <td><strong>PAMPA Permeability:</strong></td>
+                <td>{molecule.PAMPA_NCATS != null ? molecule.PAMPA_NCATS.toFixed(3) : '-'}</td>
+              </tr>
+              <tr>
+                <td><strong>P-glycoprotein Inhibition:</strong></td>
+                <td>{molecule.Pgp_Broccatelli != null ? molecule.Pgp_Broccatelli.toFixed(3) : '-'}</td>
+              </tr>
+              <tr>
+                <th colspan="2"><strong>Distribution:</strong></th>
               </tr>
               <tr>
                 <td><strong>Blood-Brain Barrier Penetration:</strong></td>
                 <td>{molecule.BBB_Martins != null ? molecule.BBB_Martins.toFixed(3) : '-'}</td>
               </tr>
               <tr>
-                <td><strong>Oral Bioavailability:</strong></td>
-                <td>{molecule.Bioavailability_Ma != null ? molecule.Bioavailability_Ma.toFixed(3) : '-'}</td>
+                <td><strong>Plasma Protein Binding Rate:</strong></td>
+                <td>{molecule.PPBR_AZ != null ? molecule.PPBR_AZ.toFixed(3) + ' %' : '-'}</td>
+              </tr>
+              <tr>
+                <td><strong>Volume of Distribution at Steady State:</strong></td>
+                <td>{molecule.VDss_Lombardo != null ? molecule.VDss_Lombardo.toFixed(3) + ' L/kg' : '-'}</td>
+              </tr>
+              <tr>
+                <th colspan="2"><strong>Metabolism:</strong></th>
               </tr>
               <tr>
                 <td><strong>CYP1A2 Inhibition:</strong></td>
@@ -588,6 +633,28 @@ const MoleculeDetails = () => {
                 <td>{molecule.CYP3A4_Veith != null ? molecule.CYP3A4_Veith.toFixed(3) : '-'}</td>
               </tr>
               <tr>
+                <th colspan="2"><strong>Excretion:</strong></th>
+              </tr>
+              <tr>
+                <td><strong>Half Life:</strong></td>
+                <td>{molecule.Half_Life_Obach != null ? molecule.Half_Life_Obach.toFixed(3) + ' hr' : '-'}</td>
+              </tr>
+              <tr>
+                <td><strong>Drug Clearance (Hepatocyte):</strong></td>
+                <td>{molecule.Clearance_Hepatocyte_AZ != null ? molecule.Clearance_Hepatocyte_AZ.toFixed(3) + ' uL/min/10⁶ cells' : '-'}</td>
+              </tr>
+              <tr>
+                <td><strong>Drug Clearance (Microsome):</strong></td>
+                <td>{molecule.Clearance_Microsome_AZ != null ? molecule.Clearance_Microsome_AZ.toFixed(3) + ' uL/min/mg' : '-'}</td>
+              </tr>
+              <tr>
+                <th colspan="2"><strong>Toxicity:</strong></th>
+              </tr>
+              
+              
+              
+              
+              <tr>
                 <td><strong>Carcinogenicity:</strong></td>
                 <td>{molecule.Carcinogens_Lagunin != null ? molecule.Carcinogens_Lagunin.toFixed(3) : '-'}</td>
               </tr>
@@ -599,10 +666,7 @@ const MoleculeDetails = () => {
                 <td><strong>Drug Induced Liver Injury:</strong></td>
                 <td>{molecule.DILI != null ? molecule.DILI.toFixed(3) : '-'}</td>
               </tr>
-              <tr>
-                <td><strong>Human Intestinal Absorption:</strong></td>
-                <td>{molecule.HIA_Hou != null ? molecule.HIA_Hou.toFixed(3) : '-'}</td>
-              </tr>
+              
               <tr>
                 <td><strong>Androgen Receptor (Ligand Binding Domain):</strong></td>
                 <td>{molecule.NR_AR_LBD != null ? molecule.NR_AR_LBD.toFixed(3) : '-'}</td>
@@ -631,14 +695,7 @@ const MoleculeDetails = () => {
                 <td><strong>Peroxisome Proliferator-Activated Receptor Gamma:</strong></td>
                 <td>{molecule.NR_PPAR_gamma != null ? molecule.NR_PPAR_gamma.toFixed(3) : '-'}</td>
               </tr>
-              <tr>
-                <td><strong>PAMPA Permeability:</strong></td>
-                <td>{molecule.PAMPA_NCATS != null ? molecule.PAMPA_NCATS.toFixed(3) : '-'}</td>
-              </tr>
-              <tr>
-                <td><strong>P-glycoprotein Inhibition:</strong></td>
-                <td>{molecule.Pgp_Broccatelli != null ? molecule.Pgp_Broccatelli.toFixed(3) : '-'}</td>
-              </tr>
+              
               <tr>
                 <td><strong>Nuclear Factor (Erythroid-Derived 2)-Like 2/Antioxidant Responsive Element:</strong></td>
                 <td>{molecule.SR_ARE != null ? molecule.SR_ARE.toFixed(3) : '-'}</td>
@@ -668,221 +725,204 @@ const MoleculeDetails = () => {
                 <td>{molecule.hERG != null ? molecule.hERG.toFixed(3) : '-'}</td>
               </tr>
               <tr>
-                <td><strong>Cell Effective Permeability:</strong></td>
-                <td>{molecule.Caco2_Wang != null ? molecule.Caco2_Wang.toFixed(3) + ' log(10⁻⁶ cm/s)' : '-'}</td>
-              </tr>
-              <tr>
-                <td><strong>Drug Clearance (Hepatocyte):</strong></td>
-                <td>{molecule.Clearance_Hepatocyte_AZ != null ? molecule.Clearance_Hepatocyte_AZ.toFixed(3) + ' uL/min/10⁶ cells' : '-'}</td>
-              </tr>
-              <tr>
-                <td><strong>Drug Clearance (Microsome):</strong></td>
-                <td>{molecule.Clearance_Microsome_AZ != null ? molecule.Clearance_Microsome_AZ.toFixed(3) + ' uL/min/mg' : '-'}</td>
-              </tr>
-              <tr>
-                <td><strong>Half Life:</strong></td>
-                <td>{molecule.Half_Life_Obach != null ? molecule.Half_Life_Obach.toFixed(3) + ' hr' : '-'}</td>
-              </tr>
-              <tr>
-                <td><strong>Hydration Free Energy:</strong></td>
-                <td>{molecule.HydrationFreeEnergy_FreeSolv != null ? molecule.HydrationFreeEnergy_FreeSolv.toFixed(3) + ' kcal/mol' : '-'}</td>
-              </tr>
-              <tr>
                 <td><strong>Acute Toxicity LD50:</strong></td>
                 <td>{molecule.LD50_Zhu != null ? molecule.LD50_Zhu.toFixed(3) + ' log (1/(mol/kg))' : '-'}</td>
               </tr>
-              <tr>
-                <td><strong>Lipophilicity:</strong></td>
-                <td>{molecule.Lipophilicity_AstraZeneca != null ? molecule.Lipophilicity_AstraZeneca.toFixed(3) + ' log-ratio' : '-'}</td>
-              </tr>
-              <tr>
-                <td><strong>Plasma Protein Binding Rate:</strong></td>
-                <td>{molecule.PPBR_AZ != null ? molecule.PPBR_AZ.toFixed(3) + ' %' : '-'}</td>
-              </tr>
-              <tr>
-                <td><strong>Aqueous Solubility:</strong></td>
-                <td>{molecule.Solubility_AqSolDB != null ? molecule.Solubility_AqSolDB.toFixed(3) + ' log(mol/L)' : '-'}</td>
-              </tr>
-              <tr>
-                <td><strong>Volume of Distribution at Steady State:</strong></td>
-                <td>{molecule.VDss_Lombardo != null ? molecule.VDss_Lombardo.toFixed(3) + ' L/kg' : '-'}</td>
-              </tr>
+              
+              
+              
+              
             </tbody>
-          </table>   
+        </table>   
 
         <h3 id="percentile-data">Drugbank Approved Percentile Data</h3>
-          <table className="md-table">
-            <tbody>
-            <tr>
-              <td><strong>Lipinski:</strong></td>
-              <td>{molecule.Lipinski_drugbank_approved_percentile != null ? molecule.Lipinski_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>Mutagenicity:</strong></td>
-              <td>{molecule.AMES_drugbank_approved_percentile != null ? molecule.AMES_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>Blood-Brain Barrier Penetration:</strong></td>
-              <td>{molecule.BBB_Martins_drugbank_approved_percentile != null ? molecule.BBB_Martins_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>Oral Bioavailability:</strong></td>
-              <td>{molecule.Bioavailability_Ma_drugbank_approved_percentile != null ? molecule.Bioavailability_Ma_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>CYP1A2 Inhibition:</strong></td>
-              <td>{molecule.CYP1A2_Veith_drugbank_approved_percentile != null ? molecule.CYP1A2_Veith_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>CYP2C19 Inhibition:</strong></td>
-              <td>{molecule.CYP2C19_Veith_drugbank_approved_percentile != null ? molecule.CYP2C19_Veith_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>CYP2C9 Substrate:</strong></td>
-              <td>{molecule.CYP2C9_Substrate_CarbonMangels_drugbank_approved_percentile != null ? molecule.CYP2C9_Substrate_CarbonMangels_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>CYP2C9 Inhibition:</strong></td>
-              <td>{molecule.CYP2C9_Veith_drugbank_approved_percentile != null ? molecule.CYP2C9_Veith_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>CYP2D6 Substrate:</strong></td>
-              <td>{molecule.CYP2D6_Substrate_CarbonMangels_drugbank_approved_percentile != null ? molecule.CYP2D6_Substrate_CarbonMangels_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>CYP2D6 Inhibition:</strong></td>
-              <td>{molecule.CYP2D6_Veith_drugbank_approved_percentile != null ? molecule.CYP2D6_Veith_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>CYP3A4 Substrate:</strong></td>
-              <td>{molecule.CYP3A4_Substrate_CarbonMangels_drugbank_approved_percentile != null ? molecule.CYP3A4_Substrate_CarbonMangels_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>CYP3A4 Inhibition:</strong></td>
-              <td>{molecule.CYP3A4_Veith_drugbank_approved_percentile != null ? molecule.CYP3A4_Veith_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>Carcinogenicity:</strong></td>
-              <td>{molecule.Carcinogens_Lagunin_drugbank_approved_percentile != null ? molecule.Carcinogens_Lagunin_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>Clinical Toxicity:</strong></td>
-              <td>{molecule.ClinTox_drugbank_approved_percentile != null ? molecule.ClinTox_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>Drug Induced Liver Injury:</strong></td>
-              <td>{molecule.DILI_drugbank_approved_percentile != null ? molecule.DILI_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>Human Intestinal Absorption:</strong></td>
-              <td>{molecule.HIA_Hou_drugbank_approved_percentile != null ? molecule.HIA_Hou_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>Androgen Receptor (Ligand Binding Domain):</strong></td>
-              <td>{molecule.NR_AR_LBD_drugbank_approved_percentile != null ? molecule.NR_AR_LBD_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>Androgen Receptor (Full Length):</strong></td>
-              <td>{molecule.NR_AR_drugbank_approved_percentile != null ? molecule.NR_AR_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>Aryl Hydrocarbon Receptor:</strong></td>
-              <td>{molecule.NR_AhR_drugbank_approved_percentile != null ? molecule.NR_AhR_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>Aromatase:</strong></td>
-              <td>{molecule.NR_Aromatase_drugbank_approved_percentile != null ? molecule.NR_Aromatase_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>Estrogen Receptor (Ligand Binding Domain):</strong></td>
-              <td>{molecule.NR_ER_LBD_drugbank_approved_percentile != null ? molecule.NR_ER_LBD_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>Estrogen Receptor (Full Length):</strong></td>
-              <td>{molecule.NR_ER_drugbank_approved_percentile != null ? molecule.NR_ER_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>Peroxisome Proliferator-Activated Receptor Gamma:</strong></td>
-              <td>{molecule.NR_PPAR_gamma_drugbank_approved_percentile != null ? molecule.NR_PPAR_gamma_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>PAMPA Permeability:</strong></td>
-              <td>{molecule.PAMPA_NCATS_drugbank_approved_percentile != null ? molecule.PAMPA_NCATS_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>P-glycoprotein Inhibition:</strong></td>
-              <td>{molecule.Pgp_Broccatelli_drugbank_approved_percentile != null ? molecule.Pgp_Broccatelli_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>Nuclear Factor (Erythroid-Derived 2)-Like 2/Antioxidant Responsive Element:</strong></td>
-              <td>{molecule.SR_ARE_drugbank_approved_percentile != null ? molecule.SR_ARE_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>ATPase Family AAA Domain-Containing Protein 5 (ATAD5):</strong></td>
-              <td>{molecule.SR_ATAD5_drugbank_approved_percentile != null ? molecule.SR_ATAD5_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>Heat Shock Factor Response Element:</strong></td>
-              <td>{molecule.SR_HSE_drugbank_approved_percentile != null ? molecule.SR_HSE_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>Mitochondrial Membrane Potential:</strong></td>
-              <td>{molecule.SR_MMP_drugbank_approved_percentile != null ? molecule.SR_MMP_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>Tumor Protein p53:</strong></td>
-              <td>{molecule.SR_p53_drugbank_approved_percentile != null ? molecule.SR_p53_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>Skin Reaction:</strong></td>
-              <td>{molecule.Skin_Reaction_drugbank_approved_percentile != null ? molecule.Skin_Reaction_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>hERG Blocking:</strong></td>
-              <td>{molecule.hERG_drugbank_approved_percentile != null ? molecule.hERG_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>Cell Effective Permeability:</strong></td>
-              <td>{molecule.Caco2_Wang_drugbank_approved_percentile != null ? molecule.Caco2_Wang_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>Drug Clearance (Hepatocyte):</strong></td>
-              <td>{molecule.Clearance_Hepatocyte_AZ_drugbank_approved_percentile != null ? molecule.Clearance_Hepatocyte_AZ_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>Drug Clearance (Microsome):</strong></td>
-              <td>{molecule.Clearance_Microsome_AZ_drugbank_approved_percentile != null ? molecule.Clearance_Microsome_AZ_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>Half Life:</strong></td>
-              <td>{molecule.Half_Life_Obach_drugbank_approved_percentile != null ? molecule.Half_Life_Obach_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>Hydration Free Energy:</strong></td>
-              <td>{molecule.HydrationFreeEnergy_FreeSolv_drugbank_approved_percentile != null ? molecule.HydrationFreeEnergy_FreeSolv_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>Acute Toxicity LD50:</strong></td>
-              <td>{molecule.LD50_Zhu_drugbank_approved_percentile != null ? molecule.LD50_Zhu_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>Lipophilicity:</strong></td>
-              <td>{molecule.Lipophilicity_AstraZeneca_drugbank_approved_percentile != null ? molecule.Lipophilicity_AstraZeneca_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>Plasma Protein Binding Rate:</strong></td>
-              <td>{molecule.PPBR_AZ_drugbank_approved_percentile != null ? molecule.PPBR_AZ_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>Aqueous Solubility:</strong></td>
-              <td>{molecule.Solubility_AqSolDB_drugbank_approved_percentile != null ? molecule.Solubility_AqSolDB_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>Volume of Distribution at Steady State:</strong></td>
-              <td>{molecule.VDss_Lombardo_drugbank_approved_percentile != null ? molecule.VDss_Lombardo_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
-            </tr>
-            </tbody>
-          </table>
+        <table className="md-table">
+              <tbody>
+                <tr>
+                  <td><strong>Lipinski:</strong></td>
+                  <td>{molecule.Lipinski_drugbank_approved_percentile != null ? molecule.Lipinski_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <th colspan="2"><strong>Absorption:</strong></th>
+                </tr>
+                <tr>
+                  <td><strong>Mutagenicity:</strong></td>
+                  <td>{molecule.AMES_drugbank_approved_percentile != null ? molecule.AMES_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>Human Intestinal Absorption:</strong></td>
+                  <td>{molecule.HIA_Hou_drugbank_approved_percentile != null ? molecule.HIA_Hou_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>Oral Bioavailability:</strong></td>
+                  <td>{molecule.Bioavailability_Ma_drugbank_approved_percentile != null ? molecule.Bioavailability_Ma_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>Aqueous Solubility:</strong></td>
+                  <td>{molecule.Solubility_AqSolDB_drugbank_approved_percentile != null ? molecule.Solubility_AqSolDB_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>Lipophilicity:</strong></td>
+                  <td>{molecule.Lipophilicity_AstraZeneca_drugbank_approved_percentile != null ? molecule.Lipophilicity_AstraZeneca_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>Hydration Free Energy:</strong></td>
+                  <td>{molecule.HydrationFreeEnergy_FreeSolv_drugbank_approved_percentile != null ? molecule.HydrationFreeEnergy_FreeSolv_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>Cell Effective Permeability:</strong></td>
+                  <td>{molecule.Caco2_Wang_drugbank_approved_percentile != null ? molecule.Caco2_Wang_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>PAMPA Permeability:</strong></td>
+                  <td>{molecule.PAMPA_NCATS_drugbank_approved_percentile != null ? molecule.PAMPA_NCATS_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>P-glycoprotein Inhibition:</strong></td>
+                  <td>{molecule.Pgp_Broccatelli_drugbank_approved_percentile != null ? molecule.Pgp_Broccatelli_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <th colspan="2"><strong>Distribution:</strong></th>
+                </tr>
+                <tr>
+                  <td><strong>Blood-Brain Barrier Penetration:</strong></td>
+                  <td>{molecule.BBB_Martins_drugbank_approved_percentile != null ? molecule.BBB_Martins_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>Plasma Protein Binding Rate:</strong></td>
+                  <td>{molecule.PPBR_AZ_drugbank_approved_percentile != null ? molecule.PPBR_AZ_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>Volume of Distribution at Steady State:</strong></td>
+                  <td>{molecule.VDss_Lombardo_drugbank_approved_percentile != null ? molecule.VDss_Lombardo_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <th colspan="2"><strong>Metabolism:</strong></th>
+                </tr>
+                <tr>
+                  <td><strong>CYP1A2 Inhibition:</strong></td>
+                  <td>{molecule.CYP1A2_Veith_drugbank_approved_percentile != null ? molecule.CYP1A2_Veith_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>CYP2C19 Inhibition:</strong></td>
+                  <td>{molecule.CYP2C19_Veith_drugbank_approved_percentile != null ? molecule.CYP2C19_Veith_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>CYP2C9 Inhibition:</strong></td>
+                  <td>{molecule.CYP2C9_Veith_drugbank_approved_percentile != null ? molecule.CYP2C9_Veith_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>CYP2D6 Inhibition:</strong></td>
+                  <td>{molecule.CYP2D6_Veith_drugbank_approved_percentile != null ? molecule.CYP2D6_Veith_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>CYP3A4 Inhibition:</strong></td>
+                  <td>{molecule.CYP3A4_Veith_drugbank_approved_percentile != null ? molecule.CYP3A4_Veith_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>CYP2C9 Substrate:</strong></td>
+                  <td>{molecule.CYP2C9_Substrate_CarbonMangels_drugbank_approved_percentile != null ? molecule.CYP2C9_Substrate_CarbonMangels_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>CYP2D6 Substrate:</strong></td>
+                  <td>{molecule.CYP2D6_Substrate_CarbonMangels_drugbank_approved_percentile != null ? molecule.CYP2D6_Substrate_CarbonMangels_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>CYP3A4 Substrate:</strong></td>
+                  <td>{molecule.CYP3A4_Substrate_CarbonMangels_drugbank_approved_percentile != null ? molecule.CYP3A4_Substrate_CarbonMangels_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <th colspan="2"><strong>Excretion:</strong></th>
+                </tr>
+                <tr>
+                  <td><strong>Half Life:</strong></td>
+                  <td>{molecule.Half_Life_Obach_drugbank_approved_percentile != null ? molecule.Half_Life_Obach_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>Drug Clearance (Hepatocyte):</strong></td>
+                  <td>{molecule.Clearance_Hepatocyte_AZ_drugbank_approved_percentile != null ? molecule.Clearance_Hepatocyte_AZ_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>Drug Clearance (Microsome):</strong></td>
+                  <td>{molecule.Clearance_Microsome_AZ_drugbank_approved_percentile != null ? molecule.Clearance_Microsome_AZ_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <th colspan="2"><strong>Toxicity:</strong></th>
+                </tr>
+                <tr>
+                  <td><strong>hERG Blocking:</strong></td>
+                  <td>{molecule.hERG_drugbank_approved_percentile != null ? molecule.hERG_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>Clinical Toxicity:</strong></td>
+                  <td>{molecule.ClinTox_drugbank_approved_percentile != null ? molecule.ClinTox_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>Carcinogenicity:</strong></td>
+                  <td>{molecule.Carcinogens_Lagunin_drugbank_approved_percentile != null ? molecule.Carcinogens_Lagunin_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>Drug Induced Liver Injury:</strong></td>
+                  <td>{molecule.DILI_drugbank_approved_percentile != null ? molecule.DILI_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>Acute Toxicity LD50:</strong></td>
+                  <td>{molecule.LD50_Zhu_drugbank_approved_percentile != null ? molecule.LD50_Zhu_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>Skin Reaction:</strong></td>
+                  <td>{molecule.Skin_Reaction_drugbank_approved_percentile != null ? molecule.Skin_Reaction_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>Androgen Receptor (Full Length):</strong></td>
+                  <td>{molecule.NR_AR_drugbank_approved_percentile != null ? molecule.NR_AR_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>Androgen Receptor (Ligand Binding Domain):</strong></td>
+                  <td>{molecule.NR_AR_LBD_drugbank_approved_percentile != null ? molecule.NR_AR_LBD_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>Aryl Hydrocarbon Receptor:</strong></td>
+                  <td>{molecule.NR_AhR_drugbank_approved_percentile != null ? molecule.NR_AhR_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>Aromatase:</strong></td>
+                  <td>{molecule.NR_Aromatase_drugbank_approved_percentile != null ? molecule.NR_Aromatase_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>Estrogen Receptor (Full Length):</strong></td>
+                  <td>{molecule.NR_ER_drugbank_approved_percentile != null ? molecule.NR_ER_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>Estrogen Receptor (Ligand Binding Domain):</strong></td>
+                  <td>{molecule.NR_ER_LBD_drugbank_approved_percentile != null ? molecule.NR_ER_LBD_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>Peroxisome Proliferator-Activated Receptor Gamma:</strong></td>
+                  <td>{molecule.NR_PPAR_gamma_drugbank_approved_percentile != null ? molecule.NR_PPAR_gamma_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>Nuclear Factor (Erythroid-Derived 2)-Like 2/Antioxidant Responsive Element:</strong></td>
+                  <td>{molecule.SR_ARE_drugbank_approved_percentile != null ? molecule.SR_ARE_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>ATPase Family AAA Domain-Containing Protein 5 (ATAD5):</strong></td>
+                  <td>{molecule.SR_ATAD5_drugbank_approved_percentile != null ? molecule.SR_ATAD5_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>Heat Shock Factor Response Element:</strong></td>
+                  <td>{molecule.SR_HSE_drugbank_approved_percentile != null ? molecule.SR_HSE_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>Mitochondrial Membrane Potential:</strong></td>
+                  <td>{molecule.SR_MMP_drugbank_approved_percentile != null ? molecule.SR_MMP_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+                <tr>
+                  <td><strong>Tumor Protein p53:</strong></td>
+                  <td>{molecule.SR_p53_drugbank_approved_percentile != null ? molecule.SR_p53_drugbank_approved_percentile.toFixed(3) + ' %' : '-'}</td>
+                </tr>
+              </tbody>
+        </table>
 
             {error && <p className="md-error-message">{error}</p>}
         </div>

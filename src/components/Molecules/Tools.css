@@ -1,8 +1,9 @@
 /* Tools.css */
-
 .smiles-structure-viewer,
 .smiles-property-predictor {
   padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .title {
@@ -13,15 +14,20 @@
 
 .form {
   margin-bottom: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .input-field {
   padding: 15px;
   font-size: 16px;
-  width: 800px;
+  width: calc(100% - 150px);
   margin-right: 16px;
   border: 2px solid #399bcd;
   border-radius: 7px;
+  flex-grow: 1;
+  margin-bottom: 10px;
 }
 
 .generate-button {
@@ -35,7 +41,6 @@
   transition: background-color 0.3s ease;
 }
 
-
 .generate-button:hover {
   background-color: #5e4379;
 }
@@ -43,12 +48,15 @@
 .error-message {
   color: #5e4379;
   margin-top: 8px;
+  width: 100%;
 }
 
 .molecule-image-container,
 .properties-table {
   display: flex;
   justify-content: center;
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .molecule-image {
@@ -64,8 +72,6 @@
   margin-top: 20px;
   border-radius: 7px;
   overflow: hidden;
-  overflow-x: auto;
-  max-width: 100%;
 }
 
 .properties-table table {
@@ -120,7 +126,8 @@
 }
 
 .empty-image-box {
-  width: 300px;
+  width: 100%;
+  max-width: 300px;
   height: 300px;
   border: 2px solid #399bcd;
   margin-top: 16px;
@@ -133,4 +140,59 @@
 .download-button-container {
   display: flex;
   justify-content: center;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .input-field {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .generate-button {
+    width: 100%;
+  }
+
+  .properties-table {
+    font-size: 14px;
+  }
+
+  .properties-table th,
+  .properties-table td {
+    padding: 8px;
+  }
+
+  .empty-image-box {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 20px;
+  }
+
+  .input-field {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .generate-button {
+    font-size: 16px;
+    padding: 8px 20px;
+  }
+
+  .properties-table {
+    font-size: 12px;
+  }
+
+  .properties-table th,
+  .properties-table td {
+    padding: 6px;
+  }
+
+  .empty-image-box {
+    height: 150px;
+  }
 }

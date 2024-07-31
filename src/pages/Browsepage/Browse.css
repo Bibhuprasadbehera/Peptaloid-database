@@ -44,7 +44,6 @@
   .browse-table thead {
     display: none;
   }
-
   .browse-table,
   .browse-table tbody,
   .browse-table tr,
@@ -52,17 +51,14 @@
     display: block;
     width: 100%;
   }
-
   .browse-table tr {
     margin-bottom: 15px;
   }
-
   .browse-table td {
     text-align: right;
     padding-left: 50%;
     position: relative;
   }
-
   .browse-table td::before {
     content: attr(data-label);
     position: absolute;

@@ -1,5 +1,4 @@
 /* MoleculeCard.css */
-
 .molecule-card {
   display: flex;
   align-items: center;
@@ -35,12 +34,13 @@
 }
 
 .molecule-card img {
-  width: 100%;
+  width: 30%;
+  max-width: 200px;
   height: auto;
   object-fit: cover;
   border-radius: 8px;
   border: 3px solid #5e4379;
-  margin-bottom: 16px;
+  margin-right: 16px;
 }
 
 .molecule-card-content {
@@ -48,6 +48,7 @@
   flex-direction: column;
   justify-content: center;
   text-align: left;
+  flex: 1;
 }
 
 .molecule-card-content h2 {
@@ -65,15 +66,16 @@
   color: #000000;
 }
 
-@media (min-width: 268px) {
+@media (max-width: 768px) {
   .molecule-card {
-    flex-direction: row;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .molecule-card img {
-    width: 15vw;
-    height: 30vh;
-    margin-right: 16px;
-    margin-bottom: 0;
+    width: 100%;
+    max-width: none;
+    margin-right: 0;
+    margin-bottom: 16px;
   }
 }
