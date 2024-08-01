@@ -39,6 +39,8 @@
   cursor: pointer;
   border-radius: 7px;
   transition: background-color 0.3s ease;
+  margin: 0 auto;
+  display: block;
 }
 
 .generate-button:hover {

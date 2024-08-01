@@ -57,7 +57,7 @@ const SmilesPropertyPredictor = () => {
             {Object.keys(properties).map((key, index) => (
               <tr key={index}>
                 <td>{key}</td>
-                <td>{properties[key] || '-'}</td>
+                <td>{properties[key] === '' ? '-' : properties[key]}</td>
               </tr>
             ))}
           </tbody>
