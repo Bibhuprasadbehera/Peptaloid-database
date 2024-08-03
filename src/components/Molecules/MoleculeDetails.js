@@ -306,7 +306,9 @@ const MoleculeDetails = () => {
         <img src={imageUrl} alt="Molecule" className="md-molecule-image" />
         <div className="md-sidebar-links">
           <a href="#basic-information" onClick={(e) => handleLinkClick(e, 'basic-information')}>Basic Information</a>
-          <a href="#origin" onClick={(e) => handleLinkClick(e, 'origin')}>Origin</a>
+          {molecule.origin_type || molecule.genus || molecule.origin_species ? (
+            <a href="#origin" onClick={(e) => handleLinkClick(e, 'origin')}>Origin</a>
+          ) : null}
           <a href="#ids" onClick={(e) => handleLinkClick(e, 'ids')}>IDs</a>
           <a href="#molecular-properties" onClick={(e) => handleLinkClick(e, 'molecular-properties')}>Molecular Properties</a>
           <a href="#lipinskis-rule" onClick={(e) => handleLinkClick(e, 'lipinskis-rule')}>Lipinski's Rule of Five</a>
@@ -360,23 +362,31 @@ const MoleculeDetails = () => {
           </tbody>
         </table>
 
-        <h3 id="origin">Origin</h3>
-        <table>
-          <tbody>
-            <tr>
-              <td><strong>Origin (Bacterium or Fungus...) :</strong></td>
-              <td>{molecule.origin_type || '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>Genus:</strong></td>
-              <td>{molecule.genus || '-'}</td>
-            </tr>
-            <tr>
-              <td><strong>Species:</strong></td>
-              <td>{molecule.origin_species || '-'}</td>
-            </tr>
-          </tbody>
-        </table>
+        {molecule.origin_type || molecule.genus || molecule.origin_species ? (
+        <><h3 id="origin">Origin</h3>
+          <table>
+            <tbody>
+              {molecule.origin_type && (
+                <tr>
+                  <td><strong>Origin (Bacterium or Fungus...) :</strong></td>
+                  <td>{molecule.origin_type}</td>
+                </tr>
+              )}
+              {molecule.genus && (
+                <tr>
+                  <td><strong>Genus:</strong></td>
+                  <td>{molecule.genus}</td>
+                </tr>
+              )}
+              {molecule.origin_species && (
+                <tr>
+                  <td><strong>Species:</strong></td>
+                  <td>{molecule.origin_species}</td>
+                </tr>
+              )}
+            </tbody>
+          </table></>) : null}
+
 
         <h3 id="ids">IDs</h3>
         <table>
