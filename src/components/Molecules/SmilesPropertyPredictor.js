@@ -69,6 +69,7 @@ const SmilesPropertyPredictor = () => {
   return (
     <div className="smiles-property-predictor">
       <h2 className="title">SMILES Property Predictor</h2>
+      <p className="description">Please enter your SMILES string to get the properties.</p>
       <form onSubmit={handleSubmit} className="form">
         <input
           type="text"
