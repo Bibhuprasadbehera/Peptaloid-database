@@ -76,7 +76,7 @@ const SearchPage = () => {
 
     const payload = {
       skip: 0,
-      limit: 30,
+      limit: 300,
       conditions: [
         {
           field: apiField,

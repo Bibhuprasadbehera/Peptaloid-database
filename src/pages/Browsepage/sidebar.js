@@ -191,7 +191,7 @@ const AdvancedSearchSidebar = ({ onFilterChange }) => {
 
     const payload = {
       skip: 0,
-      limit: 30,
+      limit: 300,
       conditions,
       source: selectedSources,
       functional_group: selectedFunctionalGroups

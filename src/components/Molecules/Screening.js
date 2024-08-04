@@ -30,7 +30,7 @@ const Screening = () => {
     event.preventDefault();
     const payload = {
       skip: 0,
-      limit: 30,
+      limit: 300,
       conditions: criteria.map(criterion => ({
         field: criterion.field,
         value: isNaN(criterion.query) ? criterion.query.toLowerCase() : Number(criterion.query),
