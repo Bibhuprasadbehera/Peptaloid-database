@@ -36,15 +36,13 @@ const HomePage = () => {
           </div>
         </div>
         <div className="section">
-          <h2 className="section-heading">News about Peptaloid</h2>
+          <h2 className="section-heading">Peptaloid Updates</h2>
           <div className="section-content">
-            <p>Stay updated with the latest news, events, and developments related to peptide alkaloids, drug discovery, and scientific research.</p>
-          </div>
-        </div>
-        <div className="section">
-          <h2 className="section-heading">Featured Research</h2>
-          <div className="section-content">
-            <p>Explore groundbreaking research articles, publications, and studies highlighting the therapeutic potential and ecological significance of peptide alkaloids.</p>
+          <p>
+              The Peptaloid database was last updated in July 2024.<br />
+              The version 1.0 release includes 160,000 entries of peptide alkaloids.<br />
+              The database is a comprehensive resource for researchers, students, and enthusiasts interested in the study of peptide alkaloids.<br />
+            </p>
           </div>
         </div>
       </div>

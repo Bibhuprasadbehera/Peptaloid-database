@@ -11,10 +11,7 @@ const FAQpage = () => {
         <div>
             <div className="faq-container">
                 <h1>FAQ Page</h1>
-                <div className="faq-item">
-                    <h2>What are peptide alkaloids?</h2>
-                    <p>Peptide alkaloids are a class of naturally occurring compounds that consist of peptides containing alkaloid structures. They are known for their diverse biological activities and potential therapeutic uses.</p>
-                </div>
+                
                 <div className="faq-item">
                     <h2>How do I search for peptide alkaloids in the database?</h2>
                     <p>You can search for peptide alkaloids using the search bar on the homepage. Enter the name, molecular formula, or other relevant identifiers to find the information you need.</p>

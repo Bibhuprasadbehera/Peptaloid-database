@@ -39,13 +39,13 @@ const AdvancedSearchSidebar = ({ onFilterChange }) => {
 
   const sourceDisplayNames = {
     coconut: 'COCONUT',
-    npatlas: 'Natural Products Atlas',
-    supernatural: 'SuperNatural 3.0',
+    npatlas: 'NP Atlas',
+    supernatural: 'SuperNatural',
     zinc: 'ZINC',
   };
 
   const rangeConfigs = {
-    Exact_MW: { min: 0, max: 5000, label: 'Molecular Weight (MW)' },
+    Exact_MW: { min: 0, max: 5000, label: 'Molecular Weight (Mol. Wt.)' },
     SlogP: { min: -5, max: 10, label: 'Octanol-Water Partition Coefficient (SLogP)' },
     Num_HBA: { min: 0, max: 90, label: 'Hydrogen Bond Acceptors (HBA)' },
     Num_HBD: { min: 0, max: 80, label: 'Hydrogen Bond Donors (HBD)' },

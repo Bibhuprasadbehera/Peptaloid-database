@@ -76,7 +76,7 @@ const Navbar = () => {
           <li><NavLink to="/tools" isActive={() => isActive('/tools')} activeClassName="active">Tools</NavLink></li>
           <li><NavLink to="/faq" isActive={() => isActive('/faq')} activeClassName="active">FAQ</NavLink></li>
         </ul>
-        <NavLink to="/login" isActive={() => isActive('/login')} activeClassName="active" className="login-button">Login</NavLink>
+        {/* <NavLink to="/login" isActive={() => isActive('/login')} activeClassName="active" className="login-button">Login</NavLink> */}
       </div>
     </nav>
   );

@@ -422,19 +422,15 @@ const MoleculeDetails = () => {
               <td>{molecule.Num_Atoms}</td>
             </tr>
             <tr>
-              <td><strong>Number of Heavy Atoms:</strong></td>
-              <td>{molecule.Heavy_Atoms}</td>
-            </tr>
-            <tr>
               <td><strong>Total Charge:</strong></td>
               <td>{molecule.total_charge}</td>
             </tr>
             <tr>
-              <td><strong>Quantitative estimate of drug-likeness score(QED) Score:</strong></td>
+              <td><strong>Quantitative estimate of drug-likeness score (QED) Score:</strong></td>
               <td>{molecule.qed_score ? molecule.qed_score.toFixed(2) : '-'}</td>
             </tr>
             <tr>
-              <td><strong>Topological polar surface area:</strong></td>
+              <td><strong>Topological polar surface area (TPSA):</strong></td>
               <td>{molecule.TPSA ? `${molecule.TPSA.toFixed(2)} Å²` : '-'}</td>
             </tr>
             <tr>
@@ -484,10 +480,6 @@ const MoleculeDetails = () => {
             <tr>
               <td><strong>Number of Hetero Atoms:</strong></td>
               <td>{molecule.Num_Hetero_Atoms}</td>
-            </tr>
-            <tr>
-              <td><strong>Number of Heavy Atoms:</strong></td>
-              <td>{molecule.Num_Heavy_Atoms}</td>
             </tr>
             <tr>
               <td><strong>Number of Atoms:</strong></td>

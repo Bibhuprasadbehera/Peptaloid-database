@@ -21,7 +21,7 @@ const SearchPage = () => {
     switch (field) {
       case "Compound Name":
         return "e.g., Pandamine; Ampullosporin B; Streptozoticin";
-      case "Peptaloid id":
+      case "Peptaloid ID":
         return "e.g., PT000001; PT006643; PT161725";
       case "InChIKey":
         return "e.g., OZQWWKNRYQISEO-ZGOJTZKKSA-N;   DFYSEPMXUCYDJQ-UHFFFAOYSA-N";
@@ -35,7 +35,7 @@ const SearchPage = () => {
         return "e.g., O=C(NCC=C)NC(CC)(C(F)(F)F)C(F)(F)F";
       case "Genus":
         return "e.g., Beauveria; Streptomyces; Aureobasidium";
-      case "Origin species":
+      case "Origin Species":
         return "e.g., majuscula; pullulans";
       case "Origin (Bacterium or Fungus...)":
         return "e.g., Fungus";
@@ -64,7 +64,7 @@ const SearchPage = () => {
       case "Origin species":
         apiField = "origin_species";
         break;
-      case "Peptaloid id":
+      case "Peptaloid ID":
         apiField = "peptaloid_id";
         break;
       case "Genus":
@@ -76,7 +76,7 @@ const SearchPage = () => {
 
     const payload = {
       skip: 0,
-      limit: 300,
+      limit: 400,
       conditions: [
         {
           field: apiField,
@@ -95,14 +95,14 @@ const SearchPage = () => {
 
   const fields = [
     "Compound Name",
-    "Peptaloid id",
+    "Peptaloid ID",
     "InChIKey",
     "IUPAC Name",
     "Compound InChI",
     "Molecular Formula",
     "SMILES",
     "Genus",
-    "Origin species",
+    "Origin Species",
     "Origin (Bacterium or Fungus...)",
   ];
 
@@ -113,7 +113,7 @@ const SearchPage = () => {
   return (
     <div>
       <div className="container">
-        <h2 className="heading">Pepataloid Database Search Page</h2>
+        <h2 className="heading">Peptaloid Database Search Page</h2>
         <input
           type="text"
           placeholder={getPlaceholder(selectedField)}

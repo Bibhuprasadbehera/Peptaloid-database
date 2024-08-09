@@ -19,7 +19,7 @@ const Toolspage = () => {
   return (
     <div>
       <div className="container">
-        <h2 className="heading">Welcome to the Alkaloid Database Tools Page</h2>
+        <h2 className="heading">Welcome to the Peptaloid Database Tools Page</h2>
         <div className="tab-container">
           <div className="tabs">
             <div
