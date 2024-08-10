@@ -25,7 +25,7 @@ const generateCarbonPayload = (row, cellIndex, currentPage, itemsPerPage) => {
   let conditions = [];
 
   if (range.includes('and above')) {
-    const start = parseInt(range.split(' ')[0], 10);
+    const start = parseInt(range.split(' ')[0], 100);
     conditions.push({
       field: "carbon_count",
       value: start,

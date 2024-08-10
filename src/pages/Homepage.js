@@ -25,7 +25,7 @@ const HomePage = () => {
       <Header />
       <div className="container">
         <h2 className="heading">Welcome to the Peptaloid Database Home Page</h2>
-        <p className="paragraph">
+        <p className="paragraph" style={{ textAlign: 'justify' }}>
           The first peptide alkaloid discovered was pandamine, obtained from the crude alkaloid fraction of Panda oleosa Pierre root bark. It represents the first cyclopeptidic alkaloid ever elucidated and holds a specific importance in the phytochemical class of cyclopeptide alkaloids. Pandamine marked the beginning of considerable interest in these natural products, which now encompass more than 160,000 entries.
         </p>
         <Carousel images={[molecule1, molecule2, molecule3]} />
@@ -38,7 +38,7 @@ const HomePage = () => {
         <div className="section">
           <h2 className="section-heading">Peptaloid Updates</h2>
           <div className="section-content">
-          <p>
+          <p className="paragraph" style={{ textAlign: 'center' }}>
               The Peptaloid database was last updated in July 2024.<br />
               The version 1.0 release includes 160,000 entries of peptide alkaloids.<br />
               The database is a comprehensive resource for researchers, students, and enthusiasts interested in the study of peptide alkaloids.<br />

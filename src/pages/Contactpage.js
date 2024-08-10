@@ -13,7 +13,7 @@ const ContactPage = () => {
     <div>
       <div className="container">
         <h2 className="heading">Welcome to the Alkaloid Database contact Page</h2>
-        <p>Feel free to contact us if you have questions or want to report a bug or suggest a new feature.
+        <p className="paragraph" style={{ textAlign: 'justify' }}>Feel free to contact us if you have questions or want to report a bug or suggest a new feature.
         Please send your feedback via e-mail: bibhu.behera@niser.ac.in , badireenath@niser.ac.in or Peptaloid@gmail.com</p>
         <img src={lab1} alt="Database Architecture" className="image" style={{ width: '70%' }}/>
         <img src={lab2} alt="Database Architecture" className="image" style={{ width: '70%' }}/>

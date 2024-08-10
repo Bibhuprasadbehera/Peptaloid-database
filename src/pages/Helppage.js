@@ -16,15 +16,20 @@ const HelpPage = () => {
   return (
     <div>
       <div className="container">
-        <h2 className="heading">Welcome to the Peptaloid Database Help Page</h2>
-        <p className="paragraph-left">
+        <h1 className="heading">Welcome to the Peptaloid Database Help Page</h1>
+        <p className="paragraph" style={{ textAlign: 'justify' }}>
           This page provides a detailed description of the Peptaloid database, a comprehensive resource for peptide alkaloid molecules. Below you will find descriptions of various categories of data included in the database.
         </p>
-        <img src={logo} alt="Database Architecture" className="image" style={{ width: '100%' }}/>
-          <p>this is the logo of the database and it is a representation of the database</p>
+        <h2 className="subheading">About the logo</h2>
+        <img src={logo} alt="Database Architecture" className="image" style={{ width: '70%' }}/>
+        <p className="paragraph" style={{ textAlign: 'justify' }}>
+          The logo of the Peptaloid database visually represents the core concept of the platform. 
+          The intersecting blobs symbolize the fusion of peptide and alkaloid properties, with one blob representing the unique characteristics of peptides and the other representing alkaloids. 
+          Their intersection, shaped like a drug molecule, reflects the primary objective of the Peptaloid database: to explore and harness the combined potential of peptides and alkaloids for drug discovery and development.
+        </p>
         {/* Basic Information */}
         <h3 className="subheading">Basic Information</h3>
-        <p className="paragraph-left">
+        <p className="paragraph" style={{ textAlign: 'justify' }}>
           These fields provide fundamental information about the compounds, including:
           <ul>
             <li><strong>Peptaloid ID:</strong> Unique identifier within the Peptaloid database.</li>
@@ -39,7 +44,7 @@ const HelpPage = () => {
 
         {/* Origin */}
         <h3 className="subheading">Origin</h3>
-        <p className="paragraph-left">
+        <p className="paragraph" style={{ textAlign: 'justify' }}>
           These fields convey information about the origin and source of the compounds, including:
           <ul>
             <li><strong>Origin:</strong> Type of origin (natural, synthetic, etc.).</li>
@@ -50,7 +55,7 @@ const HelpPage = () => {
 
         {/* IDs */}
         <h3 className="subheading">IDs</h3>
-        <p className="paragraph-left">
+        <p className="paragraph" style={{ textAlign: 'justify' }}>
           These fields provide database-specific identifiers for cross-referencing, including:
           <ul>
             <li><strong>Coconut ID:</strong> Identifier in the COCONUT database.</li>
@@ -62,7 +67,7 @@ const HelpPage = () => {
 
         {/* Molecular Properties */}
         <h3 className="subheading">Molecular Properties</h3>
-        <p className="paragraph-left">
+        <p className="paragraph" style={{ textAlign: 'justify' }}>
           These fields describe the structural and physicochemical properties of the compounds, including:
           <ul>
             <li><strong>Num Atoms:</strong> Number of atoms.</li>
@@ -76,7 +81,7 @@ const HelpPage = () => {
 
         {/* Lipinski's Rule of Five */}
         <h3 className="subheading">Lipinski's Rule of Five</h3>
-        <p className="paragraph-left">
+        <p className="paragraph" style={{ textAlign: 'justify' }}>
           These fields indicate drug-likeness based on Lipinski's Rule of Five, including:
           <ul>
             <li><strong>Lipinski:</strong> Overall Lipinski score.</li>
@@ -88,7 +93,7 @@ const HelpPage = () => {
 
         {/* Additional Properties */}
         <h3 className="subheading">Additional Properties</h3>
-        <p className="paragraph-left">
+        <p className="paragraph" style={{ textAlign: 'justify' }}>
           These fields provide additional structural and chemical properties, including:
           <ul>
             <li><strong>Num Rotatable Bonds:</strong> Number of rotatable bonds.</li>
@@ -105,7 +110,7 @@ const HelpPage = () => {
 
         {/* Functional Groups */}
         <h3 className="subheading">Functional Groups</h3>
-        <p className="paragraph-left">
+        <p className="paragraph" style={{ textAlign: 'justify' }}>
           These fields indicate the presence of specific functional groups, including:
           <ul>
             <li><strong>Alcohol:</strong> Presence of alcohol groups.</li>
@@ -119,7 +124,7 @@ const HelpPage = () => {
 
         {/* ADMET Properties */}
         <h3 className="subheading">ADMET Properties and Their Description</h3>
-        <p className="paragraph-left">
+        <p className="paragraph" style={{ textAlign: 'justify' }}>
           These fields include properties related to the absorption, distribution, metabolism, excretion, and toxicity (ADMET) of the compounds, crucial for assessing their potential as drug candidates. Examples include:
           <ul>
             <li><strong>Absorption:</strong>
@@ -186,28 +191,29 @@ const HelpPage = () => {
           </ul>
         </p>
 
-        {/* Percentile Data */}
-        <h3 className="subheading">Percentile Data</h3>
-        <p className="paragraph-left">
-          These fields provide percentile ranks that allow the compounds to be compared against a reference set, such as approved drugs, for various properties. This benchmarking facilitates the evaluation of the compounds' drug-likeness and potential for further development.
-        </p>
+        <hr style={{ border: '1px solid #ccc', margin: '20px 0' }} /> {/* Horizontal line */}
+        
 
         {/* Images */}
         <div className="images">
+          <p className="paragraph" style={{ textAlign: 'justify' }}>This is the architecture of the database, illustrating the overall structure and organization of the Peptaloid database.</p>
           <img src={Architecture} alt="Database Architecture" className="image" style={{ width: '100%' }}/>
-          <p className="paragraph-left">This is the architecture of the database, illustrating the overall structure and organization of the Peptaloid database.</p>
 
+          <hr style={{ border: '1px solid #ccc', margin: '20px 0' }} /> {/* Horizontal line */}
+          <p className="paragraph" style={{ textAlign: 'justify' }}>This is the interface of the database, showing the user-friendly design and navigation features of the Peptaloid database.</p>
           <img src={Interface} alt="Database Interface" className="image" style={{ width: '100%' }}/>
-          <p className="paragraph-left">This is the interface of the database, showing the user-friendly design and navigation features of the Peptaloid database.</p>
-
+        
+          <hr style={{ border: '1px solid #ccc', margin: '20px 0' }} /> {/* Horizontal line */}
+          <p className="paragraph" style={{ textAlign: 'justify' }}>This is the methodology used in the Peptaloid database, outlining the processes and techniques employed for data collection and analysis.</p>
           <img src={Methodology} alt="Methodology" className="image" style={{ width: '70%' }}/>
-          <p className="paragraph-left">This is the methodology used in the Peptaloid database, outlining the processes and techniques employed for data collection and analysis.</p>
 
+          <hr style={{ border: '1px solid #ccc', margin: '20px 0' }} /> {/* Horizontal line */}
+          <p className="paragraph" style={{ textAlign: 'justify' }}>These are the statistics of the database, providing insights into the quantity and diversity of the data contained within the Peptaloid database.</p>
           <img src={Statistics} alt="Database Statistics" className="image" style={{ width: '100%' }}/>
-          <p className="paragraph-left">These are the statistics of the database, providing insights into the quantity and diversity of the data contained within the Peptaloid database.</p>
 
+          <hr style={{ border: '1px solid #ccc', margin: '20px 0' }} /> {/* Horizontal line */}
+          <p className="paragraph" style={{ textAlign: 'justify' }}>This is the supplementary data, offering additional information and resources related to the Peptaloid database.</p>
           <img src={Supplementary} alt="Supplementary Data" className="image" style={{ width: '100%' }}/>
-          <p className="paragraph-left">This is the supplementary data, offering additional information and resources related to the Peptaloid database.</p>
         </div>
       </div>
       <Footer />
