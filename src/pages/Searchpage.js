@@ -121,7 +121,7 @@ const SearchPage = () => {
           onChange={handleSearchChange}
           className="search-bar"
         />
-        <p className="paragraph">
+        <p className="paragraph" style={{ textAlign: 'justify' }}>
           To speed up the search, please select a field to get the desired result. You can search by any of the following fields:
         </p>
         <div className="search-fields">
@@ -168,6 +168,10 @@ const SearchPage = () => {
           Search
         </button>
         <p className="paragraph">Enter your search query above to explore our database of alkaloids.</p>
+        <p className="paragraph" style={{ textAlign: 'justify' }}>
+          If you are unsure about the search query, you can use the browse page to explore the database,
+          or you can use the advanced search feature to refine your search results.
+        </p>
       </div>
       <Footer />
     </div>

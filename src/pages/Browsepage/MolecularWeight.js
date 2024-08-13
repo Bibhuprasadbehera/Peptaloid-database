@@ -66,7 +66,7 @@ const generateMWPayload = (row, cellIndex, currentPage, itemsPerPage) => {
 
 const MolecularWeight = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(100);
+  const [itemsPerPage, setItemsPerPage] = useState(400);
 
   return (
     <div>

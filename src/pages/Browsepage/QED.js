@@ -45,7 +45,7 @@ const generateQEDPayload = (row, cellIndex, currentPage, itemsPerPage) => {
 
 const QED = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(100);
+  const [itemsPerPage, setItemsPerPage] = useState(400);
 
   return (
     <div>

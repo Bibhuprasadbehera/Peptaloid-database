@@ -6,9 +6,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Carousel from '../components/Carousel';
 import MoleculeCard from '../components/Molecules/MoleculeCard';
-import molecule1 from '../images/molecule1.jpg';
-import molecule2 from '../images/molecule2.jpg';
-import molecule3 from '../images/molecule3.jpg';
+import abstract from '../images/Graphical_abstract.jpg';
 
 const HomePage = () => {
   const moleculeOfTheMonth = {
@@ -28,9 +26,9 @@ const HomePage = () => {
         <p className="paragraph" style={{ textAlign: 'justify' }}>
           The first peptide alkaloid discovered was pandamine, obtained from the crude alkaloid fraction of Panda oleosa Pierre root bark. It represents the first cyclopeptidic alkaloid ever elucidated and holds a specific importance in the phytochemical class of cyclopeptide alkaloids. Pandamine marked the beginning of considerable interest in these natural products, which now encompass more than 160,000 entries.
         </p>
-        <Carousel images={[molecule1, molecule2, molecule3]} />
+        <img src={abstract} alt="Database abstract" className="image" style={{ width: '70%' }}/>
         <div className="section">
-          <h2 className="section-heading">Molecule of the Month</h2>
+          <h2 className="section-heading">First Peptide Alkaloid</h2>
           <div className="section-content">
             <MoleculeCard molecule={moleculeOfTheMonth} isBrowsing={true} />
           </div>

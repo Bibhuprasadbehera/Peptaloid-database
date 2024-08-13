@@ -58,8 +58,20 @@ const AdvancedSearch = () => {
     return (
         <div>
             <div className="container-search">
-                <h2 className="heading">Advanced Search</h2>
-                <p>Use the advanced search feature to refine your search results. You can add multiple search criteria and specify the logical operator between them.</p>
+            <h2 className="heading">Advanced Search</h2>
+            <p className="paragraph" style={{ textAlign: 'justify' }}>
+                Use the advanced search feature to refine your search results. You can add multiple search criteria and specify the logical operator between them.
+                <br />
+                <br />
+                You can search by any of the following fields:
+                <ul>
+                    <li>Physical Properties</li>
+                    <li>Chemical Properties</li>
+                    <li>Functional Groups</li>
+                    <li>Bond Types</li>
+                    <li>Ring Types</li>
+                </ul>
+                </p>
                 <form onSubmit={handleSubmit}>
                     <table className="criteria-table">
                         <thead>

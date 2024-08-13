@@ -14,7 +14,7 @@ const Footer = () => {
         <a href="#" aria-label="LinkedIn"></a>
       </div>
       <div className="contact-info">
-        <p><a href="mailto:info@example.com">bibhu.behera@niser.ac.in</a></p>
+        <p><a href="mailto:info@example.com">databasepeptaloid@gmail.com</a></p>
         <p>NISER, Bhubaneswar, India</p>
       </div>
       <p>&copy; Peptaloid Database {new Date().getFullYear()}</p>

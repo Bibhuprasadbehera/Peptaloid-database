@@ -32,7 +32,7 @@ const HelpPage = () => {
         <p className="paragraph" style={{ textAlign: 'justify' }}>
           These fields provide fundamental information about the compounds, including:
           <ul>
-            <li><strong>Peptaloid ID:</strong> Unique identifier within the Peptaloid database.</li>
+            <li><strong>Peptaloid ID:</strong> Unique identifier within the Peptaloid database. (PT000001,PT000002....)</li>
             <li><strong>Compound Name:</strong> Common name of the compound.</li>
             <li><strong>IUPAC Name:</strong> Systematic chemical name.</li>
             <li><strong>Formula:</strong> Molecular formula.</li>
@@ -47,14 +47,14 @@ const HelpPage = () => {
         <p className="paragraph" style={{ textAlign: 'justify' }}>
           These fields convey information about the origin and source of the compounds, including:
           <ul>
-            <li><strong>Origin:</strong> Type of origin (natural, synthetic, etc.).</li>
+            <li><strong>Origin:</strong> Type of origin (Bacterium or Fungus...)</li>
             <li><strong>Genus:</strong> Genus of the organism from which the compound is derived.</li>
             <li><strong>Species:</strong> Species of the organism from which the compound is derived.</li>
           </ul>
         </p>
 
         {/* IDs */}
-        <h3 className="subheading">IDs</h3>
+        <h3 className="subheading">Identifiers</h3>
         <p className="paragraph" style={{ textAlign: 'justify' }}>
           These fields provide database-specific identifiers for cross-referencing, including:
           <ul>
@@ -62,6 +62,7 @@ const HelpPage = () => {
             <li><strong>NPatlas ID:</strong> Identifier in the NPatlas database.</li>
             <li><strong>Supernatural ID:</strong> Identifier in the Supernatural database.</li>
             <li><strong>Zinc ID:</strong> Identifier in the ZINC database.</li>
+            <li><strong>PubChem ID:</strong> Identifier in the PubChem database.</li>
           </ul>
         </p>
 
@@ -84,7 +85,7 @@ const HelpPage = () => {
         <p className="paragraph" style={{ textAlign: 'justify' }}>
           These fields indicate drug-likeness based on Lipinski's Rule of Five, including:
           <ul>
-            <li><strong>Lipinski:</strong> Overall Lipinski score.</li>
+            <li><strong>Mol wt:</strong>Molecular weight.</li>
             <li><strong>logP:</strong> Octanol-water partition coefficient.</li>
             <li><strong>Num HBA:</strong> Number of hydrogen bond acceptors.</li>
             <li><strong>Num HBD:</strong> Number of hydrogen bond donors.</li>
@@ -103,8 +104,8 @@ const HelpPage = () => {
             <li><strong>Num StereoCenters:</strong> Number of stereocenters.</li>
             <li><strong>Num Saturated Rings:</strong> Number of saturated rings.</li>
             <li><strong>Num Aliphatic Rings:</strong> Number of aliphatic rings.</li>
-            <li><strong>CX LogP:</strong> LogP value calculated by CX.</li>
-            <li><strong>CX LogD:</strong> LogD value calculated by CX.</li>
+            <li><strong>CX LogP:</strong>Consensus LogP value.</li>
+            <li><strong>CX LogD:</strong>Consensus  LogD value.</li>
           </ul>
         </p>
 
@@ -196,24 +197,41 @@ const HelpPage = () => {
 
         {/* Images */}
         <div className="images">
-          <p className="paragraph" style={{ textAlign: 'justify' }}>This is the architecture of the database, illustrating the overall structure and organization of the Peptaloid database.</p>
+        <h3 className="subheading">Peptaloid Architecture</h3>
           <img src={Architecture} alt="Database Architecture" className="image" style={{ width: '100%' }}/>
+          <p className="paragraph" style={{ textAlign: 'justify' }}>
+            This schematic diagram illustrates the architecture of the Peptaloid database, detailing its various modules and how they interact to support comprehensive data management and analysis.
+          </p>
+
+
 
           <hr style={{ border: '1px solid #ccc', margin: '20px 0' }} /> {/* Horizontal line */}
-          <p className="paragraph" style={{ textAlign: 'justify' }}>This is the interface of the database, showing the user-friendly design and navigation features of the Peptaloid database.</p>
-          <img src={Interface} alt="Database Interface" className="image" style={{ width: '100%' }}/>
-        
-          <hr style={{ border: '1px solid #ccc', margin: '20px 0' }} /> {/* Horizontal line */}
-          <p className="paragraph" style={{ textAlign: 'justify' }}>This is the methodology used in the Peptaloid database, outlining the processes and techniques employed for data collection and analysis.</p>
+          <h3 className="subheading">Peptaloid Methodology</h3>
           <img src={Methodology} alt="Methodology" className="image" style={{ width: '70%' }}/>
+          <p className="paragraph" style={{ textAlign: 'justify' }}>
+            This flowchart outlines the Workflow used in the creation of the Peptaloid database, covering the entire process from data collection and preprocessing, through data generation and extraction, to the final stages of quality control and validation.
+          </p>
 
           <hr style={{ border: '1px solid #ccc', margin: '20px 0' }} /> {/* Horizontal line */}
-          <p className="paragraph" style={{ textAlign: 'justify' }}>These are the statistics of the database, providing insights into the quantity and diversity of the data contained within the Peptaloid database.</p>
+          <h3 className="subheading">Peptaloid Interface</h3>
+          <img src={Interface} alt="Database Interface" className="image" style={{ width: '100%' }}/>
+          <p className="paragraph" style={{ textAlign: 'justify' }}>
+            The interface of the Peptaloid database is designed to be user-friendly, offering intuitive navigation and functionality. (A) The homepage provides an overview of the database features. (B) The simple search page allows users to search by identifiers such as Peptaloid ID, InChIKey, IUPAC name, common name or other fields. (C) The results page includes a sidebar for refining search results based on various criteria. (D) The browse option enables users to explore the database by specific attributes such as Carbon count, Molecular weight, QED score, Lipinski's Rule, Amide count, and Data collection source. (E) Each molecule has a detailed page providing in-depth property analysis. (F) The tools page includes (i) a structure predictor for generating 2D structures from SMILES and (ii) a molecule screening tool based on ADMET filters. (H) The advanced search feature allows for complex queries across the database.
+          </p>
+          <hr style={{ border: '1px solid #ccc', margin: '20px 0' }} /> {/* Horizontal line */}
+
+          <h3 className="subheading">Peptaloid Statistics</h3>
           <img src={Statistics} alt="Database Statistics" className="image" style={{ width: '100%' }}/>
+          <p className="paragraph" style={{ textAlign: 'justify' }}>
+            The statistics provided offer a comprehensive overview of the Peptaloid database. (A) The distribution of peptide alkaloid molecules based on the source of data collection. (B) The distribution of Lipinski's Rule of Five properties including hydrogen bond acceptors (HBA), hydrogen bond donors (HBD), logP, and Molecular weight (mol. wt). (C) The distribution of Lipinski's Rule of Five violations (RO5). (D) The distribution of the total polar surface area (TPSA). (E) The distribution of the quantitative estimate of drug-likeness (QED). (F) The distribution of the number of amide bonds in the molecules. (G) The distribution of key functional groups including carboxylic acid, amine, ketone, and alcohol, note: on aldehyde and thiol groups which are less common across the dataset.
+          </p>
 
           <hr style={{ border: '1px solid #ccc', margin: '20px 0' }} /> {/* Horizontal line */}
-          <p className="paragraph" style={{ textAlign: 'justify' }}>This is the supplementary data, offering additional information and resources related to the Peptaloid database.</p>
+          <h3 className="subheading">Peptaloid Supplementary Data</h3>
           <img src={Supplementary} alt="Supplementary Data" className="image" style={{ width: '100%' }}/>
+          <p className="paragraph" style={{ textAlign: 'justify' }}>
+            This figure presents the distribution of ADMET properties across the Peptaloid database. (A-B) illustrate the absorption properties. (C-E) depict the distribution properties. (F) shows the metabolism-related properties. (G) outlines the excretion properties. (H-J) display the distribution of various toxicity properties, providing a detailed view of the safety profiles of the molecules.
+          </p>
         </div>
       </div>
       <Footer />
