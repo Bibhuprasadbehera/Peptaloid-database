@@ -18,40 +18,28 @@ The Peptaloid Database is designed to manage and analyze peptaloid-related data.
 
 1. Clone the Repository:
 
-```bash
-git clone https://github.com/your-repository/peptaloid-database.git
-```
-
+        git clone https://github.com/your-repository/peptaloid-database.git
+    
 2. Backend Installation (FastAPI):
 
     - Navigate to the backend folder.
-    ```bash
-    cd backend
-    ```
-    
+
+            cd backend    
     - Install dependencies via pip:
-    ```bash
-    pip install -r requirements.txt
-    ```
-
+    
+            pip install -r requirements.txt
     - Create the database and apply migrations:
-    ```bash
-    alembic upgrade head
-    ```
-
+    
+            alembic upgrade head
 3. Frontend Installation (React):
 
     - Navigate to the frontend folder.
-    ```bash
-    cd frontend
-    ```
-    
-    
+
+            cd frontend   
     - Install dependencies via npm:
-    ```bash
-    npm install
-    ```
-    
+
+            npm install
+      
 4. Run the Application:
 
     - Start the backend server:
@@ -70,10 +58,8 @@ git clone https://github.com/your-repository/peptaloid-database.git
 
    Once both the frontend and backend servers are running, access the application by visiting:
 
-   ```bash
-   http://localhost:3000
-   ```
-      
+       http://localhost:3000
+         
 2. User Authentication
 
     - Create a new account or log in if you already have one.
