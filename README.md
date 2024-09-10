@@ -42,6 +42,10 @@ We welcome contributions to enhance the Peptaloid Database. Whether fixing bugs,
 
 Figure 1: Schematic diagram for the architecture of Peptaloid database. Presents the different modules and how they interact to support comprehensive data management and analysis.
 
+## Contributors
+
+The Peptaloid peptide-alkaloid database was developed in collaboration with Bibhu Prasad Behera and Hemangini Naik.
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
