@@ -1,4 +1,4 @@
-# Peptaloid Database Frontend
+# Peptaloid Database 
 
 ![Logo](src\images\logo2.jpg)
 
