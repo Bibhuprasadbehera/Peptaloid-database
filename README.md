@@ -1,87 +1,46 @@
 # Peptaloid Database 
 
-![Logo](src\images\logo2.jpg)
+![Logo](src/images/logo2.jpg)
 
-Welcome to the Peptaloid Database Frontend, a React-based web interface for exploring the first dedicated database of peptide alkaloid molecules. This project is designed to provide researchers with an intuitive and efficient platform for accessing comprehensive data on over 161,000 peptide alkaloid compounds.
+Welcome to the Peptaloid Database, the first dedicated platform for exploring peptide alkaloid molecules. This React-based web interface offers researchers a powerful tool to access comprehensive data on over 161,000 peptide alkaloid compounds, aimed at facilitating drug discovery and research in pharmaceutical sciences.
 
-## Getting Started
+## Key Features
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- **Advanced Search:** Refine searches based on molecular characteristics, making exploration efficient and focused.
+- **Molecular Data Visualization:** View detailed structural, physicochemical, and ADMET properties of peptide alkaloids.
+- **Data Download:** Export datasets for offline analysis.
+- **API Integration:** Access and manipulate data seamlessly using backend APIs.
+- **Programmatic Access:** Tools for generating molecular structures, property predictions, and similarity analysis based on SMILES strings.
+
+## Quick Start Guide
 
 ### Prerequisites
 
-Before running the project, ensure that you have Node.js and npm (Node Package Manager) installed on your machine.
+Ensure that Node.js and npm (Node Package Manager) are installed on your machine.
 
-## Available Scripts
+### Setup
 
-In the project directory, you can run:
+1. Clone the repository.
+2. Install dependencies by running `npm install` in the project directory.
 
-### `npm start`
+### Available Scripts
 
-Runs the app in development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- `npm start`: Runs the app in development mode. Open [http://localhost:3000](http://localhost:3000) to view it.
+- `npm test`: Launches the test runner in interactive watch mode.
+- `npm run build`: Bundles the app for production.
+- `npm run eject`: Ejects the configuration files for full control over the build process.
 
-The page will automatically reload if you make changes to the source files.\
-You may also see any lint errors in the console.
+For more detailed documentation on advanced configuration, code splitting, and deployment, see the [manual.md](manual.md).
 
-### `npm test`
+## Contribution Guidelines
 
-Launches the test runner in interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+We welcome contributions to enhance the Peptaloid Database. Whether fixing bugs, adding features, or improving documentation, feel free to submit pull requests or open issues.
 
-### `npm run build`
+## Architecture
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Logo](src/images/Architecture_peptaloid.jpg)
 
-The build is minified, and the filenames include hashes.\
-Your app is now ready for deployment!
-
-For more details, see the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment).
-
-### `npm run eject`
-
-**Note:** This is a one-way operation. Once you `eject`, you can’t go back!\
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-It will copy all configuration files and transitive dependencies (webpack, Babel, ESLint, etc.) directly into your project so that you have full control over them. All commands except `eject` will still work, but they will point to the copied scripts, allowing you to tweak them.
-
-### Project Overview
-
-The Peptaloid Database Frontend is designed to facilitate the exploration of peptide alkaloids, naturally derived molecules with significant potential in drug discovery and other scientific fields. The frontend offers:
-
-- **Advanced Search Functionality:** Filter and refine searches based on a variety of molecular characteristics.
-- **Data Visualization:** View detailed information on individual molecules, including structural features, physicochemical properties, and ADMET profiles.
-- **Download Options:** Access and download datasets for offline analysis.
-- **API Integration:** Seamlessly integrates with powerful backend APIs to ensure efficient data retrieval and manipulation.
-
-### Code Splitting
-
-This project leverages code splitting to optimize performance, ensuring that only the necessary code is loaded when needed. Learn more in the [Code Splitting documentation](https://facebook.github.io/create-react-app/docs/code-splitting).
-
-### Analyzing the Bundle Size
-
-Understanding and optimizing the size of your JavaScript bundles is crucial for performance. Learn more in the [Bundle Size documentation](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size).
-
-### Making a Progressive Web App
-
-This project can be turned into a Progressive Web App (PWA) to enable offline functionality and improve user experience. Learn more in the [PWA documentation](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app).
-
-### Advanced Configuration
-
-For more customization, see the [Advanced Configuration documentation](https://facebook.github.io/create-react-app/docs/advanced-configuration).
-
-### Deployment
-
-Once your application is ready for deployment, follow the guidelines in the [Deployment documentation](https://facebook.github.io/create-react-app/docs/deployment).
-
-### `npm run build` fails to minify
-
-If the build fails to minify, refer to the [Troubleshooting documentation](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify) for solutions.
-
-## Contributing
-
-Contributions to the Peptaloid Database Frontend are welcome! Please feel free to submit pull requests or raise issues for any bugs or feature requests.
+Figure 1: Schematic diagram for the architecture of Peptaloid database. Presents the different modules and how they interact to support comprehensive data management and analysis.
 
 ## License
 
