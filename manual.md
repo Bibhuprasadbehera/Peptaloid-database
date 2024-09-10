@@ -43,15 +43,13 @@ The Peptaloid Database is designed to manage and analyze peptaloid-related data.
 4. Run the Application:
 
     - Start the backend server:
-    ```bash
-    uvicorn main:app --reload
-    ```
+    
+            uvicorn main:app --reload
     
     - Start the frontend development server:
 
-    ```bash
-    npm start
-    ```
+            npm start
+
     
 ## Usage
 1. Access the Web Interface
